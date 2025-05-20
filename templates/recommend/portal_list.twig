@@ -1,0 +1,114 @@
+{% extends "common/portal/base.twig" %}
+{% block robots %}
+<meta name="robots" content="index,follow">
+{% endblock %}
+{% block description %}
+<meta name="description" content="{% if value.headline.page > 1 %}＜{{value.headline.page}}ページ目＞{% endif %}エリア・治療内容別にあなたに合ったインプラント治療ができる歯医者さんが見つかる！インプラントネットプラスがおすすめしたい歯医者を紹介します。インプラント、ワンデイインプラント、オールオン4、オーバーデンチャー、フラップレスインプラントなどインプラント治療を検討中の方はぜひご覧ください。" />
+{% endblock %}
+{% block keyword %}
+<meta name="keywords" content="インプラントネットプラス,歯医者さん,おすすめ,インプラント" />
+{% endblock %}
+{% block canonical %}
+{% if value.headline.canonical != '' %}
+<link rel="canonical" href="{{value.headline.canonical|raw}}" />
+{% endif %}
+{% endblock %}
+{% block json_ld %}
+{% include 'recommend/json_ld_top.html' %}
+{% endblock %}
+{% block title %}インプラント対応おすすめ歯医者{% if value.headline.page > 1 %}（{{value.headline.page}}ページ目）{% endif %} - インプラントネットプラス -{% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+
+{% include 'common/portal/breadcrumb.html' %}
+
+<!-- contents -->
+<div class="contents">
+<main class="mainContents">
+	<article class="mainContents__wrapper">
+		<div class="mainContents__outer">
+			<div class="mainContents__title-outer">
+				<div class="mainContents__title-wrapper">
+					<h1 class="mainContents__title">インプラント対応<br>おすすめ歯医者<span class="mainContents__title-sub">Recommend</span></h1>
+				</div>
+			</div>
+
+			<div class="mainContents__text-outer">
+				<div class="mainContents__text-wrapper">
+					<p class="mainContents__text">
+						今やコンビニエンスストアよりも多いとされる歯科医院。<br>
+						口コミサイトやホームページを見ても選びきれませんよね。
+					</p>
+					<p class="mainContents__text">
+						私たちインプラントネットプラス編集部が、20年以上にわたり歯科医院情報サイトを運営してきた実績と独自のネットワークを元にエリア・お悩み別におすすめしたいインプラント対応の歯医者さんをご紹介します。
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<ul class="tabItem__wrapper">
+			{% if value.prefectures|length > 0 %}
+			<li class="tabItem tab__area {% if value.type is same as ('area') %}is-active{% endif %}">エリアから探す</li>
+			{% endif %}
+			{% if value.stations|length > 0 %}
+			<li class="tabItem tab__railway {% if value.type is same as ('station') %}is-active{% endif %}">駅から探す</li>
+			{% endif %}
+		</ul>
+
+		<div class="tabContent_wrapper">
+
+			<div class="tabContent tab__area {% if value.type is same as ('area') %}is-display{% endif %}">
+				{% if value.type is same as ('area') %}
+				<!-- search -->
+				<div class="search">
+					<div class="search__title-wrapper">
+						<h2 class="titLv2RecommendTop__title">エリアから探す</h2>
+					</div>
+					{% include 'recommend/portal_pref_list.html' %}
+				</div>
+				<!-- /search -->
+
+				<div class="recommend">
+					<ul class="recommend__list">
+						{% include 'recommend/portal_row_li.html' %}
+					</ul>
+					{% include 'common/portal/pagenation.html' %}
+				</div>
+				{% endif %}
+			</div>
+
+			<div class="tabContent tab__railway {% if value.type is same as ('station') %}is-display{% endif %}">
+				{% if value.type is same as ('station') %}
+				<!-- search -->
+				<div class="search">
+					<div class="search__title-wrapper">
+						<h2 class="titLv2RecommendTop__title">駅から探す</h2>
+					</div>
+					{% include 'recommend/portal_station_list.html' %}
+				</div>
+				<!-- /search -->
+
+				<div class="recommendRailway">
+					<ul class="recommendRailway__list">
+						{% include 'recommend/portal_row_li_by_station.html' %}
+					</ul>
+					{% include 'common/portal/pagenation.html' %}
+				</div>
+				{% endif %}
+			</div>
+
+		</div>
+
+	</article>
+</main>
+</div>
+<!-- /contents -->
+
+{% include 'common/portal/breadcrumb_sp.html' %}
+
+<!-- pageTop -->
+<div id="btnPagetop"><a href="#" class="btnPagetop__a" aria-label="ページトップに戻る"></a></div>
+<!-- /pageTop -->
+
+{% endblock %}

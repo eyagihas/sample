@@ -1,0 +1,52 @@
+{% extends "common/cms/base.twig" %}
+{% block external_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+{% endblock %}
+{% block external_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+{% endblock %}
+{% block title %}{{header.value.title}}{% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+<div class="content edit-form">
+	<h1>{{value.title}} {{value.sub_menu_title}}</h1>
+	<div class="separator {{value.site_pathname}}-separator"></div>
+	
+	<ul id="sectionNav" class="tab-list">
+		<li id="basic" {% if value.site_id is same as (0) %}class="active"{% endif %}>
+			<a href="" data-id="{{data.clinic.clinic_id}}">医院基本情報</a></li>
+		<li id="kyousei" {% if value.site_id is same as (3) %}class="active"{% endif %}>
+			<a href="/kyousei_cms/clinic/{{data.clinic.clinic_id}}" data-id="{{data.clinic.clinic_id}}">矯正歯科ネットプラス<br>医院基本情報</a></li>
+		<li id="implant" {% if value.site_id is same as (2) %}class="active"{% endif %}>
+			<a href="/implant_cms/clinic/{{data.clinic.clinic_id}}" data-id="{{data.clinic.clinic_id}}">インプラントネットプラス<br>医院基本情報</a></li>
+		<li id="shinbi" {% if value.site_id is same as (4) %}class="active"{% endif %}>
+			<a href="/shinbi_cms/clinic/{{data.clinic.clinic_id}}" data-id="{{data.clinic.clinic_id}}">審美歯科ネットプラス<br>医院基本情報</a></li>
+	</ul>
+
+	<div class="info-wrapper">
+		<div id="clinicInfo">
+			<div class="h2-box"><span class="vertical-line {{value.site_pathname}}-vl"></span><h2>基本情報</h2></div>
+			{% include 'clinic/info.html' %}
+		</div>
+
+		<div class="form-btn-wrapper">
+			<button id="update" class="btn form-btn dark">修正</button>
+		</div>
+
+		{% if data.recommend_id > 0 %}
+		<div class="h2-box"><span class="vertical-line {{value.site_pathname}}-vl"></span><h2>修正中ページ</h2></div>
+		<div class="now-edited-box" data-id="{{data.recommend_id}}" data-clinic-id="{{data.clinic.clinic_id}}"></div>
+		{% endif %}
+
+		<div class="h2-box"><span class="vertical-line {{value.site_pathname}}-vl"></span><h2>掲載ページ一覧</h2></div>
+		<div class="recommend-list-box"></div>
+
+		{% if value.site_id is same as (3) %}
+		<div class="h2-box"><span class="vertical-line {{value.site_pathname}}-vl"></span><h2>症例一覧</h2></div>
+		<div class="case-list-box"></div>
+		{% endif %}
+	</div>
+
+</div>
+{% endblock %}

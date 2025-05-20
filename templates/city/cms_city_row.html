@@ -1,0 +1,8 @@
+{% for key, val in data.cities %}
+<tr class="city-row">
+	<td>{{val.city_id}}</td>
+	<td>{{val.pref_name}}</td>
+	<td>{{val.city_name}}</td>
+	<td><a class="btn select-city" data-id="{{val.city_id}}">追加</a></td>
+</tr>
+{% endfor %}

@@ -1,0 +1,155 @@
+{% extends "common/cms/base.twig" %}
+{% block external_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+{% endblock %}
+{% block external_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+{% endblock %}
+{% block title %}{{header.value.title}}{% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+<div class="content edit-form">
+	<h1>{{value.title}} {{value.sub_menu_title}}</h1>
+	<div class="separator {{value.site_pathname}}-separator"></div>
+	<form id="editForm" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="recommend_id" value="{{data.recommend_id}}">
+		<input type="hidden" name="site_pathname" value="{{value.site_pathname}}" />
+		<div class="h2-box"><span class="vertical-line {{value.site_pathname}}-vl"></span><h2>基本情報</h2></div>
+
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title"><span id="title">タイトル（h1）</span>35文字以内</p>
+				<input type="text" name="title" value="{{data.title}}" class="w100">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-set">
+				<p class="input-title" id="publish_at">公開日</p>
+				<div class="date-input-set">
+					<input id="publishAt" class="date-field validate[required]" type="text" name="publish_at" value="{{data.publish_at}}">
+					<span class="material-icons">calendar_month</span>
+				</div>
+			</div>
+			<div class="input-set">
+				<p class="input-title" id="updated_at">更新日</p>
+				<div class="date-input-set">
+					<input id="updatedAt" class="date-field validate[required]" type="text" name="updated_at" value="{{data.updated_at}}">
+					<span class="material-icons">calendar_month</span>
+				</div>
+			</div>
+		</div>
+		<!--
+		<div class="row">
+			<div class="input-set wflex">
+				<p class="input-title"><span id="tag">タグ</p>
+				<ul class="tag-list">
+					{% for key, tag_id in data.tag_id_list %}
+					<li class="lightgrey-bgcolor">{{data.tag_name_list[key]}}<span class="material-icons delete-tag" data-tag-id="{{tag_id}}">close</span></li>
+					{% endfor %}
+				</ul>
+			</div>
+			<button id="searchTag" class="btn form-btn2">タグ一覧</button>
+		</div>
+		-->
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title" id="image_id">メインビジュアル</p>
+				<div class="image-box lightgrey-bgcolor">
+					<div id="mainVisual">
+						{% if data.image_url is not same as ('') %}
+						<img src="{{data.image_url}}" />
+						{% else %}
+						<span class="material-icons grey-color">cloud_upload</span>
+						<p>画像ファイルを選択</p>
+						{% endif %}
+					</div>
+					<div class="row">
+						<label class="file-label wflex"><input type="file" name="image_file"></label>
+						<button id="selectImage" class="btn form-btn2">画像を参照する</button>
+						<input type="hidden" name="image_id" value="1" data-dir="{{data.image_dir}}" data-host="{{data.site.plus_url}}" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title" id="image_attr">メインビジュアルのaltテキスト</p>
+				<input type="text" name="image_attr" value="{{data.image_attr}}" class="w100" placeholder="空欄の場合：{{data.mv_alt_default}}">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title" id="lead_text">リード文</p>
+				<textarea name="lead_text" class="w100 validate[maxSize[300]]" placeholder="{{data.lead_default|raw}}">{{data.lead_text}}</textarea>
+			</div>
+		</div>
+
+		<div class="row description">
+			<div class="input-set w100">
+				<div class="flex-box">
+					<p class="input-title" id="description">メタディスクリプション</p>
+				</div>
+				<textarea type="text" name="description" class="w100" placeholder="空欄の場合：&#10;{{data.description_default}}">{{data.description}}</textarea>
+			</div>
+		</div>
+
+		<div class="row" style="display:none;">
+			<div class="input-set w100">
+				<p class="input-title" id="keyword">メタキーワード</p>
+				<input type="text" name="keyword" value="{{data.keyword}}" class="w100" placeholder="">
+			</div>
+		</div>
+
+		<div class="form-btn-wrapper">
+			<button id="update" class="btn form-btn white">更新</button>
+		</div>
+
+		<div class="h2-box"><span class="vertical-line {{value.site_pathname}}-vl"></span><h2>掲載医院</h2></div>
+		<div class="clinic-list-box">
+			<ul class="cms-list-style">
+				{% for key, clinic in data.clinics %}
+				<li id="clinic{{clinic.clinic_id}}" class="item-box lightgrey-bgcolor clinic-item{% if clinic.is_deleted %} is-deleted{% endif %}">
+					<div class="sort-box">
+						{% if clinic.price_plan > 0 %}
+						<span class="sort-num" data-id="{{clinic.clinic_id}}" data-recommend-id="{{data.recommend_id}}">{{clinic.sort_order}}</span>
+						<span>番目</span>
+						{% endif %}
+					</div>
+					<div class="name-box">
+						{% if clinic.exists == false %}<span class="new-mark red-bgcolor">NEW</span>{% endif %}
+						（{{clinic.clinic_id}}）{{clinic.clinic_name}}【フラグ数:{{clinic.specifiedFlgNums}}】
+					</div>
+					<div class="btn-box">
+						{% if clinic.is_edited == true %}
+						<button class="btn red-color update-clinic" data-id="{{clinic.clinic_id}}">更新</button>
+						{% endif %}
+						<button class="btn red-color delete-clinic" data-id="{{clinic.clinic_id}}">削除</button>
+						<button class="btn edit-clinic" data-id="{{clinic.clinic_id}}">修正</button>
+					</div>
+					<div id="order{{clinic.clinic_id}}" class="order-select" data-id="{{clinic.clinic_id}}"></div>
+				</li>
+				{% endfor %}
+			</ul>
+			<div class="w100">
+				<a class="btn circle bluegray search-clinic" href="#searchModal" rel="modal:open"><span class="material-icons">add</span></a>
+			</div>
+		</div>
+
+		<div class="form-btn-wrapper">
+			<button id="unpublish" class="btn form-btn white" {% if data.is_published == false %}disabled{% endif %}  data-id="{{data.recommend_id}}">非公開</button>
+			<div class="form-btn-wrapper">
+				<button id="preview" class="btn form-btn white">プレビュー</button>
+			</div>
+			<button id="publish" class="btn form-btn" {% if data.is_published == true %}disabled{% endif %} data-id="{{data.recommend_id}}">公開する</button>
+		</div>
+		
+    </form>
+</div>
+
+<div id="searchModal" class="modal">
+	{% include 'clinic/search_form.html' %}
+</div>
+{% endblock %}

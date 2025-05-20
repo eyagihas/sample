@@ -1,0 +1,27 @@
+<!-- json-ld -->
+{% block javascript %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "BreadcrumbList",
+  "name": "{{value.site.site_name}}ネットプラスのパンくずリスト",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "{{value.site.site_name}}ネット＋",
+    "item": "{{value.site.plus_url}}/"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "歯科医師を探す",
+    "item": "{{value.site.plus_url}}/profile/"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "{{value.profile.doctor_name}} 歯科医師のプロフィール",
+    "item": "{{value.headline.canonical}}"
+  }]
+}
+</script>
+{% endblock %}
+<!-- /json-ld -->

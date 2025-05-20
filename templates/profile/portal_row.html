@@ -1,0 +1,15 @@
+{% for key, row in value.profiles %}
+<li class="profile__wrapper">
+	<a href="/profile/{{row.doctor_en_name}}/">
+		<div class="profile__img-wrapper">
+			<img src="{{row.image_url}}" alt="{{row.image_attr}}" class="profile__img" loading="lazy">
+			<h3 class="profile__name">{{row.doctor_name}}<span class="profile__honor">歯科医師</span></h3>
+		</div>
+
+		<div class="btnArticlelist">
+			<p class="btnArticlelist__text">詳しく見る</p>
+		</div>
+
+	</a>
+</li>
+{% endfor %}

@@ -1,0 +1,17 @@
+<h1>駅コード検索</h1>
+<div class="separator grey"></div>
+<form id="searchStation" onsubmit="return false;">
+	<div class="row row-center item-box">
+		<div class="search-box">
+			<input id="searchText" class="btn" type="text" name="search_text" value="{{data.search_text}}" placeholder="駅名検索">
+			<span id="searchIcon" class="material-icons">search</span>
+		</div>
+	</div>
+	<div class="row row-center">
+		<table class="station-table">
+			<tr><th>駅コード</th><th>駅名</th><th>都道府県名</th><th>市区町村名</th><th></th></tr>
+		</table>
+	</div>
+</form>
+	
+<a href="#" rel="modal:close" class="btn form-btn">閉じる</a>

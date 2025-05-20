@@ -1,0 +1,88 @@
+{% extends "common/cms/base.twig" %}
+{% block title %}{{value.title}}{% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+<div class="content">
+	<ul class="top-menu-list">
+		<li>
+			<h2>おすすめ{{value.site_name}}<br>ページ制作</h2>
+			<ul class="sub-menu-list">
+				<li><a class="btn" href="/{{value.site_pathname}}_cms/recommend/0">
+					<span>新規ページ作成</span><span class="material-icons">add</span></a></li>
+				<li><a class="btn" href="/{{value.site_pathname}}_cms/recommend_list/">
+					<span>既存ページ編集</span><span class="material-icons">edit_document</span></a></li>
+			</ul>
+		</li>
+		{% if value.site_pathname is same as ('kyousei') %}
+		<li>
+			<h2>インビザライン<br>ページ制作</h2>
+			<ul class="sub-menu-list">
+				<li><a class="btn" href="/{{value.site_pathname}}_cms/recommend/0?type=2">
+					<span>新規ページ作成</span><span class="material-icons">add</span></a></li>
+				<li><a class="btn" href="/{{value.site_pathname}}_cms/recommend_list/?type=2">
+					<span>既存ページ編集</span><span class="material-icons">edit_document</span></a></li>
+			</ul>
+		</li>
+		<li>
+			<h2>症例登録</h2>
+			<ul class="sub-menu-list">
+				<li><a class="btn" href="/{{value.site_pathname}}_cms/case/0">
+					<span>新規症例登録</span><span class="material-icons">add</span></a></li>
+				<li><a class="btn" href="/{{value.site_pathname}}_cms/clinic_list/">
+					<span>症例編集</span><span class="material-icons">edit_document</span></a></li>
+			</ul>
+		</li>
+		{% endif %}
+		<li>
+			<h2>医院ページ</h2>
+			<ul class="sub-menu-list">
+				<li><a class="btn" href="/{{value.site_pathname}}_cms/clinic_list/">
+					<span>医院一覧ページ</span><span class="material-icons">arrow_forward</span></a></li>
+				<li><a class="btn" href="/{{value.site_pathname}}_cms/clinic/0">
+					<span>医院追加</span><span class="material-icons">add</span></a></li>
+				<!--	
+				<li><input id="clinicSearch" class="btn" type="text" name="search_text" value="" placeholder="医院検索" data-site="{{value.site_pathname}}">
+					<span id="clinicSearchIcon" class="material-icons">search</span></li>
+				-->
+			</ul>
+		</li>
+		<li>
+			<h2>エリアページ</h2>
+			<ul class="sub-menu-list">
+				<li><a class="btn" href="/{{value.site_pathname}}_cms/city_list/">
+					<span>エリア一覧ページ</span><span class="material-icons">arrow_forward</span></a></li>
+				<li><input id="citySearch" class="btn" type="text" name="search_text" value="" placeholder="エリア検索" data-site="{{value.site_pathname}}">
+					<span id="citySearchIcon" class="material-icons">search</span></li>
+			</ul>
+		</li>
+		<li>
+			<h2>駅ページ</h2>
+			<ul class="sub-menu-list">
+				<li><a class="btn" href="/{{value.site_pathname}}_cms/station_list/">
+					<span>駅一覧ページ</span><span class="material-icons">arrow_forward</span></a></li>
+				<li><input id="stationSearch" class="btn" type="text" name="search_text" value="" placeholder="駅検索" data-site="{{value.site_pathname}}">
+					<span id="stationSearchIcon" class="material-icons">search</span></li>
+			</ul>
+		</li>
+		<li>
+			<h2>タグ管理</h2>
+			<ul class="sub-menu-list">
+				<li><a class="btn" href="/{{value.site_pathname}}_cms/tag_list/">
+					<span>タグ一覧</span><span class="material-icons">arrow_forward</span></a></li>
+				<li><a class="btn" href="/{{value.site_pathname}}_cms/tag/0">
+					<span>タグ追加</span><span class="material-icons">add</span></a></li>
+			</ul>
+		</li>
+		<li>
+			<h2>プロフィール<br>ページ制作</h2>
+			<ul class="sub-menu-list">
+				<li><a class="btn" href="/{{value.site_pathname}}_cms/profile/0">
+					<span>新規ページ作成</span><span class="material-icons">add</span></a></li>
+				<li><a class="btn" href="/{{value.site_pathname}}_cms/profile_list/">
+					<span>既存ページ編集</span><span class="material-icons">edit_document</span></a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+{% endblock %}

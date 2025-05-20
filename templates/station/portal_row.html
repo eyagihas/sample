@@ -1,0 +1,5 @@
+{% for key, val in value.stations %}
+<li class="search__list-item">
+	<a href="{{val.url}}" class="search__list-a">{{val.station_name}}駅</a>
+</li>
+{% endfor %}

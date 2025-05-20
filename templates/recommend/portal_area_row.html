@@ -1,0 +1,12 @@
+{% for c_key, c_row in row.childs %}
+{% if c_row.city_pathname is not same as ('pref') %}
+<li class="recommend__list-wrapper">
+	<a href="{{c_row.url}}">
+		<div class="recommend__list-item">
+			<img src="{{c_row.image_url}}" alt="{{c_row.pref_city}}でインプラント治療ができるおすすめ歯医者の画像">
+			<h2 class="recommend__list-text u-ta_c">{{c_row.pref_city}}<br>でインプラント治療ができる<br>おすすめ歯医者</h2>
+		</div>
+	</a>
+</li>
+{% endif %}
+{% endfor %}

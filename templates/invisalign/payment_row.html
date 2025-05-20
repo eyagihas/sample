@@ -1,0 +1,30 @@
+{% if value.payments|length > 0 %}
+{% for key, row in value.payments %}
+<div class="row payment parent{{row.parent_id}}">
+	<div class="input-set w100">
+		<p class="input-title">お支払い方法
+			{% if row.parent_name != ''%}<br>{{row.parent_name}}{% endif %}
+		</p>
+		<div class="w100">
+			<ul>
+				{% if row.payments|length > 0 %}
+				{% for c_key, c_row in row.payments %}
+				<li>
+					<input type="checkbox" name="payment_id[]" value="{{c_row.payment_id}}" id="payment{{c_row.payment_id}}" {{c_row.checked}} class="validate[minCheckbox[1]]" />
+					<label for="payment{{c_row.payment_id}}">{{c_row.payment_name}}</label>
+					{% if c_row.free_text_ex != '' %}
+					<input type="text" name="free_text_ex{{c_row.payment_id}}" value="{{c_row.free_text}}" placeholder="{{c_row.free_text_ex}}" />
+					{% endif %}
+				</li>
+				{% endfor %}
+				{% endif %}
+			</ul>
+			{% if row.parent_id != 1 %}
+			<p class="caution">※可能なお支払い方法に<span class="material-icons check">check</span>を記入してください（ボックスをクリックするとチェックが入ります）</p>
+			<p class="caution">※その他を選んだ場合、支払い方法をご記入ください（掲載できないお支払い方法もございます）</p>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endfor %}
+{% endif %}

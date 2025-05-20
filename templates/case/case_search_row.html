@@ -1,0 +1,16 @@
+{% if data.cases|length > 0 %}
+{% for key, case in data.cases %}
+<li id="resultCase{{case.case_id}}" class="item-box lightgrey-bgcolor case-item">
+	<div class="name-box">
+		{{case.attribute_name}}：{{case.case_title}}
+	</div>
+	<div class="btn-box">
+		<button class="btn red-color add-case" data-id="{{case.case_id}}" data-feature_id="{{data.feature_id}}">追加</button>
+	</div>
+</li>
+{% endfor %}
+{% else %}
+<li>
+	<p class="search-result">登録された症例はありません</p>
+</li>
+{% endif %}

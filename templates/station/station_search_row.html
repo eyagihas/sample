@@ -1,0 +1,15 @@
+{% if data.stations|length > 0 %}
+{% for key, station in data.stations %}
+<tr class="station-row">
+	<td>{{station.station_group_id}}</td>
+	<td>{{station.station_name}}</td>
+	<td>{{station.pref_name}}</td>
+	<td>{{station.city_name}}</td>
+	<td><a class="btn select-station" data-id="{{station.station_group_id}}" data-name="{{station.station_name}}">追加</a></td>
+</tr>
+{% endfor %}
+{% else %}
+<tr class="station-row">
+	<td col="4">該当駅はありません</td>
+</tr>
+{% endif %}

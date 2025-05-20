@@ -1,0 +1,11 @@
+{% if value.hidden|length > 0 %}
+{% for key, data in value.hidden %}
+	{% if data is iterable %}
+		{% for c_ken, c_data in data %}
+		<input type="hidden" name="{{key}}[]" value="{{c_data}}" />
+		{% endfor %}
+	{% else %}
+		<input type="hidden" name="{{key}}" value="{{data}}" />
+	{% endif %}
+{% endfor %}
+{% endif %}

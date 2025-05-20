@@ -1,0 +1,46 @@
+{% autoescape true %}
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		{% block format_detection %}{% endblock %}
+		{% block robots %}{% endblock %}
+		{% block description %}{% endblock %}
+		{% block keyword %}{% endblock %}
+		<title>{% block title %}{% endblock %}</title>
+		{% block canonical %}{% endblock %}
+		{% block thumbnail %}{% endblock %}
+		{{value.includes.head_gtm|raw}}
+		{% block json_ld %}{% endblock %}
+		<!-- favicon -->
+		<link rel="shortcut icon" href="/image/common/favicon.ico" type="image/x-icon">
+		<!-- /favicon -->
+		<!-- 共通css -->
+		<link rel="stylesheet" type="text/css" href="/css/reset.css">
+		<link rel="stylesheet" type="text/css" href="/css/utility.css">
+		<link rel="stylesheet" type="text/css" href="/css/base.css">
+		<link rel="stylesheet" type="text/css" href="/css/nav.css">
+		<!-- /共通css -->
+		<!-- 個別css -->
+		{% for value in header.css_list %}
+		<link rel="stylesheet" type="text/css" href="/css/{{value}}"/>
+		{% endfor %}
+		<!-- /個別css -->
+		<script type="text/javascript" src="/js/jquery-3.7.0.min.js"></script>
+		{% block external_js %}{% endblock %}
+	</head>
+	<body>
+		{{value.includes.body_gtm|raw}}
+		{{value.includes.header|raw}}
+
+		{% block body %}{% endblock %}
+
+		{{value.includes.footer|raw}}
+		{% for value in header.js_list %}
+			<script type="text/javascript" src='{{meta.base_url}}/js/{{value}}?{{meta.unixtime}}'></script>
+		{% endfor %}
+	</body>
+</html>
+{% endautoescape %}

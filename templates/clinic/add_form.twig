@@ -1,0 +1,28 @@
+{% extends "common/cms/base.twig" %}
+{% block title %}{{header.value.title}}{% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+<div class="content add-form">
+	<h1>{{value.title}} {{value.sub_menu_title}}</h1>
+	<div class="separator {{value.site_pathname}}-separator"></div>
+	<form id="addForm" method="post">
+		<input type="hidden" name="site_pathname" value="{{value.site_pathname}}" />
+		<input type="hidden" name="site_id" value="{{value.site_id}}" />
+		<div class="h2-box"><span class="vertical-line {{value.site_pathname}}-vl"></span><h2>医院ID</h2></div>
+
+		<div class="row">
+			<div class="input-set w100">
+				<input type="text" name="clinic_id" value="" class="w100 validate[required,custom[number]]" placeholder="医院IDを入力">
+			</div>
+		</div>
+
+		<button id="add" class="btn form-btn">追加する</button>
+    </form>
+
+    <div class="h2-box clinic-name" style="display:none;"><span class="vertical-line {{value.site_pathname}}-vl"></span><h2>医院名</h2></div>
+    <div class="list-box">
+		<ul class="cms-list-style clinic"></ul>
+	</div>
+</div>
+{% endblock %}

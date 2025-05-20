@@ -1,0 +1,13 @@
+{% if list.cases|length > 0 %}
+<div class="item-box lightgrey-bgcolor">
+	<p>症例を選択</p>
+	<ul class="self-case-list radio-list">
+		{% for key, case in list.cases %}
+		<li>
+			<input type="radio" id="feature{{case.feature_id}}" name="feature_id" value="{{case.feature_id}}" {% if case.case_id > 0 %}disabled{% endif %}>
+			<label for="feature{{case.feature_id}}" {% if case.case_id > 0 %}class="grey-color"{% endif %}><span>症例{{case.circle_order|raw}}</span>：{{case.case_chief_complaint}}</label>
+		</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endif %}

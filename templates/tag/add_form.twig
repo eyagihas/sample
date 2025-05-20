@@ -1,0 +1,23 @@
+{% extends "common/cms/base.twig" %}
+{% block title %}{{header.value.title}}{% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+<div class="content add-form">
+	<h1>{{value.title}} {{value.sub_menu_title}}</h1>
+	<div class="separator {{value.site_pathname}}-separator"></div>
+	<form id="addForm" method="post">
+		<input type="hidden" name="tag_id" value="0">
+		<input type="hidden" name="site_pathname" value="{{value.site_pathname}}" />
+		<div class="h2-box"><span class="vertical-line {{value.site_pathname}}-vl"></span><h2>タグ名</h2></div>
+
+		<div class="row">
+			<div class="input-set w100">
+				<input type="text" name="tag_name" value="" class="w100 validate[required]">
+			</div>
+		</div>
+
+		<button id="add" class="btn form-btn">追加する</button>
+    </form>
+</div>
+{% endblock %}

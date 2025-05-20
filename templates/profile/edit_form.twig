@@ -1,0 +1,227 @@
+{% extends "common/cms/base.twig" %}
+{% block external_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+{% endblock %}
+{% block external_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+{% endblock %}
+{% block title %}{{header.value.title}}{% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+<div class="content edit-form">
+	<h1>{{value.title}} {{value.sub_menu_title}}</h1>
+	<div class="separator {{value.site_pathname}}-separator"></div>
+
+	<form id="infoForm" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="profile_id" value="{{value.profile_id}}" />
+		<input type="hidden" name="site_id" value="{{value.site_id}}" />
+		<input type="hidden" name="site_pathname" value="{{value.site_pathname}}" />
+		<input type="hidden" name="mode" value="{{value.mode}}" />
+		<input type="hidden" name="plus_url" value="{{value.plus_url}}" />
+		{% for key, row in data.other_sites %}
+		<input type="hidden" class="other-site" name="plus_url" value="{{row.plus_url}}" />
+		{% endfor %}
+
+		<div class="h2-box"><span class="vertical-line {{value.site_pathname}}-vl"></span><h2>院長情報</h2></div>
+		<div class="row">
+			<input type="hidden" name="doctor_name_ttl" value="院長名" />
+			<div class="input-set w100">
+				<p class="input-title">院長名</p>
+				<div class="w100">
+					<input type="text" id="doctor_name" name="doctor_name" value="{{data.profile.doctor_name}}" placeholder="例）平川　裕司（フルネームを漢字にてご記入ください）" class="w100 validate[required]" />
+					<p class="caution">※歯科医師免許に登録されているお名前をご記入ください</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<input type="hidden" name="doctor_name_kana_ttl" value="院長名フリガナ" />
+			<div class="input-set w100">
+				<p class="input-title">院長名<br>フリガナ</p>
+				<input type="text" id="doctor_name_kana" name="doctor_name_kana" value="{{data.profile.doctor_name_kana}}" placeholder="例）ヒラカワ　ユウジ（フルネームをカタカナにてご記入ください）" class="w100 validate[required]" />
+			</div>
+		</div>
+		<div class="row">
+			<input type="hidden" name="doctor_en_name_ttl" value="院長名英字" />
+			<div class="input-set w100">
+				<p class="input-title">院長名<br>英字</p>
+				<input type="text" id="doctor_en_name" name="doctor_en_name" value="{{data.profile.doctor_en_name}}" placeholder="例）hirakawa-yuji" class="w100 validate[required]" />
+			</div>
+		</div>
+		<div class="row career">
+			<input type="hidden" name="doctor_career_ttl" value="経歴" />
+			<div class="input-set w100 align-item-start">
+				<p class="input-title">経歴</p>
+				<div class="w100">
+					<div class="career-list w100">
+					{% if data.profile.careers is not empty %}
+					{% for row in data.profile.careers %}
+					<div class="input-set w100 career-row">
+						<textarea name="date_info[]" placeholder="例）○年" class="w20">{{row.date_info}}</textarea>
+						<textarea name="career_text[]" placeholder="例）××大学歯学部卒業" class="wflex">{{row.career_text}}</textarea>
+						<a class="btn circle orange remove {{value.site_pathname}}-color"><span class="material-icons">remove</span></a>
+					</div>
+					{% endfor %}
+					{% else %}
+					<div class="input-set w100 career-row">
+						<textarea name="date_info[]" placeholder="例）○年" class="w20"></textarea>
+						<textarea name="career_text[]" placeholder="例）××大学歯学部卒業" class="wflex"></textarea>
+						<a class="btn circle orange remove {{value.site_pathname}}-color"><span class="material-icons">remove</span></a>
+					</div>
+					{% endif %}
+					</div>
+					<div class="w100">
+						<a class="btn circle bluegray add" href=""><span class="material-icons">add</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<input type="hidden" name="profile_text_ttl" value="プロフィール" />
+			<div class="input-set w100 align-item-start">
+				<p class="input-title">プロフィール</p>
+				<div class="w100">
+					<textarea id="profile_text" name="profile_text" placeholder="例）&#10;××に留学して学んだ歯科治療を活かし、○年に☆☆歯科医院を開業して患者さんにより良い治療を提供しています。&#10;マイクロスコープを用いた治療を基本とし、かみ合わせも含む総合的な治療を心掛けている。&#10;○○、○○、○○の経験をもとに、現在は××治療を中心に行なっている。" class="w100 mb0">{{data.profile.profile_text}}</textarea>
+					<p class="caution">※ご自身のプロフィールをご記入ください（留学経験やアピールポイント等）</p>
+				</div>
+			</div>
+		</div>
+		<div class="row qualification">
+			<input type="hidden" name="license_text_ttl" value="資格" />
+			<div class="input-set w100 align-item-start">
+				<p class="input-title">資格</p>
+				<div class="w100">
+					<div class="qualification-list w100">
+					{% if data.profile.qualifications is not empty %}
+					{% for row in data.profile.qualifications %}
+					<div class="input-set w100 qualification-row">
+						<input type="text" name="free_text[]" value="{{row.free_text}}" placeholder="例）〇〇学会認定医" class="wflex" />
+						<a class="btn circle orange remove {{value.site_pathname}}-color"><span class="material-icons">remove</span></a>
+					</div>
+					{% endfor %}
+					{% else %}
+					<div class="input-set w100 qualification-row">
+						<input type="text" name="free_text[]" value="" placeholder="例）〇〇学会認定医" class="wflex" />
+						<a class="btn circle orange remove {{value.site_pathname}}-color"><span class="material-icons">remove</span></a>
+					</div>
+					{% endif %}
+					</div>
+					<div class="w100">
+						<a class="btn circle bluegray add" href=""><span class="material-icons">add</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row profile-image-area">
+			<div class="input-set w100 align-item-start">
+				<p class="input-title">院長写真</p>
+				<input type="hidden" name="profile_image_id" value="{{data.profile.profile_image_id}}" />
+				<div class="image-box-wrapper w100">
+					<ul class="image-box-row profile">
+					{% for row in data.profile_images %}
+					<li class="profile-image {% if data.profile.profile_image_id is same as (row.image_id) %}active {{value.site_pathname}}-active{% endif %}" data-id="{{row.image_id}}">
+						<img src="{{row.src}}" alt="{{row.image_attr}}" />
+						<span class="material-icons delete-image" data-type="profile_image">delete</span>
+					</li>
+					{% endfor %}
+					</ul>
+					<div class="input-set w100">
+						<label class="file-label wflex"><input type="file" name="image_file" data-type="profile_image"></label>
+						<button class="btn form-btn2 select-image">画像を参照する</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row banner-image-area">
+			<div class="input-set w100 align-item-start">
+				<p class="input-title">バナー画像</p>
+				<div class="image-box lightgrey-bgcolor w100">
+					<div id="profileBanner">
+						{% if data.profile_banner != '' %}
+						<img src="{{data.profile_banner}}?{{meta.unixtime}}" />
+						{% endif %}
+					</div>
+					<div class="input-set w100">
+						<label class="file-label wflex"><input type="file" name="image_file" data-type="profile_banner"></label>
+						<button class="select-image btn form-btn2 white" data-type="profile_banner">画像を参照する</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="h2-box"><span class="vertical-line {{value.site_pathname}}-vl"></span><h2>プロフィール掲載記事ページ一覧</h2></div>
+
+		<div class="clinic-list">
+			{% if data.clinics is not empty %}
+			{% for key, clinic in data.clinics %}
+			<div class="clinic-item" id="order{{clinic.sort_order}}" data-order="{{clinic.sort_order}}">
+				<div class="row">
+					<input type="hidden" name="clinic_id_ttl" value="医院ID" />
+					<div class="input-set w100">
+						<p class="input-title">医院ID</p>
+						<div id="clinic_id" class="input-set wflex">
+							<input type="text" name="clinic_id[{{clinic.sort_order}}]" value="{{clinic.clinic_id}}" class="w60" />
+							<a class="btn code-search" href="#searchModal" rel="modal:open" data-order="{{clinic.sort_order}}">
+								<span>医院ID検索</span><span class="material-icons">search</span></a>
+							<a class="btn circle orange remove {{value.site_pathname}}-color"><span class="material-icons">remove</span></a>
+						</div>
+					</div>
+				</div>
+				<div class="recommend-list-box mb30">
+					{{ include('profile/profile_recommend_list.html', {list: clinic}) }}
+				</div>
+			</div>
+			{% endfor %}
+			{% else %}
+			<div class="clinic-item" id="order1" data-order="1">
+				<div class="row">
+					<input type="hidden" name="clinic_id_ttl" value="医院ID" />
+					<div class="input-set w100">
+						<p class="input-title">医院ID</p>
+						<div id="clinic_id" class="input-set wflex">
+							<input type="text" name="clinic_id[1]" value="" class="w60" />
+							<a class="btn code-search" href="#searchModal" rel="modal:open" data-order="1">
+								<span>医院ID検索</span><span class="material-icons">search</span></a>
+							<a class="btn circle orange remove {{value.site_pathname}}-color"><span class="material-icons">remove</span></a>
+						</div>
+					</div>
+				</div>
+				<div class="recommend-list-box mb30">
+				</div>
+			</div>
+			{% endif %}
+		</div>
+
+		<div class="row w100">
+			<a class="btn circle bluegray add clinic-add" href=""><span class="material-icons">add</span></a>
+		</div>
+
+		{% if list.explanations is not empty %}
+		<div class="h2-box"><span class="vertical-line {{value.site_pathname}}-vl"></span><h2>治療説明ページ一覧</h2></div>
+		<div class="recommend-list-box mb30">
+			{% include 'profile/profile_explanation_list.html' %}
+		</div>
+		{% endif %}
+
+		{% if value.profile_id == 0 %}
+		<div class="form-btn-wrapper center-style">
+			<button id="add" class="btn form-btn">新規作成</button>
+		</div>
+		{% else %}
+		<div class="form-btn-wrapper">
+			<button id="unpublish" class="btn form-btn white" {% if data.profile.is_published == false %}disabled{% endif %}  data-id="{{data.profile.profile_id}}">非公開</button>
+			<div class="form-btn-wrapper">
+				<button id="update" class="btn form-btn white">更新</button>
+				<button id="preview" class="btn form-btn white">プレビュー</button>
+			</div>
+			<button id="publish" class="btn form-btn" {% if data.profile.is_published == true %}disabled{% endif %} data-id="{{data.profile.profile_id}}">公開する</button>
+		</div>
+		{% endif %}
+
+	</form>
+	<div id="searchModal" class="modal">
+		<input type="hidden" name="clinic_order" value="">
+		{% include 'clinic/search_form.html' %}
+	</div>
+</div>
+{% endblock %}

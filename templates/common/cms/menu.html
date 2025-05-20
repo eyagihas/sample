@@ -1,0 +1,30 @@
+<nav class="menu-nav {{value.site_pathname}}-color">
+    <ul class="menu-list">
+        <li class='menu-item'>
+            <a class="{% if value.menu is same as ('recommend') %}active{% endif %}" href="{{meta.base_url}}/{{value.site_pathname}}_cms/recommend_list/">おすすめ{{value.site_name}}ページ制作</a></li>
+        <li class='menu-item'>
+            <a class="{% if value.menu is same as ('clinic') %}active{% endif %}" href="{{meta.base_url}}/{{value.site_pathname}}_cms/clinic_list/">医院ページ</a></li>
+        <li class='menu-item'>
+            <a class="{% if value.menu is same as ('city') %}active{% endif %}" href="{{meta.base_url}}/{{value.site_pathname}}_cms/city_list/">エリアページ</a></li>
+        <li class='menu-item'>
+            <a class="{% if value.menu is same as ('station') %}active{% endif %}" href="{{meta.base_url}}/{{value.site_pathname}}_cms/station_list/">駅ページ</a></li>
+        <li class='menu-item'>
+            <a class="{% if value.menu is same as ('tag') %}active{% endif %}" href="{{meta.base_url}}/{{value.site_pathname}}_cms/tag_list/">タグ管理</a></li>
+        <li class='menu-item'>
+            <a class="{% if value.menu is same as ('profile') %}active{% endif %}" href="{{meta.base_url}}/{{value.site_pathname}}_cms/profile_list/">プロフィールページ制作</a></li>
+        <li class='menu-item'>
+            <a class="{% if value.menu is same as ('get_recommend') %}active{% endif %}" href="{{meta.base_url}}/cms/get_{% if value.site_pathname is not same as ('kyousei') %}{{value.site_pathname}}_{% endif %}recommend/">該当医院チェック</a></li>
+        <li class='menu-item'>
+            <a class="{% if value.menu is same as ('internal_link') %}active{% endif %}" href="{{meta.base_url}}/{{value.site_pathname}}_cms/internal_link/">内部リンク管理</a></li>
+    </ul>
+</nav>
+{% if value.sub_menu|length > 0 %}
+<nav class="sub-menu-nav">
+    <ul class="sub-menu-list">
+        {% for item in value.sub_menu %}
+        <li class='menu-item'>
+            <a class="{% if value.sub_menu_title is same as (item.menu_title) %}active{% endif %}" href="{{meta.base_url}}/{{value.site_pathname}}_cms/{{item.url}}">{{item.menu_title}}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
+{% endif %}

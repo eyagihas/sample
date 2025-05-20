@@ -1,0 +1,10 @@
+			<div class="search__list">
+				<h2 class="search__list-title">駅一覧</h2>
+				<ul class="search__list-wrapper">
+					{% if value.stations|length > 0 %}
+					{% for key, row in value.stations %}
+					<li class="search__list-item"><a href="/recommend/{{row.pref_pathname}}/{{row.station_pathname}}/" class="search__list-a">{{row.station_name}}駅</a></li>
+					{% endfor %}
+					{% endif %}
+				</ul>
+			</div>

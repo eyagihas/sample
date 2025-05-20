@@ -1,0 +1,11 @@
+{% for key, val in value.top_stations %}
+<div class="search__slideRailway-wrapper">
+	<a href="{{val.url}}">
+        <div class="search__slideRailway-item">
+            <img src="{{val.image_url}}" alt="【{{val.year}}】{{val.station_name}}駅でインプラント治療ができるおすすめ歯医者の画像">
+            <h3 class="search__slideRailway-text"><span class="title__year">【{{val.year}}】</span>{{val.station_name}}駅でインプラント治療ができるおすすめ歯医者
+            </h3>
+        </div>
+    </a>
+</div>
+{% endfor %}

@@ -1,0 +1,59 @@
+		{% if (value.cities|length is same as (1) and value.cities[0].city_pathname is same as ('pref')) == false %}
+		<div class="search">
+
+			<div class="search__list">
+				<h2 class="search__list-title">エリア一覧</h2>
+
+				{% if value.city.has_ward %}
+
+					{% if value.cities|length > 0 %}
+
+					{% for key, row in value.cities %}
+					{% if row.is_section == true %}
+					<section class="search__area">
+              			<h3 class="search__area-title">{{row.parent_city_name}}</h3>
+              			<ul class="search__list-wrapper">
+              				{% for c_key, c_row in row.childs %}
+                			<li class="search__list-item"><a href="/recommend/{{row.pref_pathname}}/{{c_row.city_pathname}}/" class="search__list-a">{{c_row.city_name}}</a></li>
+              				{% endfor %}
+              			</ul>
+            		</section>
+					{% endif %}
+					{% endfor %}
+
+					<div class="search__area-wrapper">
+					{% for key, row in value.cities %}
+					{% if row.is_section == false %}
+					<section class="search__area">
+              			<h3 class="search__area-title">{{row.parent_city_name}}</h3>
+              			<ul class="search__list-wrapper">
+                			<li class="search__list-item"><a href="/recommend/{{row.pref_pathname}}/{{row.city_pathname}}/" class="search__list-a">{{row.city_name}}</a></li>
+              			</ul>
+            		</section>
+					{% endif %}
+					{% endfor %}
+					</div>
+
+					{% endif %}
+
+				{% else %}
+
+				<ul class="search__list-wrapper">
+					{% if value.cities|length > 0 %}
+					{% for key, row in value.cities %}
+					{% for c_key, c_row in  row.childs %}
+						{% if c_row.city_pathname is same as ('pref') %}
+						<!--<li class="search__list-item"><a href="/recommend/{{row.pref_pathname}}/" class="search__list-a">{{c_row.pref_name}}</a></li>-->
+						{% else %}
+						<li class="search__list-item"><a href="/recommend/{{row.pref_pathname}}/{{c_row.city_pathname}}/" class="search__list-a">{{c_row.city_name}}</a></li>
+						{% endif %}
+					{% endfor %}
+					{% endfor %}
+					{% endif %}
+				</ul>
+				
+				{% endif %}
+			</div>
+
+		</div>
+		{% endif %}

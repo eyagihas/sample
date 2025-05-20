@@ -1,0 +1,5 @@
+<ul>
+	{% for key, val in orders %}
+	<li data-order="{{val.sort_order}}" class="{{val.class}}">{{val.sort_order}}</li>
+	{% endfor %}
+</ul>

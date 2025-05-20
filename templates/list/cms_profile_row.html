@@ -1,0 +1,9 @@
+<li class="item-box lightgrey-bgcolor profile-item">
+    <div class="name-box">
+        {{row.doctor_name}}
+    </div>
+    <div class="btn-box">
+        <button class="btn red-color unpublish" {% if row.is_published == false %}disabled{% endif %} data-id="{{row.profile_id}}">非公開</button>
+        <button id="edit" class="btn" data-id="{{row.profile_id}}">修正</button>
+    </div>
+</li>

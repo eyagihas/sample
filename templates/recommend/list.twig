@@ -1,0 +1,86 @@
+{% extends "common/cms/base.twig" %}
+{% block title %}{{header.value.title}}{% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+<style>
+	h2 {font-size:18px;font-weight:bold;line-height:2em;}
+	.table th {width: 25%; min-width:25%;}
+	.table td {overflow-wrap: anywhere;}
+	.image-list li {display:flex; margin-bottom:10px;}
+	.image-list li img {width: 20%; margin-right:10px;}
+</style>
+<div class="content">
+	<h2>{{value.cityName}} {{value.obsession}}対応 おすすめ歯科{{value.data|length}}選</h2>
+	<div class="content-main">
+		
+		<div class="card" id="listAccordion">
+			{% for key, data in value.data %}
+			<div class="card-header" id="heading0{{key+1}}">
+				<h2 class="mb-0">
+					 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{key+1}}" aria-expanded="true" aria-controls="collapse{{key+1}}">（{{data.siteName}}:{{data.clinic_id}}）{{data.clinic_name}}【フラグ数:{{data.specifiedFlgNums}}】</button>
+      			</h2>
+      			<div id="collapse{{key+1}}" class="collapse" aria-labelledby="heading0{{key+1}}" data-bs-parent="#listAccordion">
+      				<div class="card-body">
+      					<table class="table">
+      						<tbody>
+      						<tr><th scope="row">医院名</th><td>{{data.clinic_name}}</td></tr>
+      						<tr><th scope="row">会員プラン(PC)</th><td>{{data.plan_teikei}}</td></tr>
+      						<tr><th scope="row">会員プラン(SP)</th><td>{{data.sf_plan_teikei}}</td></tr>
+      						<tr><th scope="row">医院公式HP(PC)</th><td>{{data.url}}</td></tr>
+      						<tr><th scope="row">医院公式HP(SP)</th><td>{{data.sf_url}}</td></tr>
+      						<tr><th scope="row">住所</th><td>{{data.address}} {{data.address2}}</td></tr>
+      						<tr><th scope="row">アクセス</th><td>{{data.rail_info}}</td></tr>
+      						<tr><th scope="row">地図埋め込み<br>（名称指定）</th><td>{{data.mapCodeByName}}
+      							<div><iframe src="https://www.google.com/maps?q={{data.urlEncodedName}}&output=embed&t=m&z=16&hl=ja" width="400" height="240" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      							</div></td>
+      						</tr>
+      						<tr><th scope="row">地図埋め込み<br>（緯度・経度指定）</th><td>{{data.mapCode}}
+      							<div><iframe src="https://www.google.com/maps?q={{data.address_lat}},{{data.address_lon}}&output=embed&t=m&z=16&hl=ja" width="400" height="240" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      							</div></td>
+      						</tr>
+      						<tr><th scope="row">診療時間</th><td>{{data.ope_time}}</td></tr>
+      						<tr><th scope="row">休診日（旧）</th><td>{{data.holiday}}</td></tr>
+      						<tr><th scope="row">休診日（新）</th><td>{{data.holiday_token}}</td></tr>
+      						<tr><th scope="row">休診日の備考欄</th><td>{{data.holiday_bikou}}</td></tr>
+      						<tr><th scope="row">Web予約リンク</th><td>{{data.reserveUrl}}</td></tr>
+      						<tr><th scope="row">電話番号</th><td>{{data.tel}}</td></tr>
+      						<tr><th scope="row">電話番号(SP)</th><td>{{data.freetel}}</td></tr>
+      						<tr>
+      							<th scope="row">医院画像</th>
+      							<td>
+      								<ul class="image-list">
+      								{% for image_key, innai_image in data.imageList %}
+      								<li>
+      									<img class="left" src="{{data.siteUrl}}{{innai_image}}">
+      									<p>{{data.siteUrl}}{{innai_image}}</p>
+      								</li>
+      								{% endfor %}
+      								</ul>
+      							</td>
+      						</tr>
+      						<tr>
+      							<th scope="row">医院画像(SP)</th>
+      							<td>
+      								<ul class="image-list">
+      								{% for sf_image_key, sf_innai_image in data.sfImageList %}
+      								<li>
+      									<img class="left" src="{{data.siteUrl}}{{sf_innai_image}}">
+										<p>{{data.siteUrl}}{{sf_innai_image}}</p>
+									</li>
+									{% endfor %}
+									</ul>
+								</td>
+							</tr>
+							<tr><th scope="row">定型ページURL</th><td>{{data.teikei_page_url}}</td></tr>
+							</tbody>
+						</table>
+      				</div>
+      			</div>
+			</div>
+			{% endfor %}
+		</div>
+
+	</div><!--/content-main-->
+</div>
+{% endblock %}

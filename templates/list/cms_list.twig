@@ -1,0 +1,56 @@
+{% extends "common/cms/base.twig" %}
+{% block external_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+{% endblock %}
+{% block external_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+{% endblock %}
+{% block title %}{{header.value.title}}{% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+<div class="content cms-list">
+    <input type="hidden" name="site_pathname" value="{{value.site_pathname}}" />
+    <h1>{{value.search_title}}</h1>
+    <div class="separator {{value.site_pathname}}-separator"></div>
+    <form id="searchForm">
+        <div class="search-box">
+            <input id="searchText" class="btn" type="text" name="search_text" value="{{list.search_text}}" placeholder="{{value.search_title}}">
+            {% if value.type is same as ('recommend') %}
+            <input type="hidden" name="type" value="{{list.headline.type}}">
+            {% endif %}
+            <span id="searchIcon" class="material-icons">search</span>
+        </div>
+    </form>
+
+    <h1>{{value.list_title}}</h1>
+    <div class="separator {{value.site_pathname}}-separator"></div>
+
+    <div class="list-box">
+        {% if list.data|length > 0 %}
+        <ul class="cms-list-style {{value.type}}">
+        {% if value.type is same as ('tag') %}
+        <li class="item-box lightgrey-bgcolor">
+            <div class="name-box">タグ名</div><div class="postnum-box">記事数</div><div class="btn-box"></div>
+        </li>
+        {% endif %}
+        {% for row in list.data %}
+            {% include "list/cms_"~value.type~"_row.html" with {'row':row} %}
+        {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% include 'common/cms/pagenation.html' %}
+    </div>
+
+    <div id="editModal" class="modal">
+        {% if value.type is same as ('tag') %}
+        {% include 'tag/edit_form.html' %}
+        {% elseif value.type is same as ('city') %}
+        {% include 'city/edit_form.html' %}
+        {% elseif value.type is same as ('station') %}
+        {% include 'station/edit_form.html' %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

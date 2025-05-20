@@ -1,0 +1,31 @@
+<!-- json-ld -->
+{% block javascript %}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "name": "インプラントネットプラスのパンくずリスト",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "インプラントネット＋",
+      "item": "https://plus.implant.ac/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "インプラント対応おすすめ歯医者",
+      "item": "https://plus.implant.ac/recommend/"
+    }
+    {% if value.headline.page > 1 %}
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{value.headline.page}}ページ目",
+      "item": "https://plus.implant.ac/recommend/?page={{value.headline.page}}"
+    }
+    {% endif %}
+    ]
+  }
+</script>
+{% endblock %}
+<!-- /json-ld -->

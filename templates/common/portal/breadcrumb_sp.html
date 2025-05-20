@@ -1,0 +1,15 @@
+<!-- breadCrumb SP -->
+<nav class="breadCrumb u-only_sp">
+	<ul class="breadCrumb__wrapper">
+		{% for key, val in value.breadcrumb %}
+		{% if val.href is same as ('') %}
+		<li class="breadCrumb__item">{{val.text}}</li>
+		{% else %}
+		<li class="breadCrumb__item">
+			<a href="{{meta.base_url}}{{val.href}}">{{val.text}}</a>
+		</li>
+		{% endif %}
+		{% endfor %}
+	</ul>
+</nav>
+<!-- /breadCrumb SP -->

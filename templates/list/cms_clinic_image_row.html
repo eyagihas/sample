@@ -1,0 +1,6 @@
+{% if row.src is not same as ('') %}
+<li class="clinic-image {% if active_id is same as (row.image_id) %}active {{value.site_pathname}}-active{% endif %}" data-id="{{row.image_id}}">
+    <img src="{{row.src}}" alt="{{row.image_attr}}" />
+    <span class="material-icons delete-image">delete</span>
+</li>
+{% endif %}

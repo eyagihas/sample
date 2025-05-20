@@ -1,0 +1,224 @@
+<div id="caseContent">
+	<h1>（{{value.detail.clinic_id}}）{{value.detail.clinic_name}} {{value.detail.attribute_name}}の症例</h1>
+	<div class="separator {{value.site_pathname}}-separator"></div>
+	<form id="caseForm" onsubmit="return false;">
+		<input type="hidden" name="mode" value="update_case" />
+		<input type="hidden" name="case_id" value="{{value.detail.case_id}}" />
+		<input type="hidden" name="clinic_id" value="{{value.detail.clinic_id}}" />
+		<input type="hidden" name="case_attribute_id" value="{{value.detail.case_attribute_id}}" />
+		<input type="hidden" name="sort_order" value="{{value.detail.sort_order}}" />
+
+		<div class="row item-center">
+			<div class="input-set w100">
+				<p class="input-title"></p>
+				<div class="input-set">
+					<span class="black-color mr15">{{value.detail.attribute_name}}</span>
+					<div class="input-set sort-num-area">
+						<span>表示順</span>
+						<span class="case-sort-num" data-case-id="{{value.detail.case_id}}" data-clinic-id="{{value.detail.clinic_id}}" data-attribute-id="{{value.detail.case_attribute_id}}">{{value.detail.sort_order}}</span>
+						<div class="case-order-select"></div>
+					</div>
+					<div>
+						<p class="input-title" id="publish_at">掲載日</p>
+						<div class="date-input-set">
+							<input id="casePublishAt" class="date-field" type="text" name="publish_at" value="{{value.detail.publish_at}}">
+							<span class="material-icons">calendar_month</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row info-text">
+			<div class="input-set w100">
+				<p class="input-title">タイトル</p>
+				<div class="w100">
+					<textarea name="case_title">{{value.detail.case_title}}</textarea>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title" id="before_image">治療前の画像</p>
+				<input type="hidden" name="before_image_id" value="{{value.detail.before_image_id}}" />
+				<div class="w100">
+					<div class="image-box-wrapper">
+						<ul class="image-box-row before">
+						{% for row in value.before_images %}
+						{% include "list/cms_case_image_row.html" with {'row':row, 'active_id':value.detail.before_image_id} %}
+						{% endfor %}
+						</ul>
+						<div class="row">
+							<label class="file-label wflex"><input type="file" name="image_file" class="before_file"></label>
+							<button class="btn form-btn2 select-image">画像を参照する</button>
+						</div>
+					</div>
+					<p>画像のaltテキスト</p>
+					<input type="text" name="before_image_attr" value="{{value.detail.before_image_attr}}" class="w100 mb20" placeholder="空欄の場合：{{value.detail.before_image_attr_default}}">
+					<input type="text" name="before_image_note" value="{{value.detail.before_image_note}}" class="w100" placeholder="治療前の画像の引用元URL">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title" id="after_image">治療後の画像</p>
+				<input type="hidden" name="after_image_id" value="{{value.detail.after_image_id}}" />
+				<div class="w100">
+					<div class="image-box-wrapper">
+						<ul class="image-box-row after">
+						{% for row in value.after_images %}
+						{% include "list/cms_case_image_row.html" with {'row':row, 'active_id':value.detail.after_image_id} %}
+						{% endfor %}
+						</ul>
+						<div class="row">
+							<label class="file-label wflex"><input type="file" name="image_file" class="after_file"></label>
+							<button class="btn form-btn2 select-image">画像を参照する</button>
+						</div>
+					</div>
+					<p>画像のaltテキスト</p>
+					<input type="text" name="after_image_attr" value="{{value.detail.after_image_attr}}" class="w100 mb20" placeholder="空欄の場合：{{value.detail.after_image_attr_default}}">
+					<input type="text" name="after_image_note" value="{{value.detail.after_image_note}}" class="w100" placeholder="治療後の画像の引用元URL">
+				</div>
+			</div>
+		</div>
+		<div class="row info-text">
+			<div class="input-set w100">
+				<p class="input-title">患者年齢</p>
+				<div>
+					<input type="text" name="case_age" value="{{value.detail.case_age}}" placeholder="例）20代" />
+					<p class="caution">※治療時の患者様の年齢</p>
+				</div>
+			</div>
+		</div>
+		<div class="row sex-row info-text">
+			<div class="input-set w100">
+				<p class="input-title">患者性別</p>
+				<div>
+					<div class="select-wrapper">
+						<select name="case_sex">
+							<option value="">ご選択ください</option>
+							<option value="男性" {% if value.detail.case_sex == '男性' %}selected{% endif %}>男性</option>
+							<option value="女性" {% if value.detail.case_sex == '女性' %}selected{% endif %}>女性</option>
+						</select>
+					</div>
+					<p class="caution">※患者様の身体性別</p>
+				</div>
+			</div>
+		</div>
+		<div class="row info-text">
+			<div class="input-set w100">
+				<p class="input-title">患者主訴</p>
+				<div class="w100">
+					<textarea name="case_chief_complaint" placeholder="例）&#10;前歯の2番、3番が重なっているがたつきが気になる。&#10;絶対に矯正装置が目立つことが嫌なので、マウスピース矯正以外考えていない。&#10;6番目の歯は虫歯で神経を取ってしまっているので、抜歯は6番目がいい。">{{value.detail.case_chief_complaint}}</textarea>
+					<p class="caution">※治療を希望した内容、お悩みなどを詳細にご記入ください</p>
+				</div>
+			</div>
+		</div>
+		<div class="row info-text">
+			<div class="input-set w100">
+				<p class="input-title">治療にかかった<br>期間</p>
+				<div class="w100">
+					<textarea name="case_duration" placeholder="例）2020/4/5〜2023/1/23までの2年9か月間">{{value.detail.case_duration}}</textarea>
+					<p class="caution">※初診から保定に入るまで、通院した期間</p>
+				</div>
+			</div>
+		</div>
+		<div class="row info-text">
+			<div class="input-set w100">
+				<p class="input-title">治療が終わるまで<br>に通院した回数</p>
+				<div class="w100">
+					<textarea name="case_treatment_times" placeholder="例）2ヶ月に1回／合計20回（装置の脱離による緊急の受診を含む）">{{value.detail.case_treatment_times}}</textarea>
+					<p class="caution">※初診から保定に入るまで、受診した回数・頻度</p>
+				</div>
+			</div>
+		</div>
+		<div class="row info-text case-fee-row">
+			<div class="input-set w100">
+				<p class="input-title">治療費用</p>
+				<div class="w100">
+					<p><span class="small-title">相談費用</span></p>
+					<textarea name="case_consultation_fee" placeholder="例）初診相談は無料、2度目の相談で5,000円">{{value.detail.case_consultation_fee}}</textarea>
+
+					<p><span class="small-title">検査・診断費用</span></p>
+					<textarea name="case_diagnostic_fee" placeholder="例）10,000円（※治療を受ける場合は治療費から差し引きます）">{{value.detail.case_diagnostic_fee}}</textarea>
+
+					<p><span class="small-title">矯正治療費用</span></p>
+					<textarea name="case_treatment_fee" placeholder="例）1,020,000円（検査・診断費用を差し引いて102万円です）">{{value.detail.case_treatment_fee}}</textarea>
+
+					<p><span class="small-title">毎月の処置費用</span></p>
+					<textarea name="case_monthly_fee" placeholder="例）3,000円/回">{{value.detail.case_monthly_fee}}</textarea>
+
+					<p><span class="small-title">保定装置費用</span></p>
+					<textarea name="case_retainer_fee" placeholder="例）治療費に含む&#10;故障時に別途10,000円">{{value.detail.case_retainer_fee}}</textarea>
+
+					<p><span class="small-title">総額（その他費用含む）</span></p>
+					<textarea name="case_total_fee" placeholder="例）総額：1,095,000円">{{value.detail.case_total_fee}}</textarea>
+				</div>	
+			</div>
+		</div>
+		<div class="row info-text">
+			<div class="input-set w100">
+				<p class="input-title">実際に行った<br>治療内容</p>
+				<div class="w100">
+					<textarea name="case_description" placeholder="例）&#10;重度の叢生のため、ワイヤー矯正をご提案しました。&#10;どうしてもマウスピース矯正がよいとのご希望だったため、効果が出なければワイヤー矯正への変更（要追加費用）のご説明の元、インビザラインにて治療を開始しました。&#10;1日の装着時間は20時間以上、マウスピースは○枚使用、途中上顎○番にアタッチメントを装着しました。">{{value.detail.case_description}}</textarea>
+					<p class="caution">※実際に該当の患者様に行った治療について、詳細にご記入ください。</p>
+				</div>
+			</div>
+		</div>
+		<div class="row info-text">
+			<div class="input-set w100">
+				<p class="input-title">上記治療で<br>考えられるリスク</p>
+				<div class="w100">
+					<textarea name="risk_side_effects" placeholder="例）&#10;1日20時間以上のマウスピース型矯正装置を装着する必要があります。&#10;管理ができていない場合、効果が得られないことがあります。&#10;例）&#10;患者さんの歯並びによっては、効果が得られない場合があります。&#10;特に、骨格に起因する叢生および不正咬合には効果が得られない可能性があります。">{{value.detail.risk_side_effects}}</textarea>
+					<p class="caution">※上記矯正治療を受けるに伴い、一般的に考えられるリスクおよび、実際起こった副作用</p>
+				</div>
+			</div>
+		</div>
+		<div class="row info-text">
+			<div class="input-set w100">
+				<p class="input-title">担当者から<br>のコメント</p>
+				<div class="w100">
+					<textarea name="case_comment">{{value.detail.case_comment}}</textarea>
+				</div>
+			</div>
+		</div>
+		<div class="h2-box block">
+			<h2>担当医検索</h2>
+			<div class="separator {{value.site_pathname}}-separator"></div>
+		</div>
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title">プロフィールID</p>
+				<input type="text" name="doctor_id" value="{{value.detail.doctor_id}}" />
+				<div class="search-box profile-search">
+            		<input id="searchText" class="btn" type="text" name="search_text" value="" placeholder="プロフィール検索">
+            		<span id="searchIcon" class="material-icons">search</span>
+        		</div>		
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title"></p>
+				<div class="list-box w80">
+            		<ul id="profileList" class="cms-list-style profile"></ul>
+            	</div>
+			</div>
+		</div>
+		<div class="row info-text">
+			<div class="input-set w100">
+				<p class="input-title">担当医<br><span class="caution">（プロフィールページ<br>無しの場合)</span></p>
+				<input type="text" name="case_doctor_name" value="{{value.detail.case_doctor_name}}" />
+			</div>
+		</div>
+		
+	</form>
+	
+	<div class="form-btn-wrapper center-style">
+		<button id="updateCase" class="btn form-btn dark">修正する</button>
+		<a href="#" rel="modal:close" class="btn form-btn white">閉じる</a>
+	</div>
+	
+</div>
+
+<div id="searchProfileModal" class="modal">
+	{% include 'profile/search_form.html' %}
+</div>

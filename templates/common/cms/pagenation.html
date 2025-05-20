@@ -1,0 +1,23 @@
+{% if list.pages.numbers|length > 0 %}
+<nav class="pagination">
+	<ul class="pagination__wrapper">
+		<li class="pagination__item">
+			<a class="pagination__a{% if list.headline.page == 1 %}--inactive{% endif %}" data-page={{list.headline.page-1}}
+			{% if list.headline.page != 1 and list.pages.prev_href is not same as ('') %} href="{{list.pages.prev_href}}"{% endif %}>
+				<img src="/image/common/prev_arrow.svg" alt="戻る" /></a>
+		</li>
+		{% for key, val in list.pages.numbers %}
+		<li class="pagination__item">
+			{% if val.anchor_class is not same as ('') %}
+			<a class="{{val.anchor_class}}" data-page="{{val.text}}" {% if val.href is not same as ('') %}href="{{val.href}}"{% endif %}>
+			{% endif %}
+			{{val.text|raw}}
+			{% if val.anchor_class is not same as ('') %}</a>{% endif %}
+		</li>
+		{% endfor %}
+		<li class="pagination__item">
+			<a class="pagination__a{% if list.headline.page  == list.headline.last_page %}--inactive{% endif %}" data-page={{list.headline.page+1}}{% if list.headline.page  != list.headline.last_page and list.pages.next_href is not same as ('') %} href="{{list.pages.next_href}}"{% endif %}>
+				<img src="/image/common/next_arrow.svg" alt="次へ" /></a></li>
+	</ul>
+</nav>
+{% endif %}

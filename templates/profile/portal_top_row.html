@@ -1,0 +1,19 @@
+{% for key, row in value.profiles %}
+<div class="experts__wrapper">
+	<a href="/profile/{{row.doctor_en_name}}/">
+		<div class="experts__img-wrapper">
+			<img src="{{row.image_url}}" alt="{{row.image_attr}}" class="experts__img">
+			<h3 class="experts__name">{{row.doctor_name}}<span class="experts__honor">医師</span></h3>
+			<ul class="experts__type">
+				{% if row.supervised_num > 0 %}
+				<li class="experts__supervision">監修</li>
+				{% endif %}
+				{% if row.written_num > 0 %}
+				<li class="experts__writing">執筆</li>
+				{% endif %}
+			</ul>
+			
+		</div>
+	</a>
+</div>
+{% endfor %}

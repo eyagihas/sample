@@ -1,0 +1,441 @@
+<div id="type2FeatureContent">
+	<h1>{{value.detail.title}}</h1>
+	<div class="separator {{value.site_pathname}}-separator"></div>
+	<form id="type2FeatureForm" onsubmit="return false;">
+		<input type="hidden" name="mode" value="update_type2_feature" />
+		<input type="hidden" name="recommend_id" value="{{value.detail.recommend_id}}" />
+		<input type="hidden" name="clinic_id" value="{{value.detail.clinic_id}}" />
+		<input type="hidden" name="sort_order" value="{{value.detail.sort_order}}" />
+		<input type="hidden" name="plus_url" value="{{value.site.plus_url}}" />
+		<div class="h2-box">
+			<span class="vertical-line {{value.site_pathname}}-vl"></span><h2>表示ステータス</h2>
+		</div>
+		<div class="row">
+			<input type="hidden" name="is_deleted_ttl" value="表示ステータス" />
+			<div class="input-set w100">
+				<ul class="radio-list radio-list-wrap">
+					<li><input type="radio" id="is_not_deleted" name="is_deleted" value="0"{% if value.detail.is_deleted is same as (0) %} checked{% endif %}>
+						<label for="is_not_deleted">表示</label>
+					</li>
+					<li><input type="radio" id="is_deleted" name="is_deleted" value="1"{% if value.detail.is_deleted is same as (1) %} checked{% endif %}>
+						<label for="is_deleted">非表示</label>
+					</li>
+        		</ul>
+			</div>
+		</div>
+		<div class="h2-box">
+			<span class="vertical-line {{value.site_pathname}}-vl"></span><h2>ページプラン</h2>
+		</div>
+		<div class="row">
+			<input type="hidden" name="price_plan_ttl" value="ページプラン" />
+			<div class="input-set w100">
+				<ul class="radio-list radio-list-wrap">
+					<li><input type="radio" id="free" name="price_plan" value="0"{% if value.detail.price_plan is same as (0) %} checked{% endif %}>
+						<label for="free">無料プラン</label>
+					</li>
+					<li><input type="radio" id="paid" name="price_plan" value="1"{% if value.detail.price_plan is same as (1) %} checked{% endif %}>
+						<label for="paid">有料プラン（PR）</label>
+					</li>
+        		</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-set">
+				<span>契約日</span>
+				<input type="hidden" name="contract_start_on_ttl" value="契約日" />
+				<div class="date-input-set">
+					<input type="text" id="contractStartOn" name="contract_start_on" value="{{value.detail.contract_start_on}}" class="date-field mr15" />
+					<span class="material-icons">calendar_month</span>
+				</div>
+			</div>
+			<div class="input-set">
+				<span>契約終了日</span>
+				<input type="hidden" name="contract_end_on_ttl" value="契約終了日" />
+				<div class="date-input-set">
+					<input type="text" id="contractEndOn" name="contract_end_on" value="{{value.detail.contract_end_on}}" class="date-field mr15" />
+					<span class="material-icons">calendar_month</span>
+				</div>
+			</div>
+			<div class="input-set">
+				<span>更新日</span>
+				<input type="hidden" name="updated_at_ttl" value="更新日" />
+				<div class="date-input-set">
+					<input type="text" id="updatedAt" name="updated_at" value="{{value.detail.updated_at}}" class="date-field mr15" />
+					<span class="material-icons">calendar_month</span>
+				</div>
+			</div>
+			<div class="input-set sort-num-area" {% if value.detail.price_plan is same as (0) %}style="display:none;"{% endif %}>
+				<span>表示順</span>
+				<span class="sort-num" data-id="{{value.detail.clinic_id}}" data-recommend-id="{{value.detail.recommend_id}}">{{value.detail.sort_order}}</span>
+				<div class="order-select"></div>
+			</div>
+		</div>
+
+		<div class="h2-box">
+			<span class="vertical-line {{value.site_pathname}}-vl"></span><h2>{{value.detail.clinic_name}}のメインビジュアル</h2>
+		</div>
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title" id="mv_image">メインビジュアルの画像</p>
+				<input type="hidden" name="mv_image_id" value="{{value.detail.mv_image_id}}" />
+				<div class="image-box-wrapper">
+					<ul class="image-box-row mv">
+					{% for row in value.images %}
+					{% include "list/cms_clinic_image_row.html" with {'row':row, 'active_id':value.detail.mv_image_id} %}
+					{% endfor %}
+					</ul>
+					<div class="row">
+						<label class="file-label wflex"><input type="file" name="image_file"></label>
+						<button class="btn form-btn2 select-image">画像を参照する</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title" id="mv_image_attr">メインビジュアルの画像のaltテキスト</p>
+				<input type="hidden" name="mv_image_attr_ttl" value="メインビジュアルの画像のaltテキスト" />
+				<input type="text" name="mv_image_attr" value="{{value.detail.mv_image_attr}}" class="w100" placeholder="空欄の場合：{{value.detail.mv_image_attr_default}}">
+			</div>
+		</div>
+		<!--
+		<div class="row">
+			<div class="input-set w100">
+				<input type="hidden" name="mv_image_note_ttl" value="メイン画像の引用元URL" />
+				<input type="text" name="mv_image_note" value="{{value.detail.mv_image_note}}" class="w100" placeholder="メイン画像の引用元URL">
+			</div>
+		</div>
+		-->
+		<input type="hidden" name="mv_image_note" value="">
+
+		<div class="h2-box">
+			<span class="vertical-line {{value.site_pathname}}-vl"></span><h2>{{value.detail.clinic_name}}のご紹介</h2>
+		</div>
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title" id="info_image">ご紹介の画像</p>
+				<input type="hidden" name="info_image_id" value="{{value.detail.info_image_id}}" />
+				<div class="image-box-wrapper">
+					<ul class="image-box-row info">
+					{% for row in value.images %}
+					{% include "list/cms_clinic_image_row.html" with {'row':row, 'active_id':value.detail.info_image_id} %}
+					{% endfor %}
+					</ul>
+					<div class="row">
+						<label class="file-label wflex"><input type="file" name="image_file"></label>
+						<button class="btn form-btn2 select-image">画像を参照する</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title" id="info_image_attr">ご紹介の画像のaltテキスト</p>
+				<input type="hidden" name="info_image_attr_ttl" value="ご紹介の画像のaltテキスト" />
+				<input type="text" name="info_image_attr" value="{{value.detail.info_image_attr}}" class="w100" placeholder="空欄の場合：{{value.detail.info_image_attr_default}}">
+			</div>
+		</div>
+		<!--
+		<div class="row">
+			<div class="input-set w100">
+				<input type="hidden" name="info_image_note_ttl" value="ご紹介画像の引用元URL" />
+				<input type="text" name="info_image_note" value="{{value.detail.info_image_note}}" class="w100" placeholder="ご紹介画像の引用元URL">
+			</div>
+		</div>
+		-->
+		<input type="hidden" name="info_image_note" value="">
+
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title" id="info_text">ご紹介文</p>
+				<input type="hidden" name="info_text_ttl" value="ご紹介文" />
+				<textarea name="info_text" class="w100" placeholder="テキスト入力">{{value.detail.info_text}}</textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-set w100 flex-box align-item-start mb20">
+				<p class="input-title">{{value.detail.attribute_name}}の<br>一般的な費用</p>
+				<div class="fee-table wflex">
+					<table>
+						{% if value.fees is not empty %}
+						{% for key, row in value.fees %}
+						<tr>
+							<td>
+								<textarea name="fee_name[]" placeholder="例）インビザライン&#10;モデレートパッケージ" class="validate[required]">{{row.fee_name}}</textarea>
+								<textarea name="fee[]" placeholder="例）XXX,XXX円〜XXX,XXX円" class="validate[required]">{{row.fee}}</textarea>
+							</td>
+							<td>
+								<a class="btn circle orange remove {{value.site_pathname}}-color"><span class="material-icons">remove</span></a>
+							</td>
+						</tr>
+						{% endfor %}
+						{% else %}
+						<tr>
+							<td>
+								<textarea name="fee_name[]" placeholder="例）インビザライン&#10;コンプリヘンシブパッケージ" class="validate[required]"></textarea>
+								<textarea name="fee[]" placeholder="例）XXX,XXX円〜XXX,XXX円" class="validate[required]"></textarea>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>
+								<textarea name="fee_name[]" placeholder="例）インビザライン&#10;モデレートパッケージ" class="validate[required]"></textarea>
+								<textarea name="fee[]" placeholder="例）XXX,XXX円〜XXX,XXX円" class="validate[required]"></textarea>
+							</td>
+							<td>
+								<a class="btn circle orange remove {{value.site_pathname}}-color"><span class="material-icons">remove</span></a>
+							</td>
+						</tr>
+						{% endif %}
+					</table>
+					<div class="w100">
+						<a class="btn circle bluegray add" href=""><span class="material-icons">add</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-set w100 flex-box align-item-start mb20">
+				<p class="input-title">{{value.detail.attribute_name}}の<br>治療の流れ</p>
+				<div class="flow-table wflex">
+					<table>
+						{% if value.flows is not empty %}
+						{% for key, row in value.flows %}
+						<tr>
+							<td>
+								<textarea name="flow_title[]" placeholder="例）①初診・カウンセリング" class="validate[required]">{{row.flow_title}}</textarea>
+								<textarea name="flow_text[]" placeholder="例）まずはお気軽にご相談ください。" class="validate[required]">{{row.flow_text}}</textarea>
+							</td>
+							<td>
+								<a class="btn circle orange remove {{value.site_pathname}}-color"><span class="material-icons">remove</span></a>
+							</td>
+						</tr>
+						{% endfor %}
+						{% else %}
+						<tr>
+							<td>
+								<textarea name="flow_title[]" placeholder="例）①初診・カウンセリング" class="validate[required]"></textarea>
+								<textarea name="flow_text[]" placeholder="例）まずはお気軽にご相談ください。" class="validate[required]"></textarea>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>
+								<textarea name="flow_title[]" placeholder="例）②精密検査" class="validate[required]"></textarea>
+								<textarea name="flow_text[]" placeholder="例）口腔内スキャンデータを用いた詳細なシミュレーション、顔貌写真の撮影などを行っています。" class="validate[required]"></textarea>
+							</td>
+							<td>
+								<a class="btn circle orange remove {{value.site_pathname}}-color"><span class="material-icons">remove</span></a>
+							</td>
+						</tr>
+						{% endif %}
+					</table>
+					<div class="w100">
+						<a class="btn circle bluegray add" href=""><span class="material-icons">add</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-set w100 flex-box align-item-start mb20">
+				<p class="input-title">{{value.detail.attribute_name}}の<br>一般的な治療回数</p>
+				<div class="wflex">
+					<textarea name="treatment_times" placeholder="例）1ヶ月に1回（15〜20回）" class="validate[required]">{{value.detail.treatment_times}}</textarea>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-set w100 flex-box align-item-start mb20">
+				<p class="input-title">{{value.detail.attribute_name}}の<br>一般的な治療期間</p>
+				<div class="wflex">
+					<textarea name="treatment_duration" placeholder="例）1年〜2年半" class="validate[required]">{{value.detail.treatment_duration}}</textarea>
+				</div>
+			</div>
+		</div>
+
+		<div class="h2-box">
+			<span class="vertical-line {{value.site_pathname}}-vl"></span><h2>{{value.detail.clinic_name}}の特長</h2>
+		</div>
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title" id="feature_image">特長の画像</p>
+				<input type="hidden" name="feature_image_id" value="{{value.detail.feature_image_id}}" />
+				<div class="image-box-wrapper">
+					<ul class="image-box-row feature">
+					{% for row in value.images %}
+					{% include "list/cms_clinic_image_row.html" with {'row':row, 'active_id':value.detail.feature_image_id} %}
+					{% endfor %}
+					</ul>
+					<div class="row">
+						<label class="file-label wflex"><input type="file" name="image_file"></label>
+						<button class="btn form-btn2 select-image">画像を参照する</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mb20">
+			<div class="input-set w100">
+				<p class="input-title" id="feature_image_attr">特長の画像のaltテキスト</p>
+				<input type="hidden" name="feature_image_attr_ttl" value="特長の画像のaltテキスト" />
+				<input type="text" name="feature_image_attr" value="{{value.detail.feature_image_attr}}" class="w100" placeholder="空欄の場合：{{value.detail.feature_image_attr_default}}">
+			</div>
+		</div>
+		<!--
+		<div class="row">
+			<div class="input-set w100">
+				<input type="hidden" name="feature_image_note_ttl" value="特長画像の引用元URL" />
+				<input type="text" name="feature_image_note" value="{{value.detail.feature_image_note}}" class="w100" placeholder="特長画像の引用元URL">
+			</div>
+		</div>
+		-->
+		<input type="hidden" name="feature_image_note" value="">
+
+		<div class="row">
+			<div class="input-set w100 flex-box align-item-start mb20">
+				<p class="input-title">記事項目①</p>
+				<div class="select-wrapper">
+					<select class="feature-type" name="feature_type" data-id="1" data-id_circle="①">
+						<option value="">記事項目をご選択ください</option>
+						<option value="basic" {% if value.features[0].case_id is same as (0) %}selected{% endif %}>アピールポイント①</option>
+						<option value="case" {% if value.features[0].case_id > 0 %}selected{% endif %}>症例①</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div id="feature1" class="mb20">
+			{% if value.features[0].case_id is same as (0) %}
+			<div class="row">
+				<div class="input-set w100">
+					<p class="input-title" id="feature_title_{{value.features[0].feature_id}}">特長見出し{{value.feature_id_circle}}</p>
+					<input type="hidden" name="feature_title_{{value.features[0].feature_id}}_ttl" value="特長見出し{{value.features[0].feature_id_circle}}" />
+					<input type="text" name="feature_title[{{value.features[0].feature_id}}]" value="{{value.features[0].feature_title}}" class="w100" placeholder="">
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-set w100">
+					<p class="input-title" id="feature_text_{{value.features[0].feature_id}}">特長文{{value.feature_id_circle}}</p>
+					<input type="hidden" name="feature_text_{{value.features[0].feature_id}}_ttl" value="特長文{{value.features[0].feature_id_circle}}" />
+					<textarea name="feature_text[{{value.features[0].feature_id}}]" class="w100" placeholder="テキスト入力">{{value.features[0].feature_text}}</textarea>
+				</div>
+			</div>
+			{% elseif value.features[0].case_id > 0 %}
+			<div class="row">
+				<ul class="cms-list-style case-list w100">
+					<li id="resultCase{{value.features[0].feature_id}}" class="item-box lightgrey-bgcolor case-item">
+						<div class="name-box">{{value.features[0].attribute_name}}：{{value.features[0].case_title}}</div>
+						<div class="btn-box"><button class="btn red-color add-case remove-case" data-id="{{value.features[0].case_id}}" data-feature_id="{{value.features[0].feature_id}}">削除</button></div>
+					</li>
+				</ul>
+				<input type="hidden" name="case_id[{{value.features[0].feature_id}}]" value="{{value.features[0].case_id}}">
+			</div>
+			{% endif %}
+		</div>
+
+		<div class="row">
+			<div class="input-set w100 flex-box align-item-start mb20">
+				<p class="input-title">記事項目②</p>
+				<div class="select-wrapper">
+					<select class="feature-type" name="feature_type" data-id="2" data-id_circle="②">
+						<option value="">記事項目をご選択ください</option>
+						<option value="basic" {% if value.features[1].case_id is same as (0) %}selected{% endif %}>アピールポイント②</option>
+						<option value="case" {% if value.features[1].case_id > 0 %}selected{% endif %}>症例②</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div id="feature2" class="mb20">
+			{% if value.features[1].case_id is same as (0) %}
+			<div class="row">
+				<div class="input-set w100">
+					<p class="input-title" id="feature_title_{{value.features[1].feature_id}}">特長見出し{{value.feature_id_circle}}</p>
+					<input type="hidden" name="feature_title_{{value.features[1].feature_id}}_ttl" value="特長見出し{{value.features[1].feature_id_circle}}" />
+					<input type="text" name="feature_title[{{value.features[1].feature_id}}]" value="{{value.features[1].feature_title}}" class="w100" placeholder="">
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-set w100">
+					<p class="input-title" id="feature_text_{{value.features[1].feature_id}}">特長文{{value.feature_id_circle}}</p>
+					<input type="hidden" name="feature_text_{{value.features[1].feature_id}}_ttl" value="特長文{{value.features[1].feature_id_circle}}" />
+					<textarea name="feature_text[{{value.features[1].feature_id}}]" class="w100" placeholder="テキスト入力">{{value.features[1].feature_text}}</textarea>
+				</div>
+			</div>
+			{% elseif value.features[1].case_id > 0 %}
+			<div class="row">
+				<ul class="cms-list-style case-list w100">
+					<li id="resultCase{{value.features[1].feature_id}}" class="item-box lightgrey-bgcolor case-item">
+						<div class="name-box">{{value.features[1].attribute_name}}：{{value.features[1].case_title}}</div>
+						<div class="btn-box"><button class="btn red-color add-case remove-case" data-id="{{value.features[1].case_id}}" data-feature_id="{{value.features[1].feature_id}}">削除</button></div>
+					</li>
+				</ul>
+				<input type="hidden" name="case_id[{{value.features[1].feature_id}}]" value="{{value.features[1].case_id}}">
+			</div>
+			{% endif %}
+		</div>
+
+		<div class="row">
+			<div class="input-set w100 flex-box align-item-start mb20">
+				<p class="input-title">記事項目③</p>
+				<div class="select-wrapper">
+					<select class="feature-type" name="feature_type" data-id="3" data-id_circle="③">
+						<option value="">記事項目をご選択ください</option>
+						<option value="basic" {% if value.features[2].case_id is same as (0) %}selected{% endif %}>アピールポイント③</option>
+						<option value="case" {% if value.features[2].case_id > 0 %}selected{% endif %}>症例③</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div id="feature3" class="mb20">
+			{% if value.features[2].case_id is same as (0) %}
+			<div class="row">
+				<div class="input-set w100">
+					<p class="input-title" id="feature_title_{{value.features[2].feature_id}}">特長見出し{{value.feature_id_circle}}</p>
+					<input type="hidden" name="feature_title_{{value.features[2].feature_id}}_ttl" value="特長見出し{{value.features[2].feature_id_circle}}" />
+					<input type="text" name="feature_title[{{value.features[2].feature_id}}]" value="{{value.features[2].feature_title}}" class="w100" placeholder="">
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-set w100">
+					<p class="input-title" id="feature_text_{{value.features[2].feature_id}}">特長文{{value.feature_id_circle}}</p>
+					<input type="hidden" name="feature_text_{{value.features[2].feature_id}}_ttl" value="特長文{{value.features[2].feature_id_circle}}" />
+					<textarea name="feature_text[{{value.features[2].feature_id}}]" class="w100" placeholder="テキスト入力">{{value.features[2].feature_text}}</textarea>
+				</div>
+			</div>
+			{% elseif value.features[2].case_id > 0 %}
+			<div class="row">
+				<ul class="cms-list-style case-list w100">
+					<li id="resultCase{{value.features[2].feature_id}}" class="item-box lightgrey-bgcolor case-item">
+						<div class="name-box">{{value.features[2].attribute_name}}：{{value.features[2].case_title}}</div>
+						<div class="btn-box"><button class="btn red-color add-case remove-case" data-id="{{value.features[2].case_id}}" data-feature_id="{{value.features[2].feature_id}}">削除</button></div>
+					</li>
+				</ul>
+				<input type="hidden" name="case_id[{{value.features[2].feature_id}}]" value="{{value.features[2].case_id}}">
+			</div>
+			{% endif %}
+		</div>
+
+
+		<div class="row pr-image-area" {% if value.detail.price_plan is same as (0) %}style="display:none;"{% endif %}>
+			<div class="input-set w100">
+				<p class="input-title" id="pr_image">PRの画像</p>
+				<input type="hidden" name="pr_image_id" value="{{value.detail.pr_image_id}}" />
+				<div class="image-box-wrapper">
+					<ul class="image-box-row pr">
+					{% for row in value.images %}
+					{% include "list/cms_clinic_image_row.html" with {'row':row, 'active_id':value.detail.pr_image_id} %}
+					{% endfor %}
+					</ul>
+					<div class="row">
+						<label class="file-label wflex"><input type="file" name="image_file"></label>
+						<button class="btn form-btn2 select-image">画像を参照する</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	
+	<div class="form-btn-wrapper center-style">
+		<button id="updateType2Feature" class="btn form-btn dark">修正する</button>
+		<a href="#" rel="modal:close" class="btn form-btn white">閉じる</a>
+	</div>
+	
+</div>

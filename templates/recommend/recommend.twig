@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+	<meta name="robots" content="index,follow">
+	<meta name="description" content="{{value.cityName}}のおすすめの歯医者さん（矯正歯科）を紹介します。">
+	<meta name="keywords" content="矯正歯科ネット,歯医者さん,おすすめ,医院検索,歯列矯正">
+	<title>全国の編集部おすすめ矯正歯科医院を紹介 - 矯正歯科ネットプラス - </title>
+			<link rel="stylesheet" type="text/css" href="https://plus.kyousei-shika.net/plus_base/css/common.css">
+			<script type="text/javascript" src="https://plus.kyousei-shika.net/plus_base/js/jquery-2.2.4.min.js"></script>
+	<style>
+		@import "https://use.fontawesome.com/releases/v5.13.0/css/all.css";
+		*,
+		*:before,
+		*:after {
+			-webkit-box-sizing: inherit;
+				box-sizing: inherit;
+		}
+
+		html {
+			-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				font-size: 80%;
+			}
+
+		/* 背景用*/
+		body {
+			padding: 30px 10px;
+		}
+
+		.btn,
+		a.btn,
+		button.btn {
+			font-size: 62.5%;
+			font-size: 1.6rem;
+			font-weight: 700;
+			line-height: 1.5;
+			position: relative;
+			display: inline-block;
+			padding: 1rem 4rem;
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			-webkit-transition: all 0.3s;
+			transition: all 0.3s;
+			text-align: center;
+			vertical-align: middle;
+			text-decoration: none;
+			letter-spacing: 0.1em;
+			color: #212529;
+			border-radius: 0.5rem;
+		}
+
+		.btn-wrap-pc-sp {
+			max-width: 435px;
+			margin: 0 auto 20px;
+		}
+
+		a.btn-pc-sp {
+			line-height: 1.4;
+			width: 49.5%;
+			padding: 1.25rem 0;
+			color: #ffff;
+		}
+
+		a.btn--contact {
+			display: block;
+			padding: 1.5rem 0;
+			color: #fff;
+			background: #d20010;
+			-webkit-box-shadow: 0 5px 0 #b9000e;
+			box-shadow: 0 5px 0 #b9000e;
+		}
+
+		a.btn--contact i {
+			font-size: 2rem;
+		}
+
+		a.btn--contact i.fa-position-left {
+			font-size: 3rem;
+			left: 2rem;
+		}
+
+		a.btn--contact :hover {
+			color: #fff;
+		}
+
+		a.btn--tel {
+			display: block;
+			margin-top: 15px;
+			padding: 1rem 0;
+			color: #fff;
+			background: #094;
+			-webkit-box-shadow: 0 5px 0 #008039;
+			box-shadow: 0 5px 0 #008039;
+		}
+
+		a.btn--tel i {
+			font-size: 2rem;
+		}
+
+		a.btn--tel i.fa-position-left {
+			font-size: 3rem;
+			left: 2rem;
+		}
+
+		a.btn--tel .number {
+			line-height: 1;
+			display: inline-block;
+			margin-top: 0.5rem;
+			padding: 0.25rem 2rem;
+			letter-spacing: 0;
+			color: #094;
+			border-radius: 0.5rem;
+			background: #fff;
+		}
+
+		a.btn--tel:hover {
+			color: #fff;
+		}
+
+		.fa-position-left {
+			position: absolute;
+			top: calc(50% - 0.5em);
+			left: 1rem;
+		}
+
+		.fa-position-right {
+			position: absolute;
+			top: calc(50% - 0.5em);
+			right: 1rem;
+		}
+
+		ul.cp_list {
+			padding:0.5em;
+			list-style-type:none;
+		}
+
+		ul.cp_list li {
+			position:relative;
+			padding: 0em 0.3em 0.3em 1.3em;
+		}
+
+		ul.cp_list li:after,ul.cp_list li:before {
+			position:absolute;
+			content:'';
+			display:block;
+			background: #FFC107;
+			top: 0.43em;
+			left: 0.5em;
+			height: 11px;
+			width: 4px;
+			border-radius: 10px;
+			transform: rotate(45deg);
+		}
+
+		ul.cp_list li:before {
+			top: 0.6em;
+			left: 0.2em;
+			height:8px;
+			transform:rotate(-45deg);
+		}
+
+		.table_style {
+			width: 100%;
+			border: 1px solid #2a4896;
+			margin-bottom: 16px;
+			background-color: #FFFFFF;
+		}
+
+		.table_style thead {
+			text-align: center;
+			line-height: 2;
+			font-family: "新ゴ M", "Shin Go Medium";
+			border-bottom: 1px solid #2a4896;
+			background-color: #2a4896;
+			color: #FFFFFF; 
+		}
+
+		.table_style tbody tr {
+			line-height: 3;
+			text-align: center;
+			border-bottom: 1px dashed #2a4896; 
+		}
+
+		.table_style tbody tr:nth-last-child(1) {
+			border-bottom: none;
+		}
+		
+		.table_style tbody tr th {
+			font-weight: normal;
+		}
+		
+		.table_style tbody tr td {
+			padding: 0 2px;
+		}
+	</style>
+</head>
+<body>
+<header id="pc">
+	<div class="logo">
+		<a href="https://plus.kyousei-shika.net/">
+		<img src="https://plus.kyousei-shika.net/plus_base/image/pkysi_logo.png"></a>
+	</div>
+	<nav>
+		<ul>
+			<li><a href="https://plus.kyousei-shika.net/plus_base/recommend/">おすすめ歯科医院</a></li>
+			<li><a href="https://plus.kyousei-shika.net/plus_base/dental_curedisc/">おすすめ治療説明</a></li>
+			<li><a href="https://plus.kyousei-shika.net/plus_base/dental_intarview/">おすすめインタビュー</a></li>
+			<!-- <li><a href="https://plus.kyousei-shika.net/plus_base/event/">地域別おすすめ検索</a></li> -->
+			<li><a href="https://plus.kyousei-shika.net/plus_base/dental_list/">地域別おすすめ検索</a></li>
+		</ul>
+	</nav>
+</header>
+
+<header id="sp">
+  <div id="nav-drawer">
+    <div class="logo">
+		<a href="https://plus.kyousei-shika.net/">
+		<img src="https://plus.kyousei-shika.net/plus_base/image/pkysi_logo.png"></a>
+		<label id="nav-open" for="nav-input"><span></span></label>
+    </div>
+    <input id="nav-input" type="checkbox" class="nav-unshown">
+    <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+    <div id="nav-content">
+		<div class="menu">
+			<label for="nav-input" id="btn-close"><span></span></label>
+		</div>
+	<!-- sub_column -->
+	<div class="sub-column">
+		<div>
+			<h2>メニュー</h2>
+			<nav>
+				<ul>
+				<li><a href="https://plus.kyousei-shika.net/plus_base/recommend/">おすすめ歯科医院</a></li>
+				<li><a href="https://plus.kyousei-shika.net/plus_base/dental_curedisc/">おすすめ治療説明</a></li>
+				<li><a href="https://plus.kyousei-shika.net/plus_base/dental_intarview/">おすすめインタビュー</a></li>
+				<!-- <li><a href="https://plus.kyousei-shika.net/plus_base/event/">地域別おすすめ検索</a></li> -->
+				<li><a href="https://plus.kyousei-shika.net/plus_base/dental_list/">地域別おすすめ検索</a></li>
+				</ul>
+			</nav>
+			<div class="event-search">
+				<h2>地域別おすすめ検索</h2>
+				<form>
+				<div>
+					<select class="areaList">
+						<option value="">エリア検索（全国）</option>
+						<option value="1">北海道</option>
+						<option value="2">東北</option>
+						<option value="3">関東</option>
+						<option value="4">中部</option>
+						<option value="5">近畿</option>
+						<option value="6">中国</option>
+						<option value="7">四国</option>
+						<option value="8">九州</option>
+						<option value="9">沖縄</option>
+					</select>
+				</div>
+<!--		<div>
+				<select class="ymList">
+					<option value="">開催日（YY年MM月）</option>
+					<option value="2018-03">2018年03月</option>
+					<option value="2018-01">2018年01月</option>
+				</select>
+			</div>
+-->
+				<input type="button" value="検索">
+				</form>
+			</div>
+		</div>
+	</div>
+    <!-- /sub_column -->
+	</div>
+</div>
+</header>
+<!-- <h1>矯正歯科ネットプラス</h1> -->
+<div class="wrapper">
+	<ul class="breadcrumb clearfix">
+		<li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+			<a href="https://plus.kyousei-shika.net/plus_base/" itemprop="url"><span itemprop="title">TOP</span></a> &gt;
+		</li>
+		<li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+			<a href="https://plus.kyousei-shika.net/plus_base/recommend/" itemprop="url"><span itemprop="title">おすすめ記事</span></a> &gt;
+		</li>
+		<li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+			<a href="https://plus.kyousei-shika.net/plus_base/dental_list/pref_03/" itemprop="url"><span itemprop="title">{{value.prefName}}</span></a> &gt;
+		</li>
+<!--	<li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+			<a href="https://plus.kyousei-shika.net/plus_base/society/soc1/event-4/" itemprop="url"><span itemprop="title">37th International Dental Show (IDS2017)</span></a> &gt;
+		</li>
+-->
+		<li>{{value.cityName}}</li>
+	</ul>
+<div class="clearfix">
+	<div class="sub-column">
+		<div>
+			<div class="event-search">
+				<h2>地域別おすすめ記事検索</h2>
+				<form>
+				<div>
+					<select class="areaList">
+						<option value="">エリア検索（全国）</option>
+						<option value="1">北海道</option>
+						<option value="2">東北</option>
+						<option value="3">関東</option>
+						<option value="4">中部</option>
+						<option value="5">近畿</option>
+						<option value="6">中国</option>
+						<option value="7">四国</option>
+						<option value="8">九州</option>
+						<option value="9">沖縄</option>
+					</select>
+				</div>
+		<!--		<div>
+					<select class="ymList">
+						<option value="">開催日（YY年MM月）</option>
+					<option value="2018-03">2018年03月</option>
+		<option value="2018-01">2018年01月</option>
+		</select>
+				</div>
+		-->
+				<input type="button" value="検索">
+				</form>
+			</div>
+			<div class="search-by-tag">
+				<h3>キーワードから探す</h3>
+					<ul class="keywordList"><li><a href="https://plus.kyousei-shika.net/event/tag-1/">矯正歯科</a></li>
+						<li><a href="https://plus.kyousei-shika.net/plus_base/event/tag-2/">マウスピース</a></li>
+						<li><a href="https://plus.kyousei-shika.net/plus_base/event/tag-3/">裏側矯正</a></li>
+		<!-- <li><a href="https://plus.kyousei-shika.net/plus_base/event/tag-4/">医療機器</a></li>
+		<li><a href="https://plus.kyousei-shika.net/plus_base/event/tag-5/">臨床技術</a></li>
+		<li><a href="https://plus.kyousei-shika.net/plus_base/event/tag-6/">医療安全</a></li>
+		<li><a href="https://plus.kyousei-shika.net/plus_base/event/tag-7/">医院経営</a></li>
+		<li><a href="https://plus.kyousei-shika.net/plus_base/event/tag-8/">訪問診療</a></li>
+		<li><a href="https://plus.kyousei-shika.net/plus_base/event/tag-9/">その他</a></li> -->
+					</ul>
+			</div>
+		</div>
+	</div>
+	<div class="content">
+	<article>
+		<h2>{{value.cityName}} {{value.obsession}}対応 おすすめしたい矯正歯科{{value.data|length}}選</h2>
+			<!-- <div class="mv"><img src="" alt="イメージタイトル" title="イメージタイトル">
+			</div>
+				<div class="event-info">
+					<p>37th International Dental Show (IDS2017)</p>
+					<div><span class="label">主催</span>：一般社団法人　日本ヘルスケア歯科学会</div>
+					<div>
+						<span class="label">開催日</span>：
+						<span>2018年03月15日</span>
+					</div>
+					<div>
+						<span class="label">場所</span>：
+						<span></span>
+					</div>
+					<div class="tag-area clearfix">
+						<span>キーワード：</span>
+						<ul>
+							<li><a href="https://plus.kyousei-shika.net/plus_base/event/tag-2/">講演会</a></li>
+							<li><a href="https://plus.kyousei-shika.net/plus_base/event/tag-3/">セミナー</a></li>
+							<li><a href="https://plus.kyousei-shika.net/plus_base/event/tag-4/">医療機器</a></li>
+							<li><a href="https://plus.kyousei-shika.net/plus_base/event/tag-6/">医療安全</a></li>
+							<li><a href="https://plus.kyousei-shika.net/plus_base/event/tag-7/">医院経営</a></li>
+						</ul>
+					</div>
+				</div>
+-->
+		<div class="lead-section">
+			さいたま市大宮にはJR京浜東北線・宇都宮線・高崎線・埼京線・川越線・湘南新宿ライン、東武野田線（東武アーバンパークライン）、埼玉新都市交通伊奈線が乗り入れており、
+			駅前のバスターミナルには多くの路線バスや高速バス、長距離バスが到着します。
+			さらに、東北新幹線、北海道新幹線、山形新幹線、秋田新幹線、上越新幹線、北陸新幹線も乗り入れています。<br />
+			<br />
+			そんな{{value.cityName}}で{{value.obsession}}に対応しているおすすめしたい歯医者さんをご紹介します。<br />
+			<br />
+			※2023年4月時点 矯正歯科ネット＋独自のリサーチと基準に基づき掲載しています。<br />
+		</div>
+
+		<div class="index_simple">
+			<H2>{{value.cityName}}でおすすめしたい{{value.obsession}}対応矯正歯科{{value.data|length}}選</H2>
+			<br />
+			<span class="index_list">目次</span>
+
+			<ul class="cp_list">
+				{% for key, data in value.data %}
+				<li><a href="#index_0{{key+1}}">・（{{data.siteName}}:{{data.clinic_id}}）{{data.clinic_name}}</a></li>
+        {% endfor %}
+			</ul>
+		</div>
+
+		{% for key, data in value.data %}
+		<div class="text-section" id="index_0{{key+1}}">
+			<div class="h3-area clearfix">
+				<h3 id="index_01">{{data.clinic_name}}</h3>
+
+				<p>院内紹介ページ画像</p>
+				<ul style="display:flex; flex-wrap:wrap;">
+					{% for image_key, innai_image in data.imageList %}
+						<li style="width:22%;margin-right:1%;">
+							<img class="left" src="{{data.siteUrl}}{{innai_image}}" alt="医院の写真{{image_key+1}}" title="{{data.clinic_Name}}">
+						</li>
+					{% endfor %}
+				</ul>
+				<br><br>
+				<p>院内紹介ページ画像(SP)</p>
+				<ul style="display:flex; flex-wrap:wrap;">
+					{% for sf_image_key, sf_innai_image in data.sfImageList %}
+						<li style="width:22%;margin-right:1%;">
+							<img class="left" src="{{data.siteUrl}}{{sf_innai_image}}" alt="医院の写真{{sf_image_key+1}}" title="{{data.clinic_Name}}">
+						</li>
+					{% endfor %}
+				</ul>
+
+				<div class="access-area">
+					<h4>アクセス・住所・診療時間</h4>
+					<div class="sec-map">
+						<div class="basic_gmap">
+							<!-- <input type='hidden' id ='latitude' value='35.6853163'>
+							<input type='hidden' id ='longitude' value='139.7763382'>
+							<input type='hidden' id ='address' value='東京都中央区日本橋本町1-1-5'> -->
+							<div id="map" class="map">
+								<div style='width: 100%; height: 400px;' id='gmap'>
+									<iframe src="https://www.google.com/maps?q={{data.address_lat}},{{data.address_lon}}&output=embed&t=m&z=16&hl=ja" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+									<p>緯度：{{data.address_lat}} 経度：{{data.address_lon}}<br><br></p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="access-text-area">
+						<ul class="access-text">
+		         	<li class="access-text-list">
+		         		<div class="info-title access">アクセス</div>
+		         		<div class="info access">{{data.rail_info|raw}}</div>
+		         	</li>
+		         	<li class="access-text-list">
+		         		<div class="info-title address">住所</div>
+		         		<div class="info address">{{data.address|raw}} {{data.address2|raw}}</div>
+		         	</li>
+		        </ul>
+		      </div>
+
+				</div><!--access-area-->
+
+				診療時間：{{data.ope_time|raw}}<br>
+				休診日（旧）：{{data.holiday|raw}}<br>
+				休診日（新）：{{data.holiday_token|raw}}<br>
+				休診日の備考欄：{{data.holiday_bikou|raw}}
+				<!--<table class="table_style">
+								<thead>
+								<tr>
+									<th>診療時間</th>
+									<td>月</td>
+									<td>火</td>
+									<td>水</td>
+									<td>木</td>
+									<td>金</td>
+									<td>土</td>
+									<td>日</td>
+								</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th>
+											<time datetime="09:30">09:30</time>
+											-
+											<time datetime="13:00">13:00</time>
+										</th>
+										<td>●</td>
+										<td>●</td>
+										<td>●</td>
+										<td>-</td>
+										<td>●</td>
+										<td>△</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<th>
+											<time datetime="14:30">14:30</time>
+											-
+											<time datetime="19:00">19:00</time>
+										</th>
+										<td>●</td>
+										<td>●</td>
+										<td>●</td>
+										<td>-</td>
+										<td>●</td>
+										<td>△</td>
+										<td>-</td>
+									</tr>
+								</tbody>
+				</table>-->
+		</div><!--h3-area-->
+					<!--</p>-->
+		<!--</div>-->
+		<!--
+		<div class="h4-area clearfix">
+			<img class="left" src="https://plus.kyousei-shika.net/plus_base/image/68762/pict01.png" alt="医院の写真" title="羽生田歯科医院">
+			<h4>羽入田歯科医院のご紹介</h4>
+			<p>
+				羽入田歯科医院では、歯科医院と患者さんの信頼関係の確立、医療倫理に基づく安全な医療の提供、臨床的な専門技能の提供などの理念を掲げて診療を行っています。
+				一般的な虫歯治療や歯周病、入れ歯などの治療から、審美歯科治療、インプラント治療、矯正歯科治療、予防歯科、顎関節症の治療まで幅広く取り扱っている歯科医院です。
+			そのための歯科用CTやレーザー治療機、患者さんのプライバシーに考慮した半個室の診療室まで用意されています。
+			</p>
+		</div>
+		<div class="h3-area clearfix">
+			<img class="right" src="https://plus.kyousei-shika.net/plus_base/image/68762/pict01.png" alt="医院の写真" title="羽生田歯科医院">
+			<h4>羽入田歯科医院の特徴</h4>
+			<p>幅広い治療に対応
+				羽入田歯科医院では、一般的な虫歯治療から小児歯科、入れ歯などの高齢者歯科まで幅広く治療を取り扱っています。
+				矯正歯科治療やインプラント治療なども取り扱っており、矯正治療のみ、インプラント治療のみではなく、治療を組み合わせて検討することができるでしょう。
+
+				お口全体の矯正治療だけでなく、部分矯正やセカンドオピニオンも行っています。
+				患者さんが安心できる治療設備
+				羽入田歯科医院は、患者さんにとって安心できる歯科医院を目指して衛生機器や治療機器を導入しています。
+				矯正歯科治療やインプラント治療では欠かせない歯科用CTの導入や、レーザー治療機器も導入。
+
+				歯科恐怖症の方や歯科医院が怖いお子様にも対応できるよう、笑気吸入鎮静器（笑気麻酔）も用意されています。
+			</p>
+			<br />
+		</div>
+		-->
+
+		<div class="btn-wrap-pc-sp">
+			<a href="{{data.clinic_yoyaku_page_url}}" class="btn btn--contact">
+				<i class="fas fa-mobile-alt fa-position-left"></i>
+				<p class="btn-txt">Web予約はこちら</p>
+				<i class="fas fa-angle-right fa-position-right"></i>
+			</a>
+
+			<a href="" class="btn btn--tel">
+				<i class="fas fa-phone-volume fa-position-left"></i>
+				<p class="btn-txt">お電話でのご予約はこちら</p>
+				<span class="number phone-number">TEL：{{data.tel|raw}}</span>
+				<i class="fas fa-angle-right fa-position-right"></i>
+			</a>
+		</div><!--btn-wrap-pc-sp-->
+	</div><!--text-section-->
+	{% endfor %}
+
+
+
+		<div class="writer-section">
+			<dl>
+				<dt>編集</dt><dd>矯正歯科ネットプラス編集部</dd>
+			</dl>
+			<dl>
+				<dt>レポート</dt><dd>2023年4月28日</dd>
+			</dl>
+		</div>
+
+	</article>
+</div>
+</div>
+
+</div>
+<div id="footer">
+    copyright(C) 2023 メディカルネット
+</div>
+<!--
+<script type="text/javascript" src="https://plus.kyousei-shika.net/plus_base/js/portal/common.js"></script>
+-->
+<script type="text/javascript" src="https://plus.kyousei-shika.net/plus_base/js/portal/holiday.js"></script>
+<script type="text/javascript" src="https://plus.kyousei-shika.net/plus_base/js/portal/scroll_top.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnBFn31Gk_Dl28d4MhmJydaKdkCTR_bFI&amp;callback=initMap"></script>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+<li class="item-box lightgrey-bgcolor clinic-item {% if row.is_new %}is-new{% endif %}">
+    <div class="name-box">
+        {% if row.is_new %}<span class="new-mark red-bgcolor">NEW</span>{% endif %}
+        （{{row.clinic_id}}）{{row.clinic_name}}
+        <span class="info-box">掲載{{row.post_num}}件　<span class="red-color">PR{{row.pr_num}}件</span></span>
+    </div>
+    <div class="btn-box">
+        <button id="edit" class="btn" data-id="{{row.clinic_id}}">修正</button>
+    </div>
+</li>

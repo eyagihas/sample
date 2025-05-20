@@ -1,0 +1,21 @@
+{% if row is not empty %}
+<li class="item-box lightgrey-bgcolor clinic-item">
+    <div class="btn-box">
+        {% if row.added_at is not same as ('') %}
+        <button class="btn red-color remove-link" data-type="{{row.type}}" data-id="{{row.id}}">非掲載にする</button>
+        {% else %}
+        <button class="btn red-color add-link" data-type="{{row.type}}" data-id="{{row.id}}">掲載する</button>
+        {% endif %}
+    </div>
+    <div class="name-box">
+        {{row.title}}
+        {% if row.type is not same as ('recommend') %}
+        <span class="info-box">記事{{row.postnum}}件</span>
+        {% elseif row.has_pr %}
+        <span class="info-box red-color">PR</span>
+        {% endif %}
+    </div>
+</li>
+{% else %}
+<p>該当記事はありません</p>
+{% endif %}

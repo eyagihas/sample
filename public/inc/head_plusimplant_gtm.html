@@ -1,0 +1,46 @@
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TX48PB5N');</script>
+<!-- End Google Tag Manager -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NYKSXCDEJE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NYKSXCDEJE', { 'send_page_view': false });
+</script>
+
+<script>
+  window.mn_event_ga = function(arg1, arg2, eventCategory, eventAction, eventLabel = '', value1 = '', value2 = {}){
+    gtag('event', 'event_click', {
+      'category': eventCategory,
+      'action': eventAction,
+      'label': eventLabel,
+      send_to: 'G-NYKSXCDEJE'
+    });
+    if ((typeof ga === 'function') && ga.loaded) {
+      ga(arg1, arg2, eventCategory, eventAction, eventLabel);
+    }
+  };
+  document.addEventListener('DOMContentLoaded', function (event) {
+      var targets = document.querySelectorAll('a[onclick^="ga("][onclick*="send"][onclick*="event"]');
+      for(var i = 0; i < targets.length ; i++) {
+          var gaStr = targets[i].getAttribute("onclick");
+          targets[i].setAttribute("onclick", "mn_event_" + gaStr);
+      }
+  });
+</script>
+
+<!-- Begin Mieruca Embed Code -->
+<script type="text/javascript" id="mierucajs">
+  window.__fid = window.__fid || [];__fid.push([269008661]);
+  (function() {
+  function mieruca(){if(typeof window.__fjsld != "undefined") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = "fjssync"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };
+  setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent("onload", mieruca) : window.addEventListener("load", mieruca, false)) : mieruca();
+  })();
+  </script>
+  <!-- End Mieruca Embed Code -->

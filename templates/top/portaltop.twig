@@ -1,0 +1,179 @@
+{% extends "common/portal/base.twig" %}
+{% block robots %}
+<meta name="robots" content="index,follow">
+{% endblock %}
+{% block description %}
+<meta name="description" content="日本全国のインプラント治療ができるおすすめの歯医者さんを紹介します。オールオン4やインプラントオーバーデンチャーなど、インプラント治療を検討中の方はぜひご覧ください。エリア毎にあなたに合う歯医者がきっと見つかります！また、インプラント治療にかかる費用や期間などの気になる情報も発信しています。" />
+{% endblock %}
+{% block keyword %}
+<meta name="keywords" content="インプラントネットプラス,歯医者さん,おすすめ,医院検索,インプラント" />
+{% endblock %}
+{% block canonical %}
+<link rel="canonical" href="https://plus.implant.ac/" />
+{% endblock %}
+{% block json_ld %}
+{% include 'top/json_ld.html' %}
+{% endblock %}
+{% block title %}インプラントネットプラス{% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+
+<!-- contents -->
+<div class="contents">
+<main class="mainContents">
+	<div class="mainContents__wrapper">
+		<!-- searchList -->
+		<div class="search">
+			<div class="search__title-wrapper">
+				<h2 class="search__title">お近くで<br class="u-only_sp">インプラント対応の<br>歯医者を探す
+					<div class="search__title-sub">Search</div>
+				</h2>
+			</div>
+
+			<ul class="tabItem__wrapper">
+				<li class="tabItem tab__area is-active">エリアから探す</li>
+				<li class="tabItem tab__railway">駅から探す</li>
+			</ul>
+
+			<div class="tabContent_wrapper">
+				<div class="tabContent tab__area is-display">
+					<div class="search__list">
+						<h2 class="search__list-title">エリア一覧</h2>
+						<ul class="search__list-wrapper">
+							{% include 'city/portal_pref_row.html' %}
+						</ul>
+					</div>
+					<div class="search__slide">
+						{% include 'city/portal_city_slide.html' %}
+					</div>
+
+					<div class="slideArrows__search">
+						<div class="slideArrows__search-wrapper">
+							<div class="slideArrows__search-item"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="tabContent tab__railway">
+					<div class="search__list">
+						<h2 class="search__list-title">駅一覧</h2>
+						<ul class="search__list-wrapper">
+							{% include 'station/portal_row.html' %}
+						</ul>
+					</div>
+					<div class="search__slideRailway">
+						{% include 'station/portal_slide.html' %}
+					</div>
+
+					<div class="slideArrows__searchRailway">
+						<div class="slideArrows__searchRailway-wrapper">
+							<div class="slideArrows__searchRailway-item"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- recommendList -->
+		<div class="recommend">
+			<div class="recommend__title-wrapper">
+				<h2 class="recommend__title">インプラント対応<br class="u-only_sp u-only_tablet">おすすめ歯医者
+					<span class="recommend__title-sub">Recommend</span>
+				</h2>
+			</div>
+
+			<div class="recommend__slide">
+				{% include 'recommend/portal_row.html' %}
+			</div>
+
+			<div class="slideArrows">
+				<div class="slideArrows__wrapper">
+					<div class="slideArrows__item"></div>
+					<a href="/recommend/" class="btnMore">
+						<p class="btnMore__text">もっと見る</p>
+					</a>
+				</div>
+			</div>
+
+		</div>
+		<!-- /recommendList -->
+
+		{{value.includes.explanation|raw}}
+
+		<!-- experts -->
+		<div class="experts">
+			<div class="experts__title-wrapper">
+				<h2 class="experts__title">歯科医師プロフィール
+					<span class="experts__title-sub">Profile</span>
+				</h2>
+			</div>
+
+			<div class="experts__slide">
+			{% include 'profile/portal_top_row.html' %}
+			</div>
+
+			<div class="slideArrows__experts">
+				<div class="slideArrows__experts-wrapper">
+					<div class="slideArrows__experts-item"></div>
+					<a href="/profile/" class="btnMore">
+						<p class="btnMore__text">もっと見る</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- /experts -->
+
+		{{value.includes.qa|raw}}
+
+		{{value.includes.ranking|raw}}
+
+		<!-- link -->
+		<div class="accordion">
+
+			<section class="accordion__wrapper">
+				<h2 class="accordion__title jsAccordion__title">都道府県からインプラント治療ができるおすすめ歯医者を探す</h2>
+				<div class="accordion__content">
+					<table class="accordion__table">
+						<tbody>
+							{% include 'top/portal_pref_search.html' %}
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<section class="accordion__wrapper">
+				<h2 class="accordion__title jsAccordion__title">エリアからインプラント治療ができるおすすめ歯医者を探す</h2>
+				<div class="accordion__content">
+					<table class="accordion__table">
+						<tbody>
+							{% include 'top/portal_area_search.html' %}
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<section class="accordion__wrapper">
+				<h2 class="accordion__title jsAccordion__title">治療内容からインプラント治療ができるおすすめ歯医者を探す</h2>
+				<div class="accordion__content">
+					<table class="accordion__table">
+						<tbody>
+							{% include 'top/portal_attribute_search.html' %}
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+		</div><!-- /.accordion -->
+		<!-- /link -->
+
+	</div>
+</main>
+</div>
+<!-- /contents -->
+
+<!-- pageTop -->
+<div id="btnPagetop"><a href="#" class="btnPagetop__a" aria-label="ページトップに戻る"></a></div>
+<!-- /pageTop -->
+
+{% endblock %}

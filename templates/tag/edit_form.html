@@ -1,0 +1,33 @@
+<form id="editTag" onsubmit="return false;">
+	<h1>タグ編集</h1>
+	<div class="separator {{value.site_pathname}}-separator"></div>
+	<div class="h2-box">
+		<span class="vertical-line {{value.site_pathname}}-vl"></span><h2>タグ名</h2>
+	</div>
+	<input type="hidden" name="tag_id" value="{{data.tag.tag_id}}" />
+	<div class="row">
+		<div class="input-set w100">
+			<input type="text" id="tag_name" class="w100 validate[required]" name="tag_name" value="{{data.tag.tag_name}}" />
+		</div>
+	</div>
+</form>
+
+<div class="h2-box">
+	<span class="vertical-line {{value.site_pathname}}-vl"></span><h2>掲載ページ</h2>
+</div>
+<div class="list-box">
+	<ul class="cms-list-style">
+	{% for row in data.tag.recommends %}
+	<li class="item-box lightgrey-bgcolor recommend-item">
+			<div class="name-box">
+				【{{row.publish_in}}】{{row.title}}
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+</div>
+<br><br>
+<div class="form-btn-wrapper center-style">
+	<button id="updateTag" class="btn form-btn dark">修正する</button>
+	<a href="#" rel="modal:close" class="btn form-btn">閉じる</a>
+</div>

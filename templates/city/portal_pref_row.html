@@ -1,0 +1,5 @@
+{% for key, val in value.cities %}
+<li class="search__list-item">
+	<a href="{{val.url}}" class="search__list-a">{{val.pref_name}}</a>
+</li>
+{% endfor %}

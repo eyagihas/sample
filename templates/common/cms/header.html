@@ -1,0 +1,13 @@
+<header class="header">
+    <div class="header-wrapper">
+        <a href="/{{value.site_pathname}}_cms/">
+            <img src="/image/common/bg_plus_top_{{value.site_pathname}}.svg" alt="{{value.site_name}}ネットプラス">
+            <p>{{value.site_name}}ネットプラスCMS管理画面</p>
+        </a>
+        <div class="switch-area">
+            <a class="btn switch-btn kyousei-color{% if value.site_id is not same as (3) %} active{% endif %}" href="/kyousei_cms/">矯正歯科ネットプラスCMS</a>
+            <a class="btn switch-btn implant-color{% if value.site_id is not same as (2) %} active{% endif %}" href="/implant_cms/">インプラントネットプラスCMS</a>
+            <a class="btn switch-btn shinbi-color{% if value.site_id is not same as (4) %} active{% endif %}" href="/shinbi_cms/">審美歯科ネットプラスCMS</a>
+        </div>
+    </div>
+</header>

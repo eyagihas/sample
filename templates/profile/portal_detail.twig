@@ -1,0 +1,140 @@
+{% extends "common/portal/base.twig" %}
+{% block format_detection %}
+<meta name="format-detection" content="telephone=no">
+{% endblock %}
+{% block robots %}
+<meta name="robots" content="{{value.headline.ga_index}}">
+{% endblock %}
+{% block description %}
+<meta name="description" content="{{value.profile.description}}" />
+{% endblock %}
+{% block keyword %}
+<meta name="keywords" content="{{value.site.site_name}}ネットプラス,歯医者さん,おすすめ,{{value.site.site_name}},治療説明,歯科医師,専門家,監修,{{value.profile.doctor_name}} 歯科医師" />
+{% endblock %}
+{% block canonical %}
+{% if value.headline.canonical != '' %}
+<link rel="canonical" href="{{value.headline.canonical}}" />
+{% endif %}
+{% endblock %}
+{% block json_ld %}
+{% include 'profile/json_ld_detail.html' %}
+{% endblock %}
+{% block external_js %}
+{% endblock %}
+{% block title %}{{value.profile.doctor_name}} 歯科医師のプロフィール - {{value.site.site_name}}ネットプラス - {% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+
+{% include 'common/portal/breadcrumb.html' %}
+
+<!-- contents -->
+<div class="contents">
+<main class="mainContents">
+	<article class="mainContents__wrapper">
+
+		<div class="mainContents__outer">
+
+			<div class="mainContents__title-outer">
+				<div class="mainContents__title-wrapper">
+					<h1 class="mainContents__title">
+						{% if value.profile.clinics|length > 0 %}
+						{% for key, row in value.profile.clinics %}
+						<span class="title__author-dentist">{{row.clinic_name}}</span>
+						{% endfor %}
+						{% endif %}
+						{{value.profile.doctor_name}}
+						<span class="title__author-honor">歯科医師</span><br class="u-only_sp">
+						<span class="title__author-list">のプロフィール</span>
+						<span class="mainContents__title-sub">Profile</span>
+					</h1>
+				</div>
+			</div>
+
+			<div class="mainContents__text-outer">
+
+				<div class="mainContents__img-wrapper">
+					<img src="{{value.profile.image_url}}" alt="{{value.profile.image_attr}}" class="mainContents__img">
+				</div>
+
+				{% if value.profile.profile_text is not same as ('') %}
+				<div class="mainContents__text-wrapper">
+					<p class="mainContents__text">{{value.profile.profile_text|nl2br}}</p>
+				</div>
+				{% endif %}
+
+			</div>
+
+		</div>
+
+		{% if value.profile.careers|length > 0 %}
+		<section class="titLv2ArticleTop__wrapper">
+			<h2 class="titLv2ArticleTop__title">経歴</h2>
+			<ul class="career">
+				{% for key, row in value.profile.careers %}
+				<li class="career__list">
+					<div class="career__list-date">{{row.date_info|nl2br}}</div>
+					<div class="career__list-content">{{row.career_text|nl2br}}</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</section>
+		{% endif %}
+
+		{% if value.profile.qualifications|length > 0 %}
+		<section class="titLv2ArticleTop__wrapper">
+			<h2 class="titLv2ArticleTop__title">資格</h2>
+			<ul class="qualifications">
+				{% for key, row in value.profile.qualifications %}
+				<li class="qualifications__list">{{row.free_text}}</li>
+				{% endfor %}
+			</ul>
+		</section>
+		{% endif %}
+
+		{% if value.profile.clinics|length > 0 and value.recommends|length > 0 %}
+		<section class="titLv2ArticleTop__wrapper">
+			<h2 class="titLv2ArticleTop__title">医院紹介記事一覧</h2>
+
+			<!-- articleList -->
+			<div class="recommend">
+
+				<ul class="recommend__list">
+					{% include 'recommend/portal_city_recommend_row.html' %}
+				</ul>
+
+			</div>
+			<!-- /articleList -->
+
+		</section>
+		{% endif %}
+
+		{% if value.explanations|length > 0 %}
+		<section class="titLv2ArticleTop__wrapper">
+			<h2 class="titLv2ArticleTop__title">監修記事一覧</h2>
+
+			<!-- explanationList -->
+			<div class="explanation">
+
+				<ul class="explanation__list">
+					{% include 'explanation/portal_row.html' %}
+				</ul>
+
+			</div>
+			<!-- /explanationList -->
+
+		</section>
+		{% endif %}
+
+	</article>
+</main>
+</div>
+<!-- /contents -->
+
+{% include 'common/portal/breadcrumb_sp.html' %}
+
+<!-- pageTop -->
+<div id="btnPagetop"><a href="#" class="btnPagetop__a" aria-label="ページトップに戻る"></a></div>
+<!-- /pageTop -->
+
+{% endblock %}

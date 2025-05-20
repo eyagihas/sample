@@ -1,0 +1,75 @@
+{% extends "common/#{value.headline.type}/base.twig" %}
+{% block robots %}
+<meta name="robots" content="noindex,nofollow">
+{% endblock %}
+
+{% block title %}
+{% if value.headline.type == 'portal' %}
+{{value.headline.title}} - 矯正歯科ネットプラス - 
+{% endif %}
+{% endblock %}
+
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+
+{% block external_css %}
+{% if value.headline.type == 'portal' %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/validationEngine.jquery.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+{% endif %}
+{% endblock %}
+
+{% block external_js %}
+{% if value.headline.type == 'portal' %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src='https://test-plus.implant.ac/js/cms/jquery-ui-1.12.1.min.js'></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/posabsolute/jQuery-Validation-Engine@3.1.0/js/jquery.validationEngine.min.js"></script>
+{% endif %}
+{% endblock %}
+
+{% block body %}
+
+<!-- contents -->
+<div class="contents edit-form">
+	<h1>{{value.headline.h1_title|raw}}</h1>
+
+	<form id="invisalignForm" method="POST" data-mode="show_attribute_form">
+		<input type="text" name="clinic_id" value="{{value.clinic_id}}" style="display:none;" />
+		<input type="text" name="type" value="{{value.headline.type}}" style="display:none;" />
+
+		<div class="h2-box"><span class="vertical-line kyousei-vl"></span><h2>基本情報</h2></div>
+		<div class="row attribute">
+			<div class="input-set w100">
+				<p class="input-title">治療項目・設備等<br>
+					<span class="small-title">チェックボックスをクリックすると<span class="material-icons check">check</span>が入ります</span>
+				</p>
+				<div class="w100">
+					<ul>
+					{% if value.attributes|length > 0 %}
+					{% for key, row in value.attributes %}
+						<li>
+							<div class="input-set">
+								<input type="checkbox" name="attribute_id[]" value="{{row.attribute_id}}" id="attribute{{row.attribute_id}}" {{row.checked}}/>
+								<label for="attribute{{row.attribute_id}}">{{row.attribute_name}}</label>
+							</div>
+							{% if row.self_form_annotation != '' %}
+							<p class="caution">※{{row.self_form_annotation}}</p>
+							{% endif %}
+						</li>
+						{% endfor %}
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="attribute-form form-btn-wrapper center-style">
+			<button id="prev" class="btn form-btn white">戻る</button>
+			<button id="next" class="btn form-btn dark">次へ</button>
+		</div>
+	</form>
+</div>
+<!-- /contents -->
+
+{% endblock %}

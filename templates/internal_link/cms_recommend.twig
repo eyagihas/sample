@@ -1,0 +1,73 @@
+{% extends "common/cms/base.twig" %}
+{% block external_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+{% endblock %}
+{% block external_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+{% endblock %}
+{% block title %}{{header.value.title}}{% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+<div class="content font15">
+	<h1>{{value.title}} {{value.sub_menu_title}}</h1>
+	<div class="separator {{value.site_pathname}}-separator"></div>
+	<form id="searchForm" method="post">
+		<input type="hidden" name="section" value="{{value.section}}">
+		<input type="hidden" name="site_pathname" value="{{value.site_pathname}}" />
+		<div class="item-box-simple">
+			<h4>エリアを選択</h4>
+			<select id="prefList">
+				<option value="">都道府県を選択</option>
+				{% for prefecture in data.prefectures %}
+				<option value="{{prefecture.prefecture_id}}">{{prefecture.prefecture_name}}</option>
+        {% endfor %}
+			</select>
+			<select id="cityList" class="validate[required]" name="city_id">
+				<option value="">市区町村を選択</option>
+			</select>
+		</div>
+		<div class="item-box-simple">
+			<h4>駅を選択</h4>
+			<div class="flex-box-simple">
+				<input type="text" name="station_group_id" value="" class="validate[required]" style="border: 1px solid #ccc;border-radius: 10px;padding: 10px 20px;text-align: right;width: 150px;">
+				<input type="hidden" name="station_name" value="" />
+				<a class="btn code-search" href="#searchStationModal" rel="modal:open"><span>駅コード検索</span><span class="material-icons">search</span></a>
+			</div>
+		</div>
+		<div class="item-box-simple">
+			<h4>こだわり項目を選択</h4>
+			<ul class="attribute-list radio-list">
+				{% for key, attribute in data.attributes %}
+				<li>
+					<input class="validate[required]" type="radio" id="{{attribute.attribute_flgname}}" name="attribute_flgname" value="{{attribute.attribute_id}}" {{attribute.checked}}>
+					<label for="{{attribute.attribute_flgname}}">{{attribute.attribute_name}}</label>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<button id="search" class="btn form-btn dark">検索</button>
+    </form>
+
+	<div id="searchResult">
+		<div class="h2-box" style="display:none;">
+			<span class="vertical-line {{value.site_pathname}}-vl"></span><h2>該当記事</h2>
+		</div>
+		<ul class="cms-list-style">
+		</ul>
+	</div>
+
+	<div class="h2-box">
+		<span class="vertical-line {{value.site_pathname}}-vl"></span><h2>TOP掲載 記事一覧</h2>
+	</div>
+
+	<div id="recommend" class="list-box internal-links">
+        {% include 'internal_link/top_link_list.html' %}
+    </div>
+
+</div>
+
+<div id="searchStationModal" class="modal">
+	{% include 'station/search_form.html' %}
+</div>
+{% endblock %}

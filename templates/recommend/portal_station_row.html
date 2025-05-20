@@ -1,0 +1,10 @@
+{% for key, row in value.stations %}
+<li class="recommend__list-wrapper">
+	<a href="{{row.url}}">
+		<div class="recommend__list-item">
+			<img src="{{row.image_url}}" alt="{{row.station_name}}駅でインプラント治療ができるおすすめ歯医者の画像">
+			<h2 class="recommend__list-text u-ta_c">{{row.station_name}}駅<br>でインプラント治療ができる<br>おすすめ歯医者</h2>
+		</div>
+	</a>
+</li>
+{% endfor %}

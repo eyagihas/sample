@@ -1,0 +1,79 @@
+{% extends "common/#{value.headline.type}/base.twig" %}
+{% block robots %}
+<meta name="robots" content="noindex,nofollow">
+{% endblock %}
+
+{% block title %}
+{% if value.headline.type == 'portal' %}
+{{value.headline.title}} - 矯正歯科ネットプラス - 
+{% endif %}
+{% endblock %}
+
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+
+{% block external_css %}
+{% if value.headline.type == 'portal' %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/validationEngine.jquery.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+{% endif %}
+{% endblock %}
+
+{% block external_js %}
+{% if value.headline.type == 'portal' %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src='https://test-plus.implant.ac/js/cms/jquery-ui-1.12.1.min.js'></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/posabsolute/jQuery-Validation-Engine@3.1.0/js/jquery.validationEngine.min.js"></script>
+{% endif %}
+{% endblock %}
+
+{% block body %}
+
+<!-- contents -->
+<div class="contents edit-form">
+	<h1>{{value.headline.h1_title|raw}}</h1>
+
+	<form id="invisalignForm" method="POST" data-mode="show_select_feature_form">
+		<input type="text" name="clinic_id" value="{{value.clinic_id}}" style="display:none" />
+		<input type="text" name="feature_id" value="{{value.feature_id}}" style="display:none" />
+		<input type="text" name="feature_id_circle" value="{{value.feature_id_circle}}" style="display:none" />
+		<input type="text" name="type" value="{{value.headline.type}}" style="display:none;" />
+
+		<div class="h2-box"><span class="vertical-line kyousei-vl"></span><h2>ご希望の記事項目{{value.feature_id_circle}}を選択ください</h2></div>
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title">記事項目{{value.feature_id_circle}}</p>
+				<div class="select-wrapper">
+					<select id="featureTypeList" class="validate[required]" name="feature_type_id">
+						<option value="">記事項目をご選択ください</option>
+						{% for key, feature in value.features %}
+						<option value="{{feature.feature_type_id}}" {% if value.feature.feature_type_id == feature.feature_type_id %}selected{% endif %}>{{feature.feature_type_name}}{{value.feature_id_circle}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div id="featureForm">
+			{% if value.feature.feature_type_id == 1 %}
+			{% include 'invisalign/basic_feature_form.html' %}
+			{% elseif (value.feature.feature_type_id == 2) %}
+			{% include 'invisalign/case_feature_form.html' %}
+			{% endif %}
+		</div>
+		
+		<div class="feature-form form-btn-wrapper center-style">
+			<button id="prev" class="btn form-btn white">戻る</button>
+			{% if value.feature_id == 3 and value.headline.type == 'portal' %}
+			<button id="register" class="btn form-btn dark">送信</button>
+			{% elseif value.feature_id < 3 %}
+			<button id="next" class="btn form-btn dark">次へ</button>
+			{% endif %}
+		</div>
+
+	</form>
+</div>
+<!-- /contents -->
+
+{% endblock %}

@@ -1,0 +1,1226 @@
+/*-------------------------------------------------------
+  Recommendlayout
+-------------------------------------------------------*/
+/* ===== SP ===== */
+.mainContents {
+  width: 100%;
+}
+
+.mainContents__wrapper {
+  display: block;
+  padding: 0 20px;
+}
+
+.mainContents__title {
+  font-size: 22px;
+  line-height: 1.6;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #000;
+  text-align: left;
+}
+
+.mainContent__date{
+  display: flex;
+  font-size: 12px;
+  color: #686f86;
+  margin-bottom: 16px;
+}
+
+.mainContent__date-title{
+  margin-right: 8px;
+}
+
+.mainContent__date-time{
+  margin-right: 16px;
+}
+
+.btnFavorite{
+  margin-bottom: 16px;
+}
+
+.btnFavorite__a{
+  display: block;
+  position: relative;
+  font-size: 14px;
+  text-decoration: none;
+  border: 2px solid #0073e0;
+  border-radius: 20px;
+  padding: 5px 10px 5px 36px;
+  width:fit-content;
+  background-color: #fff;
+}
+
+.btnFavorite__a:hover{
+  text-decoration: none;
+}
+
+.btnFavorite__a::before {
+  position: absolute;
+  content: "";
+  background-image: url(/image/common/icon_heart.svg);
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top:0;
+  left:8px;
+}
+
+.tag{
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.tag__item{
+  margin-right: 8px;
+}
+
+.tag__item:last-child{
+  margin-right: 0;
+}
+
+.tag__a{
+  color: #0069d1;
+  display: block;
+  font-size: 11px;
+  text-decoration: none;
+  background-color: #e6f3ff;
+  border-radius: 20px;
+  padding: 10px 14px;
+  width:fit-content;
+}
+
+.tag__a:hover{
+  text-decoration: none;
+}
+
+.mainContents__img-wrapper {
+  margin-bottom: 16px;
+}
+
+.mainContents__text-wrapper {
+  margin-bottom: 24px;
+}
+
+.mainContents__img {
+  border-radius: 10px;
+}
+
+.mainContents__text {
+  font-size: 17px;
+  margin-bottom: 16px;
+  line-height: 2;
+}
+
+.mainContents__point-wrapper,
+.summary__clinic-wrapper {
+	font-size: 17px;
+	list-style-type: disc;
+	line-height: 2;
+	margin-bottom: 24px;
+	display: inline-block;
+	width: 100%;
+	border-radius: 10px;
+	border: #d6d9e1 2px solid;
+	padding: 20px;
+	padding-left: 2em;
+}
+
+.mainContents__strong {
+  font-weight: bold;
+  color: #0073e0;
+}
+
+.experts,
+.anchor,
+.author {
+  margin-bottom: 24px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+
+.experts__title,
+.anchor__title {
+  position: relative;
+  font-size: 17px;
+  color: #2a3046;
+  line-height: 1.5;
+  font-weight: bold;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  text-align: center;
+}
+
+.experts__title::after,
+.anchor__title::after {
+  position: absolute;
+  content: "";
+  background-color: #d6d9e1;
+  border-radius: 2px;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: -4px;
+}
+
+.author__title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+	font-weight: bold;
+	color: #2a3046;
+	margin-bottom: 16px;
+}
+
+.author__title::before {
+	content: "";
+	background-image: url(/image/common/icon_pen_gray.svg);
+	width: 32px;
+	height: 32px;
+	display: block;
+	background-size: contain;
+	margin-left: -4px;
+	background-repeat: no-repeat;
+}
+
+.authorQualifications {
+	border-radius: 10px;
+	padding: 16px;
+	max-width: 600px;
+	margin-bottom: 24px;
+	border: 1px solid #a3a8b9;
+}
+
+.authorQualifications__title {
+	display: flex;
+	position: relative;
+	font-size: 14px;
+	line-height: 1.4;
+	font-weight: bold;
+	margin-bottom: 8px;
+	padding-left: 12px;
+	align-items: center;
+	color: #2a3046;
+}
+
+.authorQualifications__title::before {
+	position: absolute;
+	content: "";
+	display: inline-block;
+	top: 5px;
+	left: 0;
+	width: 8px;
+	height: 8px;
+	border: 3px solid #2a3046;
+	border-radius: 100%;
+	box-sizing: border-box;
+}
+
+.authorQualifications__text {
+	font-size: 14px;
+	text-align: left;
+	line-height: 1.8;
+}
+
+
+.anchor__text {
+  margin-bottom: 5px;
+}
+
+.anchor__wrapper {
+  padding: 0 0.5em;
+  list-style-type: none;
+}
+
+.anchor__wrapper a {
+  text-decoration: none;
+}
+
+.anchor__wrapper a:hover {
+  text-decoration: none;
+
+}
+
+.clinic__anchor__list{
+  margin-top: 8px;
+}
+
+.anchor__item {
+  position: relative;
+  font-size: 16px;
+  padding-left: 12px;
+  list-style: none;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.anchor__item:before {
+  position: absolute;
+  content: "";
+  background-image: url(/image/common/icon_anchor.svg);
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  background-size: contain;
+  margin-top: 5px;
+  margin-left: -20px;
+  background-repeat: no-repeat;
+}
+
+.anchor__item-recommend,
+.anchor__item-treatment {
+  position: relative;
+  margin-left: 0px;
+  margin-bottom: 16px;
+  font-size: 17px;
+  line-height: 1.5;
+  padding-left: 30px;
+}
+
+.anchor__item-recommend:before,
+.anchor__item-treatment:before {
+  position: absolute;
+  content: "";
+  background-image: url(/image/common/icon_anchor.svg);
+  width: 22px;
+  height: 22px;
+  display: block;
+  vertical-align: middle;
+  background-size: contain;
+  margin-top: 3px;
+  margin-left: -23px;
+  background-repeat: no-repeat;
+}
+
+.anchor__item-small {
+	display: block;
+	font-size: 12px;
+	font-weight: bold;
+	color: #443535;
+}
+
+.experts__img-wrapper,
+.author__img-wrapper {
+	width: auto;
+	margin: 0 auto;
+}
+
+.experts__img {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+}
+
+.author__img {
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+}
+
+.experts__img-wrapper,
+.author__img-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.experts__name-wrapper {
+	width: 100px;
+	margin: 0 0 0 20px;
+}
+
+.experts__name {
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	margin-bottom: 8px;
+}
+
+.author__name {
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	margin-bottom: 16px;
+	text-align: center;
+}
+
+.experts__honor {
+	display: inline-block;
+	width: 160px;
+	font-size: 13px;
+	margin-top: 8px;
+}
+
+.experts__type {
+	margin: 0 auto;
+	text-align: left;
+}
+
+.experts__writing {
+	display: inline-block;
+	background-color: #60ba00;
+	color: #fff;
+	border-radius: 6px;
+	font-size: 12px;
+	padding: 6px 16px;
+	margin-bottom: 8px;
+}
+
+.experts__supervision {
+	display: inline-block;
+	background-color: #00a2ff;
+	color: #fff;
+	border-radius: 6px;
+	font-size: 12px;
+	padding: 6px 16px;
+	margin-bottom: 8px;
+}
+
+.experts__clinic-text {
+	color: #686f86;
+	font-size: 12px;
+	line-height: 1.6;
+}
+
+.experts__info-text,
+.author__info-text {
+	font-size: 12px;
+	line-height: 2;
+	margin-bottom: 24px;
+}
+
+.btnArticle__wrapper,
+.btnAuthor__wrapper {
+	margin-bottom: 20px;
+}
+
+.btnAuthor,
+.btnArticle {
+	display: block;
+	width: 280px;
+	height: 48px;
+	line-height: 48px;
+	background-color: #fff;
+	border-radius: 24px;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+	font-size: 14px;
+	letter-spacing: 0.1em;
+	color: #000;
+	font-weight: bold;
+	margin: 0 auto;
+	background-image: url(/image/common/icon_arrow.svg);
+	background-repeat: no-repeat;
+	background-size: 48px 48px;
+	background-position: right 0px top 50%;
+}
+
+a.btnAuthor,
+a.btnArticle {
+	text-decoration: none;
+}
+
+.btnAuthor__text,
+.btnArticle__text {
+	margin-left: 20px;
+}
+
+.recommend__title-wrapper,
+.treatmentClinic__title-wrapper {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.recommend__title,
+.treatmentClinic__title {
+  position: relative;
+  width: 100%;
+  font-size: 20px;
+  line-height: 1.6;
+  font-weight: bold;
+  display: inline-block;
+  text-align: left;
+  margin: 60px 0 32px;
+}
+
+.recommend__title:before,
+.treatmentClinic__title:before {
+  position: absolute;
+  content: "";
+  background-color: #000000;
+  border-radius: 2px;
+  display: block;
+  width: 100%;
+  height: 4px;
+  top: -32px;
+}
+
+.treatment {
+  margin-bottom: 72px;
+}
+
+.dentalClinic {
+  margin-bottom: 72px;
+  padding-bottom: 72px;
+  border-bottom: dashed #686f86 3px;
+}
+
+.dentalClinic:last-child {
+  padding-bottom: 0px;
+  border-bottom: none;
+}
+
+.dentalClinic__wrapper {
+  margin-bottom: 24px;
+}
+
+.dentalClinic__title,
+.treatment__title,
+.summary__title {
+  font-size: 22px;
+  font-weight: bold;
+  padding: 16px;
+  margin-bottom: 24px;
+  background: linear-gradient(90deg, #7ea4c0 0%, #aac2d4 50%, #c8ddec 100%);
+  border-radius: 10px;
+  position: relative;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.dentalClinic__img,
+.clinicInfo__img,
+.clinicFeature__img,
+.clinicContactPr__img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.imgNotes__text,
+.accessNotes__text,
+.btnNotes__text {
+  word-break: break-all;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #686f86;
+  margin-bottom: 4px;
+}
+
+.accessArea {
+  margin-bottom: 32px;
+}
+
+.accessArea__title,
+.clinicInfo__title,
+.clinicFeature__title,
+.clinicReview__title {
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  padding-left: 16px;
+}
+
+.accessArea__title::before,
+.clinicInfo__title::before,
+.clinicFeature__title::before,
+.clinicReview__title::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 6px;
+  border-radius: 3px;
+  background: #7191ac;
+}
+
+.accessMap {
+  margin-bottom: 24px;
+}
+
+.accessMap iframe {
+  width: 100%;
+  height: 250px;
+}
+
+.accessInfo {
+  margin-bottom: 24px;
+}
+
+.accessInfo__list {
+  display: flex;
+  line-height: 1.5;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.accessInfo__title-access,
+.accessInfo__title-address,
+.accessInfo__title-tel {
+  font-weight: bold;
+  width: 40%;
+  padding-left: 32px;
+}
+
+.accessInfo__title-access::before {
+  content: "";
+  background-image: url(/image/common/icon_train.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  margin-left: -32px;
+}
+
+.accessInfo__title-address::before {
+  content: "";
+  background-image: url(/image/common/icon_map.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  margin-left: -32px;
+}
+
+.accessInfo__title-tel::before {
+  content: "";
+  background-image: url(/image/common/icon_tel_small.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  margin-left: -32px;
+}
+
+.accessInfo__info {
+  width: 60%;
+}
+
+.accessTime {
+  margin-bottom: 32px;
+}
+
+.accessTime_table {
+  width: 100%;
+  border: 2px solid #000;
+  background-color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.accessTime__title {
+  text-align: center;
+  line-height: 2;
+  border-bottom: 2px solid #000;
+  background-color: #91adc3;
+  color: #FFFFFF;
+}
+
+.accessTime__title td {
+  padding: 5px 5px;
+  border: 2px solid #000;
+}
+
+.accessTime__info tr {
+  line-height: 2;
+  text-align: center;
+  border-bottom: 2px dotted #000;
+}
+
+.accessTime__info td {
+  padding: 10px 5px;
+  border-left: 2px solid #000;
+}
+
+.accessNotes {
+  margin-top: 8px;
+}
+
+.btnNotes {
+  margin: 10px auto 0;
+  text-align: center;
+}
+
+.clinicInfo {
+  margin-bottom: 40px;
+}
+
+.clinicInfo__img-wrapper,
+.clinicFeature__img-wrapper,
+.clinicContactPr__img-wrapper{
+  margin-bottom: 32px;
+}
+
+.clinicInfo__text {
+  margin-bottom: 16px;
+  font-size: 18px;
+  line-height: 2;
+}
+
+.clinicFeature__details{
+  margin-bottom: 48px;
+}
+
+.clinicFeature__detailsTitle {
+  display: flex;
+  position: relative;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: bold;
+  margin-bottom: 16px;
+  padding: 10px 16px 10px 42px;
+  background-color: #f1f4f7;
+  border-radius: 24px;
+  align-items: center;
+}
+
+.clinicFeature__detailsTitle::before {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  left: 14px;
+  width: 20px;
+  height: 20px;
+  border: 5px solid #7191ac;
+  border-radius: 100%;
+  box-sizing: border-box;
+}
+
+.clinicFeature__text {
+  font-size: 18px;
+  line-height: 2;
+  margin-bottom: 16px;
+  padding: 0 11px;
+}
+
+.clinicContact {
+  border: 6px solid #e4e9ef;
+  border-radius: 10px;
+  padding: 16px
+}
+
+.clinicContact__title {
+  position: relative;
+  text-align: center;
+  font-size: 22px;
+  line-height: 1.8;
+  font-weight: bold;
+  margin-bottom: 56px;
+  letter-spacing: 0.05em;
+}
+
+.clinicContact__title::after {
+  position: absolute;
+  content: "";
+  background-color: #f1f4f7;
+  border-radius: 2px;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: -24px;
+}
+
+.clinicContact__title-marker {
+  color: #4a91c3;
+  background-image: linear-gradient(transparent 70%, #c8ddec 50%);
+}
+
+.clinicContact__btn {
+  padding-bottom: 16px;
+}
+
+.btnTel__text,
+.btnReservation__text{
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+}
+
+.btnTel__a , .btnReservation__a{
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 auto;
+  color: #fff;
+  background-color: #7191ac;
+  border-radius: 40px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+
+.btnTel__a::before{
+  content: "";
+  background-image: url(/image/common/icon_tel_white.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.btnReservation__a::before{
+  content: "";
+  background-image: url(/image/common/icon_calender_white.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.btnTel__a::after{
+  content: "";
+  background-image: url(/image/common/icon_arrow_white.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.btnReservation__a::after{
+  content: "";
+  background-image: url(/image/common/icon_window_white.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.btnTel__a:hover , .btnReservation__a:hover {
+  text-decoration: none;
+}
+
+.btnWeb__text , .btnReview__text , .btnPost__text {
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+}
+
+.btnWeb__a {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  width: 280px;
+  height: 56px;
+  padding: 18px 0;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 auto;
+  color: #000;
+  background: #fff;
+  border-radius: 40px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btnReview__a , .btnPost__a {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  width: 280px;
+  height: 56px;
+  padding: 18px 0;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 auto;
+  color: #000;
+  background: #fff;
+  border-radius: 40px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btnWeb__a::before{
+  content: "";
+  background-image: url(/image/common/icon_clinic.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.btnReview__a::before{
+  content: "";
+  background-image: url(/image/common/icon_review.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.btnPost__a::before{
+  content: "";
+  background-image: url(/image/common/icon_post.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.btnWeb__a::after{
+  content: "";
+  background-image: url(/image/common/icon_window.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.btnReview__a::after , .btnPost__a::after{
+  content: "";
+  background-image: url(/image/common/icon_arrow.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.btnWeb__a:hover , .btnReview__a:hover , .btnPost__a:hover {
+  text-decoration: none;
+}
+
+.btnReview{
+  margin: 24px auto;
+}
+
+.bnrProfile{
+  margin-top: 16px;
+}
+
+.bnrProfile__img{
+  border-radius: 4px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.bnrProfile__a{
+  text-decoration: none;
+}
+
+.clinicReview{
+  margin-bottom: 48px;
+}
+
+.clinicReview__star-text{
+  font-size: 72px;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  text-align: center;
+  margin: 32px auto;
+}
+
+.clinicReview__star-position{
+  text-align: center;
+}
+
+.clinicReview__star-rating{
+  font-size: 40px;
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  white-space: nowrap;
+  color: #e4e9ef;
+}
+
+.clinicReview__star-rating:before, .clinicReview__star-rating:after{
+  content: '★★★★★';
+}
+
+.clinicReview__star-rating:after{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #0073e0;
+}
+
+.clinicReview__star-rating[data-rate="5"]:after{ width: 100%; } /* 星5 */
+.clinicReview__star-rating[data-rate="4.5"]:after{ width: 90%; } /* 星4.5 */
+.clinicReview__star-rating[data-rate="4"]:after{ width: 80%; } /* 星4 */
+.clinicReview__star-rating[data-rate="3.5"]:after{ width: 70%; } /* 星3.5 */
+.clinicReview__star-rating[data-rate="3"]:after{ width: 60%; } /* 星3 */
+.clinicReview__star-rating[data-rate="2.5"]:after{ width: 50%; } /* 星2.5 */
+.clinicReview__star-rating[data-rate="2"]:after{ width: 40%; } /* 星2 */
+.clinicReview__star-rating[data-rate="1.5"]:after{ width: 30%; } /* 星1.5 */
+.clinicReview__star-rating[data-rate="1"]:after{ width: 20%; } /* 星1 */
+.clinicReview__star-rating[data-rate="0.5"]:after{ width: 10%; } /* 星0.5 */
+.clinicReview__star-rating[data-rate="0"]:after{ width: 0%; } /* 星0 */
+
+
+/* ===== PR ===== */
+.pr .dentalClinic__title{
+  display: flex;
+  position: relative;
+  background: linear-gradient(90deg, #0073e0 0%, #92c5f6 50%, #d6ebff 100%);
+  padding-right: 82px;
+  align-items: center;
+}
+
+.pr .dentalClinic__title:after {
+  position: absolute;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  line-height: 28px;
+  background-color: #fff;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  color: #0073e0;
+  content: "PR";
+  right: 16px;
+}
+
+.pr .accessArea__title::before,
+.pr .clinicInfo__title::before,
+.pr .clinicFeature__title::before,
+.pr .clinicReview__title::before{
+  background: #0073e0;
+}
+
+.pr .accessTime__title{
+  background-color: #4fa3f3;
+}
+
+.pr .clinicFeature__detailsTitle{
+  background-color: #e6f3ff;
+}
+
+.pr .clinicFeature__detailsTitle::before{
+  border: 5px solid #0073e0;
+}
+
+.pr .clinicContact{
+  border: 6px solid #d6ebff;
+}
+
+.pr .clinicContact__title::after{
+  background-color: #e6f3ff;
+}
+
+.pr .clinicContact__title-marker{
+  color: #0073e0;
+  background-image: linear-gradient(transparent 70%, #e6f3ff 50%);
+}
+
+.pr .btnTel__a , .pr .btnReservation__a{
+  background-color: #0073e0;
+}
+
+
+
+/* ===== tablet ===== */
+@media screen and (min-width:768px) {
+  .mainContents__title{
+    font-size: 28px;
+  }
+
+  .mainContent_post-info{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .recommend__title {
+    font-size: 24px;
+  }
+
+  .accessInfo__title-access,
+  .accessInfo__title-address,
+  .accessInfo__title-tel {
+    width: 160px;
+  }
+
+  .accessInfo__info {
+    width: 100%;
+  }
+
+  .btnWeb__a {
+    width: 320px;
+  }
+  
+  .btnReview__a , .btnPost__a {
+    width: 320px;
+  }
+
+  .clinicInfo__img-wrapper , .clinicFeature__img-wrapper , .clinicContactPr__img-wrapper{
+    margin: 0 auto 32px;
+    text-align: center;
+    width:750px;
+  }
+  
+  .bnrProfile{
+    margin: 16px auto 32px;
+    text-align: center;
+    width:750px;
+  }
+
+  .clinicInfo__img , .clinicFeature__img , .clinicContactPr__img{
+    width:750px;
+  }
+
+  .bnrProfile__img{
+    border-radius: 10px;
+    width:750px;
+  }
+
+  .imgNotes{
+    margin: 0 auto;
+  }
+
+  .imgNotes__text{
+    text-align: center;
+  }
+
+  .accessTime_table{
+    font-size: 18px;
+  }
+
+  .btnTel__a , .btnReservation__a{
+    width: 400px;
+  }
+
+  .btnReservation__a::before{
+    margin-left: 15px;
+  }
+
+  .btnReservation__a::after{
+    margin-right: 15px;
+  }
+
+  .clinicReview__wrapper{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .clinicReview__star-wrapper , .clinicReview__btn-wrapper{
+    width: 50%;
+  }
+}
+
+/* ===== PC ===== */
+@media screen and (min-width:1024px) {
+  .mainContents {
+    width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .mainContents__wrapper {
+    padding: 0;
+  }
+
+  .mainContents__title {
+    font-size: 32px;
+  }
+
+  .pr .dentalClinic__title{
+    padding-right: 106px;
+  }
+
+  .pr .dentalClinic__title:after {
+    right: 28px;
+  }
+
+  .mainContent__date{
+    font-size: 14px;
+  }
+
+  .anchor {
+    padding: 24px 40px;
+  }
+
+  .anchor__title {
+    font-size: 22px;
+  }
+
+  .recommend__title {
+    font-size: 28px;
+    letter-spacing: 0.05em;
+    padding: 0;
+  }
+
+  .dentalClinic {
+    margin-bottom: 96px;
+  }
+
+  .dentalClinic__wrapper {
+    margin-bottom: 48px;
+  }
+
+  .dentalClinic__title {
+    font-size: 30px;
+    padding: 24px 28px;
+  }
+
+  .imgNotes__text,
+  .accessNotes__text,
+  .btnNotes__text {
+    font-size: 14px;
+  }
+
+  .accessMap iframe {
+    width: 100%;
+    height: 400px;
+  }
+
+  .accessArea__title , .clinicInfo__title , .clinicFeature__title , .clinicReview__title {
+    font-size: 24px;
+    padding-left: 24px;
+  }
+
+  .clinicContact__title {
+    font-size: 24px;
+  }
+
+  .clinicContact{
+    padding: 24px;
+  }
+}

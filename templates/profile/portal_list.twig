@@ -1,0 +1,66 @@
+{% extends "common/portal/base.twig" %}
+{% block robots %}
+<meta name="robots" content="index,follow">
+{% endblock %}
+{% block description %}
+<meta name="description" content="{{value.site.site_name}}ネットプラスに掲載いただいている歯科医院のプロフィール一覧です。" />
+{% endblock %}
+{% block keyword %}
+<meta name="keywords" content="{{value.site.site_name}}ネットプラス,歯医者さん,おすすめ,{{value.site.site_name}},治療説明,歯科医師,専門家,監修" />
+{% endblock %}
+{% block canonical %}
+{% if value.headline.canonical != '' %}
+<link rel="canonical" href="{{value.headline.canonical}}" />
+{% endif %}
+{% endblock %}
+{% block json_ld %}
+{% include 'profile/json_ld.html' %}
+{% endblock %}
+{% block title %}歯科医師を探す - {{value.site.site_name}}ネットプラス -{% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+
+{% include 'common/portal/breadcrumb.html' %}
+
+<!-- contents -->
+<div class="contents">
+<main class="mainContents">
+	<article class="mainContents__wrapper">
+		<div class="mainContents__outer">
+			<div class="mainContents__title-outer">
+				<div class="mainContents__title-wrapper">
+					<h1 class="mainContents__title">
+						歯科医師を探す
+					</h1>
+					<span class="mainContents__title-sub">Find a dentist</span>
+				</div>
+			</div>
+		</div>
+
+		<section class="titLv2ArticleTop__wrapper">
+			<h2 class="titLv2ArticleTop__title">歯科医師一覧</h2>
+			
+			<!-- doctorList -->
+			<div class="doctor">
+				{% if value.profiles|length > 0 %}
+				<ul class="doctor__list">
+					{% include 'profile/portal_row.html' %}
+				</ul>
+				{% endif %}
+			</div>
+			<!-- /doctorList -->
+		</section>
+
+	</article>
+</main>
+</div>
+<!-- /contents -->
+
+{% include 'common/portal/breadcrumb_sp.html' %}
+
+<!-- pageTop -->
+<div id="btnPagetop"><a href="#" class="btnPagetop__a" aria-label="ページトップに戻る"></a></div>
+<!-- /pageTop -->
+
+{% endblock %}

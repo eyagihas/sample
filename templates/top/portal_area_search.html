@@ -1,0 +1,14 @@
+{% for key, row in value.search_areas %}
+<tr class="accordion__table-tr">
+	<th class="accordion__table-title">{{row.pref_name}}</th>
+	<td class="accordion__list">
+		<ul class="accordion__list-wrapper">
+			{% for a_key, a_value in row.city_name_array %}
+			<li class="accordion__item">
+				<a href="/recommend/{{row.pref_pathname}}/{% if row.city_pathname_array[a_key] is not same as ('pref') %}{{row.city_pathname_array[a_key]}}/{% endif %}" class="accordion__a">{{a_value}}でインプラント治療ができるおすすめ歯医者</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</td>
+</tr>
+{% endfor %}

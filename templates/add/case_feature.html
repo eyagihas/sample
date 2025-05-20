@@ -1,0 +1,6 @@
+<div class="row">
+	<ul class="cms-list-style case-list w100">
+		{% include "case/case_search_row.html" with {'data':value} %}
+	</ul>
+	<input type="hidden" name="case_id[{{value.feature_id}}]" value="0">
+</div>

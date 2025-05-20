@@ -1,0 +1,1147 @@
+/*-------------------------------------------------------
+  Doctorlayout
+-------------------------------------------------------*/
+/* ===== SP ===== */
+
+.mainContents {
+  width: 100%;
+}
+
+.mainContents__wrapper {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.mainContents__title-wrapper {
+  margin-bottom: 30px;
+  padding: 0 20px;
+}
+
+.title__author-dentist {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.title__author-list {
+  font-size: 14px;
+}
+
+.title__author-honor {
+  font-size: 18px;
+}
+
+.mainContents__text-outer {
+  margin: 0 20px 64px;
+}
+
+.mainContents__text-wrapper {
+  margin: 0;
+}
+
+.mainContents__text {
+  font-size: 18px;
+  margin-bottom: 0px;
+  padding: 0 0 32px;
+}
+
+.mainContents__img-wrapper {
+  width: 240px;
+  margin: 0 auto;
+}
+
+.mainContents__img {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  aspect-ratio: 1 / 1;
+}
+
+.mainContents__name {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+.mainContents__honor {
+  display: inline-block;
+  width: 160px;
+  font-size: 13px;
+  margin-top: 8px;
+  color: #000;
+}
+
+.titLv2ArticleTop__wrapper {
+  display: block;
+  padding: 0 0 24px;
+}
+
+.titLv2ArticleTop__title {
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  line-height: 1.8;
+  margin-bottom: 64px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.titLv2ArticleTop__title::after {
+  position: absolute;
+  content: "";
+  width: 48px;
+  height: 6px;
+  left: calc(50% - 24px);
+  bottom: -24px;
+  border-radius: 3px;
+  background: #0073e0;
+}
+
+.titLv2ArticleTop__title-sub {
+  font-size: 16px;
+  color: #0073e0;
+}
+
+.titLv2ArticleTop__text {
+  font-size: 18px;
+  line-height: 2;
+  margin-bottom: 20px;
+}
+
+.qualifications {
+  list-style: disc;
+  padding: 0 20px 40px 40px;
+}
+
+.qualifications__list {
+  font-size: 18px;
+  line-height: 2;
+  text-align: left;
+}
+
+.career {
+  width: 320px;
+  margin: 0 auto 40px;
+}
+
+.career__list {
+  display: flex;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.career__list-date {
+  width: 30%;
+  padding-top: 32px;
+  font-size: 18px;
+}
+
+.career__list-content {
+  position: relative;
+  width: 70%;
+  padding: 32px 0 32px 32px;
+  border-left: 4px solid #d6d9e1;
+  text-align: left;
+}
+
+.career__list-content::before {
+  content: "";
+  position: absolute;
+  top: 36px;
+  left: -10px; 
+  width: 16px;
+  height: 16px;
+  background-color: #0073e0;
+  border-radius: 10px;
+}
+
+
+.recommend__list {
+  display: block;
+  padding: 0 20px;
+}
+
+.recommend__list a {
+  text-decoration: none;
+}
+
+.recommend__list-wrapper {
+  margin: 0 10px;
+}
+
+.recommend__list-item {
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  height: 100%;
+  margin-bottom: 36px;
+}
+
+.recommend__list-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0px 0px;
+  display: block;
+  aspect-ratio: 16 / 9;
+}
+
+.recommend__list-text {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  color: #000;
+  padding: 20px;
+}
+
+.explanation__list a,
+.doctor__list a {
+  text-decoration: none;
+}
+
+.explanation__list-item {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  height: 100%;
+}
+
+.explanation__list-wrapper {
+  padding: 0 20px 20px;
+}
+
+.explanation__list-outer {
+  display: flex;
+  align-items: flex-start；
+}
+
+.explanation__list-item img {
+  border-radius: 10px;
+  aspect-ratio: 16 / 9;
+}
+
+.explanation__list-img {
+  width: 128px;
+  height: 72px;
+  margin-right: 8px;
+}
+
+.explanation__list-text {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  color: #000;
+  margin-bottom: 16px;
+}
+
+.explanation__tag {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.explanation__tag-item {
+  margin-bottom: 8px;
+}
+
+.explanation__tag-item {
+  margin-right: 8px;
+}
+
+.explanation__tag-item:last-child {
+  margin-right: 0;
+}
+
+.explanation__tag-item {
+  display: block;
+  font-size: 10px;
+  text-decoration: none;
+  color: #00a2ff;
+  background-color: #ecf8ff;
+  border-radius: 12px;
+  padding: 6px 10px;
+  width: fit-content;
+}
+
+.explanation__author {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.explanation__author-writing {
+  display: inline-block;
+  background-color: #60ba00;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 11px;
+  padding: 4px 8px;
+  margin-bottom: 8px;
+}
+
+.explanation__author-supervision {
+  display: inline-block;
+  background-color: #00a2ff;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 11px;
+  padding: 4px 8px;
+  margin-bottom: 8px;
+}
+
+.explanation__author-text {
+  text-align: left;
+  color: #000;
+  margin-right: 8px;
+  flex-basis: 176px;
+}
+
+.explanation__author-name {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.explanation__author-dentist {
+  margin-right: 8px;
+}
+
+.explanation__author-doctor {
+  margin-left: 8px;
+}
+
+.explanation__author img {
+  border-radius: 50%;
+  width: 48px;
+  aspect-ratio: 1 / 1;
+}
+
+.explanation__title-wrapper {
+  margin-bottom: 32px;
+}
+
+.explanation__list-wrapper:last-child {
+  margin-bottom: 32px;
+}
+
+.pagination__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.pagination__text {
+  margin: 0 5px;
+}
+
+.pagination__a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: 0 5px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  color: #000;
+}
+
+.pagination__a:hover {
+  text-decoration: none;
+}
+
+.pagination__a--inactive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: 0 5px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  color: #000;
+  opacity: 0.3;
+}
+
+.pagination__a--inactive:hover {
+  opacity: 0.3;
+
+  text-decoration: none;
+}
+
+.pagination__a--active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: 0 5px;
+  background-color: #0073e0;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #fff;
+}
+
+.pagination__a--active:hover {
+  opacity: 1;
+
+  text-decoration: none;
+}
+
+.btnArticlelist {
+  display: block;
+  width: 160px;
+  height: 48px;
+  line-height: 48px;
+  background-color: #fff;
+  border-radius: 24px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  text-align: left;
+  letter-spacing: 0.1em;
+  color: #000;
+  font-weight: bold;
+  background-image: url(/image/common/icon_arrow.svg);
+  background-repeat: no-repeat;
+  background-size: 48px 48px;
+  background-position: right 8px top 50%;
+}
+
+.btnArticlelist__text {
+  margin-left: 28px;
+}
+
+.btnClinic {
+  display: block;
+  width: 280px;
+  height: 48px;
+  line-height: 48px;
+  background-color: #fff;
+  border-radius: 24px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: #000;
+  font-weight: bold;
+  margin: 0 auto;
+  background-image: url(/image/common/icon_window.svg);
+  background-repeat: no-repeat;
+  background-size: 48px 48px;
+  background-position: right 26px top 50%;
+}
+
+a.btnClinic {
+  text-decoration: none;
+}
+
+.btnClinic__text {
+  margin-left: 36px;
+}
+
+.btnNotes__text {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #686f86;
+  margin-bottom: 4px;
+}
+
+.btnContact {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  text-align: center;
+  margin: 0 auto 16px;
+}
+
+.btnContact__item {
+  margin-right: 20px;
+}
+
+.btnContact__item:last-child {
+  margin-right: 0;
+}
+
+.btn__single-a {
+  width: 320px;
+  height: 70px;
+  border-radius: 35px;
+  justify-content: space-between;
+}
+
+.btnContact .btn__single-a{  
+  flex-wrap: nowrap;
+  height: 70px;
+}
+
+.btn__single-a::before {
+  margin: 0 0 0 10px;
+}
+
+.btn__single-br{
+  display: none;
+}
+
+.btn__single-a::after {
+  margin: 0 10px 0 0;
+}
+
+.btnContact__item {
+  margin-right: 20px;
+}
+
+.btnContact__item:last-child {
+  margin-right: 0;
+}
+
+.btnTel__blue-a:hover,
+.btnReservation__blue-a:hover {
+  text-decoration: none;
+}
+
+.btnTel__blue-a,
+.btnReservation__blue-a {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  width: 148px;
+  height: 100px;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 auto;
+  color: #fff;
+  background: #89bd00;
+  border-radius: 30px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btnTel__blue-a::before {
+  content: "";
+  background-image: url(/image/common/icon_tel_white.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  margin: 4px 0 0 50px;
+}
+
+.btnReservation__blue-a::before {
+  content: "";
+  background-image: url(/image/common/icon_calender_white.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  margin: 0 0 0 50px;
+}
+
+.btnTel__blue-text {
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  margin: 8px 0 24px 25px;
+}
+
+.btnReservation__blue-textWeb {
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  margin: 0 0 0 24px;
+}
+
+.btnWeb__text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btnNotes__text-notes,
+.btnNotes__text-notesLong {
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 1.1;
+}
+
+.btnNotes__text-notes {
+  margin: 4px 0 0 13px;
+  text-align: right;
+}
+
+.btnNotes__text-notesLong {
+  margin: 4px 0 0 12px;
+  text-align: right;
+}
+
+.btnWeb__text {
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+}
+
+.btnWeb__text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.btnWeb__a {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  width: 320px;
+  height: 56px;
+  padding: 18px 0;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 auto;
+  color: #000;
+  background: #fff;
+  border-radius: 28px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btnWeb__a::before {
+  content: "";
+  background-image: url(/image/common/icon_clinic.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.btnWeb__a::after {
+  content: "";
+  background-image: url(/image/common/icon_window.svg);
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.btnWeb__a:hover {
+  text-decoration: none;
+}
+
+.btnWeb__a {
+  height: 70px;
+  background-color: #4fa3f3;
+  color: #fff;
+  border-radius: 35px;
+}
+
+.btnWeb__a::after {
+  background-image: url(/image/common/icon_window_white.svg);
+}
+
+.btnWeb__a::before {
+  background-image: url(/image/common/icon_clinic_white.svg);
+}
+
+.btnWeb__text {
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  line-height: 1.1;
+  margin-left: 8px;
+}
+
+.btnWeb__a {
+  width: 320px;
+}
+
+.btnContact__wrapper {
+  padding: 32px 0 40px;
+  background-image: linear-gradient(0deg, rgba(214, 235, 255, 1), rgba(245, 250, 255, 1));
+  margin-bottom: 8px;
+}
+
+.btnContact__title{
+  line-height: 1.5;
+  color: #443535;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.btnContact__title-marker {
+  font-size: 20px;
+  color: #0073e0;
+  background-image: linear-gradient(transparent 70%, rgba(180, 217, 255, 0.6) 50%);
+}
+
+@media screen and (max-width:767px) {
+  .btnContact__wrapper {
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .btnContact{
+    margin: 0 8px 0 4px ;
+    width: 100%;
+  }
+
+  .btnTel__blue-a,
+  .btnReservation__blue-a {
+    border-radius: 8px;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    height: 70px;
+  }
+
+  .btnContact__item {
+    margin: 4px;
+    flex: 1;
+  }
+
+  .btnTel__blue-a::before,
+  .btnReservation__blue-a::before{
+    width: 32px;
+    height: 32px;
+    margin: 0;
+  }
+
+  .btnReservation__blue-textWeb,
+  .btnTel__blue-text{
+    display: flex;
+    margin: 0 0 0 16px;
+    font-size: 15px;
+  }
+
+  .btnReservation__blue-textWeb::after{
+    content: "";
+    background-image: url(/image/common/icon_window_white.svg);
+    vertical-align: middle;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin: -12px 0 0 -12px;
+  }
+
+  .btnTel__blue-text::after{
+    content: "";
+    background-image: url(/image/common/icon_arrow_white.svg);
+    vertical-align: middle;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin: -12px 0 0 -6px;
+  }
+
+  .btnNotes__text-notes{
+    margin: -10px 0 4px 0;
+    font-size: 9px;
+  }
+
+  .footer{
+    margin-bottom: 78px;
+  }
+}
+
+/* ===== tablet ===== */
+@media screen and (min-width:768px) {
+  body {
+    background-image: url(/image/common/bg_gradation.jpg);
+    background-position: right top;
+    background-size: 830px 896px;
+    background-repeat: no-repeat;
+  }
+
+  .breadCrumb {
+    margin-bottom: 0;
+  }
+
+  .mainContents__wrapper {
+    margin-top: 0;
+  }
+
+  .mainContents__outer {
+    position: relative;
+  }
+
+  .mainContents__title-wrapper {
+    width: 768px;
+    margin: 0 auto 56px;
+    padding: 64px 0 0 5px;
+  }
+
+  .titLv2ArticleTop__wrapper {
+    padding: 0;
+    text-align: center;
+  }
+
+  .titLv2ArticleTop__wrapper {
+    width: 768px;
+    margin: 0 auto 64px;
+  }
+
+  .titLv2ArticleTop__title-sub {
+    font-size: 18px;
+  }
+
+  .titLv2ArticleTop__title {
+    font-size: 24px;
+    padding: 0;
+  }
+
+  .titLv2ArticleTop__text {
+    font-size: 14px;
+    line-height: 2;
+    margin-bottom: 12px;
+  }
+
+  .qualifications {
+    width: 768px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 20px 40px 0;
+    margin: 0 auto;
+  }
+
+  .qualifications__list {
+    width: calc(50% - 30px);
+    margin-left: 30px;
+  }
+
+  .career {
+    width: 768px;
+  }
+
+  .career__list-date {
+    width: 20%;
+    padding-left:20px;
+  }
+
+  .career__list-content {
+    width: 80%;
+    padding:32px 20px 32px 64px;
+  }
+
+  .recommend {
+    width: 768px;
+    margin: 0 auto;
+  }
+
+  .recommend__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: stretch;
+    padding: 0;
+  }
+
+  .recommend__list-wrapper {
+    margin: 0 13px 26px;
+  }
+
+  .recommend__list-item {
+    width: 230px;
+    height: 100%;
+    margin: 0;
+  }
+
+  .recommend__list-text {
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .explanation {
+    width: 728px;
+    margin: 0 auto;
+  }
+
+  .explanation__title-wrapper {
+    margin-bottom: 20px;
+  }
+
+  .explanation__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .explanation__list-wrapper {
+    padding: 0 8px 16px;
+  }
+
+  .explanation__list-wrapper:last-child {
+    margin-bottom: 0;
+  }
+
+  .explanation__list-item {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+  }
+
+  .explanation__list-text {
+    text-align: left;
+    font-size: 16px;
+  }
+
+  .explanation__list-img {
+    margin-right: 20px;
+  }
+
+  .pagination__text {
+    margin: 0 10px;
+  }
+
+  .pagination__a {
+    margin: 0 10px;
+  }
+
+  .pagination__a--active {
+    margin: 0 10px;
+  }
+
+  .mainContents__text-outer {
+    display: flex;
+  }
+
+  .mainContents__img-wrapper {
+    width: 320px;
+    margin:0 auto;
+  }
+
+  .mainContents__text-short {
+    margin:0;
+  }
+
+  .mainContents__img {
+    width: 320px;
+    height: 320px;
+  }
+
+  .mainContents__text-wrapper {
+    margin-top: 12px;
+    margin-left: 40px;
+  }
+
+  .mainContents__text {
+    font-size: 18px;
+    line-height: 2;
+    padding: 0 0 36px;
+  }
+
+  .title__author-dentist {
+    font-size: 16px;
+  }
+
+  .title__author-list {
+    font-size: 22px;
+  }
+
+  .title__author-honor {
+    font-size: 26px;
+  }
+
+  .btnClinic {
+    width: 320px;
+    margin: 0;
+  }
+
+  .btnNotes__text {
+    text-align: left;
+    margin-left: 36px;
+  }
+
+  .mainContents__text-outer {}
+
+  .doctor__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .btnWeb__a,
+  .btnContact {
+    width: 600px;
+  }
+
+  .btnWeb__a {
+    height: 80px;
+    border-radius: 40px;
+  }
+
+  .btnWeb__text {
+    font-size: 20px;
+  }
+
+  .btnTel__blue-a,
+  .btnReservation__blue-a {
+    width: 290px;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    border-radius: 40px;
+  }
+
+  .btnTel__blue-a::before,
+  .btnReservation__blue-a::before {
+    margin: 0 0 0 5px;
+  }
+
+  .btnTel__blue-a::after,
+  .btnReservation__blue-a::after {
+    margin: 0 8px 0 0;
+  }
+
+  .btnReservation__blue-text,
+  .btnReservation__blue-textWeb,
+  .btnTel__blue-text {
+    margin: 0;
+  }
+
+  .btnNotes__text-notes,
+  .btnNotes__text-notesLong {
+    margin: 8px -6px 0 0;
+    text-align: center;
+  }
+
+  .btnContact__wrapper {
+    padding: 48px 0 64px;
+    margin-bottom: 0;
+  }
+
+  .btnContact__title{
+    font-size: 18px;
+  }
+
+  .btnContact__title-marker {
+    font-size: 28px;
+  }
+
+  .btnReservation__blue-a::after {
+    content: "";
+    background-image: url(/image/common/icon_window_white.svg);
+    vertical-align: middle;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+  }
+
+  .btnTel__blue-a::after {
+    content: "";
+    background-image: url(/image/common/icon_arrow_white.svg);
+    vertical-align: middle;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+  }
+
+ .btn__single-a {
+    width: 400px;
+  }
+}
+
+
+
+/* ===== PC ===== */
+@media screen and (min-width:1024px) {
+  .mainContents__title-wrapper {
+    width: 1000px;
+    margin-bottom: 40px;
+  }
+
+  .titLv2ArticleTop__wrapper,
+  .mainContents__text-outer {
+    width: 1000px;
+    margin: 0 auto 56px;
+  }
+
+  .titLv2ArticleTop__title {
+    font-size: 28px;
+  }
+
+  .titLv2ArticleTop__title-sub {
+    font-size: 20px;
+  }
+
+  .titLv2ArticleTop__text {
+    font-size: 18px;
+  }
+
+  .btnNotes__text {
+    font-size: 14px;
+  }
+
+  .recommend {
+    width: 996px;
+  }
+
+  .recommend__list-wrapper {
+    margin: 0 16px 32px;
+  }
+
+  .recommend__list-item {
+    width: 300px;
+    height: 100%;
+    margin: 0;
+  }
+
+  .recommend__list-text {
+    font-size: 18px;
+  }
+
+  .explanation {
+    width: 1000px;
+  }
+
+  .explanation__list-item {
+    width: 484px;
+  }
+
+  .explanation__list-img {
+    width: 192px;
+    height: 108px;
+  }
+
+  .explanation__tag-item {
+    border-radius: 20px;
+    padding: 10px 14px;
+  }
+}

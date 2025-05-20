@@ -1,0 +1,10 @@
+<li id="clinic{{clinic.clinic_id}}" class="item-box lightgrey-bgcolor clinic-item">
+	<div class="sort-box"></div>
+	<div class="name-box"><span class="new-mark red-bgcolor">NEW</span>{{clinic.clinic_name_str}}</div>
+	<div class="btn-box">
+		<button class="btn red-color update-clinic" data-id="{{clinic.clinic_id}}">更新</button>
+		<button class="btn red-color delete-clinic" data-id="{{clinic.clinic_id}}">削除</button>
+		<button class="btn edit-clinic" data-id="{{clinic.clinic_id}}">修正</button>
+	</div>
+	<div id="order{{clinic.clinic_id}}" class="order-select" data-id="{{clinic.clinic_id}}"></div>
+</li>

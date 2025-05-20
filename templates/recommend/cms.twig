@@ -1,0 +1,66 @@
+{% extends "common/cms/base.twig" %}
+{% block external_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+{% endblock %}
+{% block external_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+{% endblock %}
+{% block title %}{{header.value.title}}{% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+<style>
+	h3 {font-size:18px;font-weight:bold;}
+	h4 {font-size:16px;font-weight:bold;line-height:2em;}
+	.content {width:750px;font-size:15px;line-height:1.8em;}
+	.tag-list {margin-bottom:30px;display:flex;flex-flow:wrap;}
+	.tag-list li {width:50%;}
+	.tag-list li input[type=radio] {margin-right:5px;}
+	.tag-list.num li {margin-right:15px;width:auto;}
+</style>
+<div class="content">
+	<h3>{{header.value.title}}</h3>
+	<div class="content-main">
+		<form id="searchForm">
+		<div style="margin: 20px 0 25px;">
+			<h4>エリアを選択</h4>
+			<select id="prefList">
+				<option value="">都道府県を選択</option>
+				{% for key, data in value.prefectures %}
+				<option value="{{key}}">{{data}}</option>
+        		{% endfor %}
+			</select>
+			<select id="cityList" class="validate[required]" name="city_id">
+				<option value="">市区町村を選択</option>
+			</select>
+		</div>
+		<div style="margin: 20px 0 25px;">
+			<h4>駅を選択</h4>
+			<div style="display:flex;">
+			<input type="text" name="station_group_id" value="" class="validate[required]" style="border: 1px solid #ccc;border-radius: 10px;padding: 10px 20px;text-align: right;width: 150px;">
+			<input type="hidden" name="station_name" value="" />
+			<a class="btn code-search" href="#searchStationModal" rel="modal:open"><span>駅コード検索</span><span class="material-icons">search</span></a>
+			</div>
+		</div>
+		<h4>こだわり項目を選択</h4>
+		<ul class="tag-list">
+		{% for data in value.obsessions %}
+			<li><input type="radio" name="selected_flg" value="{{data.flg_name}}" {{data.checked}}>{{data.flg_text}}</li>
+        {% endfor %}
+        </ul>
+        <h4>件数を選択</h4>
+		<ul class="tag-list num">
+			<li><input type="radio" name="num" value="5">5件</li>
+			<li><input type="radio" name="num" value="10">10件</li>
+			<li ><input type="radio" name="num" value="15" checked>15件</li>
+        </ul>
+        <a id="search" class="btn btn-primary">決定</a>
+        </form>
+
+	</div><!--/content-main-->
+</div>
+
+<div id="searchStationModal" class="modal">
+	{% include 'station/search_form.html' %}
+</div>
+{% endblock %}

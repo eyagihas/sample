@@ -1,0 +1,64 @@
+<form id="editStation" onsubmit="return false;">
+	<h1>駅編集</h1>
+	<div class="separator {{value.site.site_pathname}}-separator"></div>
+	<div class="h2-box">
+		<span class="vertical-line {{value.site.site_pathname}}-vl"></span><h2>基本情報</h2>
+	</div>
+	<input type="hidden" name="station_group_id" value="{{data.station.station_group_id}}" />
+	<div class="row">
+		<div class="input-set w100 mb30">
+			<p class="input-title">（{{data.station.station_group_id}}）{{data.station.station_name}} [{{data.station.pref_name}} {{data.station.city_name}}]　{{data.station.pref_pathname}}/{{data.station.station_pathname}}</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-set w100">
+			<p class="input-title" id="image_id">メインビジュアル</p>
+			<div class="image-box lightgrey-bgcolor">
+				<div id="mainVisual">
+					{% if data.station.image_url is not same as ('') %}
+					<img src="{{data.station.image_url}}" />
+					{% else %}
+					<span class="material-icons grey-color">cloud_upload</span>
+					<p>画像ファイルを選択</p>
+					{% endif %}
+				</div>
+				<div class="row">
+					<label class="file-label wflex"><input type="file" name="image_file" data-dir="{{data.station.image_dir}}" data-host="{{value.site.plus_url}}"></label>
+					<button id="selectImage" class="btn form-btn2">画像を参照する</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-set w100">
+			<p class="input-title" id="lead_text">リード文</p>
+			{% if value.site.site_pathname is same as ('kyousei') %}
+			<textarea name="kyousei_lead" class="w100 validate[maxSize[300]]" placeholder="空欄の場合：{{data.station.kyousei_lead_default}}">{{data.station.kyousei_lead}}</textarea>
+			{% elseif value.site.site_pathname is same as ('implant') %}
+			<textarea name="implant_lead" class="w100 validate[maxSize[300]]" placeholder="空欄の場合：{{data.station.implant_lead_default}}">{{data.station.implant_lead}}</textarea>
+			{% else %}
+			<textarea name="shinbi_lead" class="w100 validate[maxSize[300]]" placeholder="空欄の場合：{{data.station.shinbi_lead_default}}">{{data.station.shinbi_lead}}</textarea>
+			{% endif %}
+		</div>
+	</div>
+</form>
+
+<div class="h2-box">
+	<span class="vertical-line {{value.site.site_pathname}}-vl"></span><h2>掲載ページ</h2>
+</div>
+<div class="list-box">
+	<ul class="cms-list-style">
+	{% for row in data.station.recommends %}
+	<li class="item-box lightgrey-bgcolor recommend-item">
+			<div class="name-box">
+				【{{row.publish_in}}】{{row.title}}
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+</div>
+<br><br>
+<div class="form-btn-wrapper center-style">
+	<button id="updateStation" class="btn form-btn dark">修正する</button>
+	<a href="#" rel="modal:close" class="btn form-btn">閉じる</a>
+</div>

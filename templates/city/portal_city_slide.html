@@ -1,0 +1,11 @@
+{% for key, val in value.top_cities %}
+<div class="search__slide-wrapper">
+	<a href="{{val.url}}">
+        <div class="search__slide-item">
+            <img src="{{val.image_url}}" alt="【{{val.year}}】{{val.pref_city}}でインプラント治療ができるおすすめ歯医者の画像">
+            <h3 class="search__slide-text"><span class="title__year">【{{val.year}}】</span>{{val.pref_city}}でインプラント治療ができるおすすめ歯医者
+            </h3>
+        </div>
+    </a>
+</div>
+{% endfor %}

@@ -1,0 +1,29 @@
+{% extends "common/cms/base.twig" %}
+{% block title %}{{value.title}}{% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+<div class="content">
+	<form id="loginForm" method="POST">
+	<input type="hidden" name="site_id" value="{{value.site_id}}">
+	<input type="hidden" name="request_path" value="{{value.request_path}}">
+	<ul class="top-menu-list login">
+		<li>
+			<h2>ログイン</h2>
+			{% if value.error is not same as ('') %}
+			<p class="error-text">{{value.error}}</p>
+			{% endif %}
+			<ul class="sub-menu-list">
+				<li>
+					<p>ログインID</p>
+					<input class="btn" type="text" name="account_name" value=""></li>
+				<li>
+					<p>パスワード</p>
+					<input class="btn" type="password" name="password" value=""></li>
+			</ul>
+			<input id="loginBtn" type="submit" class="btn" value="ログインする">
+		</li>
+	</ul>
+	</form>
+</div>
+{% endblock %}

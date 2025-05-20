@@ -1,0 +1,378 @@
+<form id="infoForm">
+	<input type="hidden" name="mode" value="update" />
+	<input type="hidden" name="clinic_id" value="{{data.clinic.clinic_id}}" />
+	<input type="hidden" name="site_id" value="{{value.site_id}}" />
+	<input type="hidden" name="site_pathname" value="{{value.site_pathname}}" />
+	<input type="hidden" name="plus_url" value="{{data.site.plus_url}}" />
+
+	<div class="row">
+		<input type="hidden" name="clinic_name_ttl" value="医院名" />
+		<div class="input-set w100">
+			<p class="input-title">医院名<br>
+				<input type="checkbox" name="is_clinic_name_edited" value="1" {% if data.site_clinic.clinic_name_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			
+			<input type="text" id="clinic_name" name="clinic_name" value="{{data.site_clinic.clinic_name}}"
+				class="wflex {% if data.site_clinic.clinic_name_edited == false %}inactive{% endif %}" />
+			<p class="basic-text wflex {% if data.site_clinic.clinic_name_edited == true %}inactive{% endif %}" id="basic_clinic_name">{{data.clinic.clinic_name}}</p>
+		</div>
+	</div>
+	<div class="row">
+		<input type="hidden" name="url_ttl" value="医院公式HP（API呼び出し）" />
+		<div class="input-set w100">
+			<p class="input-title">医院公式HP<br>（API呼び出し）<br>
+				<input type="checkbox" name="is_url_edited" value="1" {% if data.site_clinic.url_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			<div id="url" class="input-set wflex {% if data.site_clinic.url_edited == false %}inactive{% endif %}">
+				<input type="text" name="url" value="{{data.site_clinic.url}}" class="wflex mr15" />
+			</div>
+			<div id="basic_url" class="input-set wflex {% if data.site_clinic.url_edited == true %}inactive{% endif %}">
+				<p class="basic-text wflex" id="url">{{data.clinic.url}}</p>
+			</div>
+			<div><input class="url_check_group" type="checkbox" name="is_url_visible" value="1" {% if data.site_clinic.is_url_visible %}checked{% endif %}><span class="black-color">医院詳細ボタン遷移先</span></div>
+		</div>
+	</div>
+	<div class="row">
+		<input type="hidden" name="url_plus_ttl" value="医院公式HP（手入力）" />
+		<div class="input-set w100">
+			<p class="input-title">医院公式HP<br>（手入力）<br>
+				<input type="checkbox" name="is_url_plus_edited" value="1" {% if data.site_clinic.url_plus_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			<div id="url_plus" class="input-set wflex {% if data.site_clinic.url_plus_edited == false %}inactive{% endif %}">
+				<input type="text" name="url_plus" value="{{data.site_clinic.url_plus}}" class="wflex mr15" />
+			</div>
+			<div id="basic_url_plus" class="input-set wflex {% if data.site_clinic.url_plus_edited == true %}inactive{% endif %}">
+				<p class="basic-text wflex" id="url_plus">{{data.clinic.url_plus}}</p>
+			</div>
+			<div><input class="url_check_group" type="checkbox" name="is_url_plus_visible" value="1" {% if data.site_clinic.is_url_plus_visible %}checked{% endif %}><span class="black-color">医院詳細ボタン遷移先</span></div>
+		</div>
+	</div>
+	<div class="row">
+		<input type="hidden" name="teikei_page_url_ttl" value="定型ページURL" />
+		<input type="hidden" name="url_teikei_ttl" value="定型ページURL" />
+		<div class="input-set w100">
+			<p class="input-title">定型ページURL<br>
+				<input type="checkbox" name="is_teikei_page_url_edited" value="1" {% if data.site_clinic.teikei_page_url_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			<div id="teikei_page_url" class="input-set wflex {% if data.site_clinic.teikei_page_url_edited == false %}inactive{% endif %}">
+				<input type="text" name="teikei_page_url" value="{{data.site_clinic.teikei_page_url}}" class="wflex mr15" />
+			</div>
+			<div id="basic_teikei_page_url" class="input-set wflex {% if data.site_clinic.teikei_page_url_edited == true %}inactive{% endif %}">
+				<p class="basic-text wflex" id="teikei_page_url">{{data.clinic.teikei_page_url}}</p>
+			</div>
+			<div><input class="url_check_group" type="checkbox" name="is_url_teikei_visible" value="1" {% if data.site_clinic.is_url_teikei_visible %}checked{% endif %}><span class="black-color">医院詳細ボタン遷移先</span></div>
+		</div>
+	</div>
+	<div class="row">
+		<input type="hidden" name="post_code_ttl" value="郵便番号" />
+		<div class="input-set w100">
+			<p class="input-title">郵便番号<br>
+				<input type="checkbox" name="is_post_code_edited" value="1" {% if data.site_clinic.post_code_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			<input type="text" id="post_code" name="post_code" value="{{data.site_clinic.post_code}}" class="w60 {% if data.site_clinic.post_code_edited == false %}inactive{% endif %}" />
+			<p class="basic-text wflex {% if data.site_clinic.post_code_edited == true %}inactive{% endif %}" id="basic_post_code">{{data.clinic.post_code}}</p>
+		</div>
+	</div>
+	<div class="row">
+		<input type="hidden" name="address_ttl" value="住所" />
+		<div class="input-set w100">
+			<p class="input-title">住所<br>
+				<input type="checkbox" name="is_address_edited" value="1" {% if data.site_clinic.address_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			<textarea id="address" name="address" class="minimize wflex {% if data.site_clinic.address_edited == false %}inactive{% endif %}">{{data.site_clinic.address}}</textarea>
+			<p class="basic-text wflex {% if data.site_clinic.address_edited == true %}inactive{% endif %}" id="basic_address">{{data.clinic.address}}</p>
+		</div>
+	</div>
+	<div class="row">
+		<input type="hidden" name="city_id_ttl" value="地域コード" />
+		<div class="input-set w100">
+			<p class="input-title">地域コード<br>
+				<input type="checkbox" name="is_city_id_edited" value="1" {% if data.site_clinic.city_id_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			<div id="city_id" class="input-set wflex {% if data.site_clinic.city_id_edited == false %}inactive{% endif %}">
+				<input type="text" name="city_id" value="{{data.site_clinic.city_id}}" class="w60" />
+				<a class="btn code-search" href="#searchModal" rel="modal:open">
+					<span>地域コード検索</span><span class="material-icons">search</span></a>
+			</div>
+			<p class="basic-text wflex {% if data.site_clinic.city_id_edited == true %}inactive{% endif %}" id="basic_city_id">{{data.clinic.city_id}}</p>
+		</div>
+	</div>
+	<div class="row">
+		<input type="hidden" name="station_id_list_ttl" value="駅コード" />
+		<div class="input-set w100 flex-align-start">
+			<p class="input-title">駅コード<br>
+				<input type="checkbox" name="is_station_id_list_edited" value="1" {% if data.site_clinic.station_id_list_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			<div id="station_id_list" class="wflex {% if data.site_clinic.station_id_list_edited == false %}inactive{% endif %}">
+				<div class="station-list wflex"> 
+					{% if data.site_clinic.stations|length > 0 %}
+					{% for key, station_group_id in data.site_clinic.stations %}
+					<div class="input-set w100 mb20 station-item" data-order="{{key}}">
+						<input type="text" name="station_id_list[{{key}}]" value="{{station_group_id}}" class="w20 mr15" />
+						<a class="btn code-search" href="#searchStationModal" rel="modal:open" data-order="{{key}}"><span>駅コード検索</span><span class="material-icons">search</span></a>		
+						<a class="btn circle orange remove {{value.site_pathname}}-color"><span class="material-icons">remove</span></a>
+					</div>
+					{% endfor %} 
+					{% else %}
+					{% for key, station_group_id in data.clinic.stations %}
+					<div class="input-set w100 mb20 station-item" data-order="{{key}}">
+						<input type="text" name="station_id_list[{{key}}]" value="{{station_group_id}}" class="w20 mr15" />
+						<a class="btn code-search" href="#searchStationModal" rel="modal:open" data-order="{{key}}"><span>駅コード検索</span><span class="material-icons">search</span></a>		
+						<a class="btn circle orange remove {{value.site_pathname}}-color"><span class="material-icons">remove</span></a>
+					</div>
+					{% endfor %} 
+					{% endif %}
+				</div>
+				<div class="row w100">
+					<a class="btn circle bluegray station-add" href=""><span class="material-icons">add</span></a>
+				</div>
+			</div>
+			<p class="basic-text wflex {% if data.site_clinic.station_id_list_edited == true %}inactive{% endif %}" id="basic_station_id_list">
+				{{data.clinic.station_id_list}}
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<input type="hidden" name="access_ttl" value="アクセス" />
+		<div class="input-set w100">
+			<p class="input-title">アクセス<br>
+				<input type="checkbox" name="is_access_edited" value="1" {% if data.site_clinic.access_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			<textarea id="access" name="access" class="minimize wflex {% if data.site_clinic.access_edited == false %}inactive{% endif %}">{{data.site_clinic.access}}</textarea>
+			<p class="basic-text wflex {% if data.site_clinic.access_edited == true %}inactive{% endif %}" id="basic_access">{{data.clinic.access}}</p>
+		</div>
+	</div>
+	<div class="row">
+		<input type="hidden" name="gmap_src_ttl" value="地図埋め込み（名称指定）" />
+		<div class="input-set w100">
+			<p class="input-title">地図埋め込み<br>（名称指定）<br>
+				<input type="checkbox" name="is_gmap_src_edited" value="1" {% if data.site_clinic.gmap_src_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			<textarea id="gmap_src" name="gmap_src" class="wflex {% if data.site_clinic.gmap_src_edited == false %}inactive{% endif %}">{{data.site_clinic.gmap_src}}</textarea>
+			<p class="basic-text wflex {% if data.site_clinic.gmap_src_edited == true %}inactive{% endif %}" id="basic_gmap_src_">{{data.clinic.gmap_src_}}</p>
+		</div>
+	</div>
+	<div class="row time-table">
+		<input type="hidden" name="operation_times_ttl" value="診療時間" />
+		<div class="input-set w100">
+			<p class="input-title">診療時間<br>
+				<input type="checkbox" name="is_operation_times_edited" value="1" {% if data.site_clinic.operation_times_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			<div id="operation_times" class="wflex {% if data.site_clinic.operation_times_edited == false %}inactive{% endif %}">
+				<table class="w100">
+					<tr>
+						<th>診療時間</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th><th></th>
+					</tr>
+					{% for row in data.site_clinic.operation_times %}
+					<tr>
+						<td class="start-end">
+							<input type="text" name="start_at[]" value="{{row.start_at}}" class="validate[custom[time]]">
+							〜
+							<input type="text" name="end_at[]" value="{{row.end_at}}" class="validate[custom[time]]">
+						</td>
+						<td>
+							<select name="is_mon_open[]">
+								<option value="0" {% if row.is_mon_open is same as (0) %}selected{% endif %}>ー</option>
+								<option value="1" {% if row.is_mon_open is same as (1) %}selected{% endif %}>△</option>
+								<option value="2" {% if row.is_mon_open is same as (2) %}selected{% endif %}>●</option>
+							</select>
+						</td>
+						<td>
+							<select name="is_tue_open[]">
+								<option value="0" {% if row.is_tue_open is same as (0) %}selected{% endif %}>ー</option>
+								<option value="1" {% if row.is_tue_open is same as (1) %}selected{% endif %}>△</option>
+								<option value="2" {% if row.is_tue_open is same as (2) %}selected{% endif %}>●</option>
+							</select>
+						</td>
+						<td>
+							<select name="is_wed_open[]">
+								<option value="0" {% if row.is_wed_open is same as (0) %}selected{% endif %}>ー</option>
+								<option value="1" {% if row.is_wed_open is same as (1) %}selected{% endif %}>△</option>
+								<option value="2" {% if row.is_wed_open is same as (2) %}selected{% endif %}>●</option>
+							</select>
+						</td>
+						<td>
+							<select name="is_thu_open[]">
+								<option value="0" {% if row.is_thu_open is same as (0) %}selected{% endif %}>ー</option>
+								<option value="1" {% if row.is_thu_open is same as (1) %}selected{% endif %}>△</option>
+								<option value="2" {% if row.is_thu_open is same as (2) %}selected{% endif %}>●</option>
+							</select>
+						</td>
+						<td>
+							<select name="is_fri_open[]">
+								<option value="0" {% if row.is_fri_open is same as (0) %}selected{% endif %}>ー</option>
+								<option value="1" {% if row.is_fri_open is same as (1) %}selected{% endif %}>△</option>
+								<option value="2" {% if row.is_fri_open is same as (2) %}selected{% endif %}>●</option>
+							</select>
+						</td>
+						<td>
+							<select name="is_sat_open[]">
+								<option value="0" {% if row.is_sat_open is same as (0) %}selected{% endif %}>ー</option>
+								<option value="1" {% if row.is_sat_open is same as (1) %}selected{% endif %}>△</option>
+								<option value="2" {% if row.is_sat_open is same as (2) %}selected{% endif %}>●</option>
+							</select>
+						</td>
+						<td>
+							<select name="is_sun_open[]">
+								<option value="0" {% if row.is_sun_open is same as (0) %}selected{% endif %}>ー</option>
+								<option value="1" {% if row.is_sun_open is same as (1) %}selected{% endif %}>△</option>
+								<option value="2" {% if row.is_sun_open is same as (2) %}selected{% endif %}>●</option>
+							</select>
+						</td>
+						<td><a class="btn circle orange remove {{value.site_pathname}}-color"><span class="material-icons">remove</span></a></td>
+					</tr>
+					{% endfor %}
+				</table>
+				<div class="w100">
+					<a class="btn circle bluegray add" href=""><span class="material-icons">add</span></a>
+				</div>
+			</div>
+			<table id="basic_operation_times" class="basic-time-table wflex {% if data.site_clinic.operation_times_edited == true %}inactive{% endif %}">
+				<tr>
+					<th>診療時間</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th>
+				</tr>
+				{% for row in data.clinic.operation_times %}
+				<tr>
+					<td class="start-end">
+						{{row.start_at}} 〜 {{row.end_at}}
+					</td>
+					<td>{{row.mon}}</td>
+					<td>{{row.tue}}</td>
+					<td>{{row.wed}}</td>
+					<td>{{row.thu}}</td>
+					<td>{{row.fri}}</td>
+					<td>{{row.sat}}</td>
+					<td>{{row.sun}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+	
+	<div class="row">
+		<input type="hidden" name="holiday_note_ttl" value="診療時間の備考欄" />
+		<div class="input-set w100">
+			<p class="input-title">診療時間の備考欄<br>
+				<input type="checkbox" name="is_holiday_note_edited" value="1" {% if data.site_clinic.holiday_note_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			<textarea id="holiday_note" name="holiday_note" class="minimize wflex {% if data.site_clinic.holiday_note_edited == false %}inactive{% endif %}">{{data.site_clinic.holiday_note}}</textarea>
+			<p class="basic-text wflex {% if data.site_clinic.holiday_note_edited == true %}inactive{% endif %}" id="basic_holiday_note">{{data.clinic.holiday_note}}</p>
+		</div>
+	</div>
+	<div class="row">
+		<input type="hidden" name="reserve_url_ttl" value="Web予約リンク（API呼び出し）" />
+		<div class="input-set w100">
+			<p class="input-title">Web予約リンク<br>（API呼び出し）<br>
+				<input type="checkbox" name="is_reserve_url_edited" value="1" {% if data.site_clinic.reserve_url_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			<div id="reserve_url" class="input-set wflex {% if data.site_clinic.reserve_url_edited == false %}inactive{% endif %}">
+				<input type="text" name="reserve_url" value="{{data.site_clinic.reserve_url}}" class="wflex mr15" />
+			</div>
+			<div id="basic_reserve_url" class="input-set wflex {% if data.site_clinic.reserve_url_edited == true %}inactive{% endif %}">
+				<p class="basic-text wflex" id="reserve_url">{{data.clinic.reserve_url}}</p>
+			</div>
+			<div><input class="reserve_url_check_group" type="checkbox" name="is_reserve_url_visible" value="1" {% if data.site_clinic.is_reserve_url_visible %}checked{% endif %}><span class="black-color">予約ボタン遷移先</span></div>
+		</div>
+	</div>
+	<div class="row">
+		<input type="hidden" name="reserve_url_plus_ttl" value="Web予約リンク（手入力）" />
+		<div class="input-set w100">
+			<p class="input-title">Web予約リンク<br>（手入力）<br>
+				<input type="checkbox" name="is_reserve_url_plus_edited" value="1" {% if data.site_clinic.reserve_url_plus_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			<div id="reserve_url_plus" class="input-set wflex {% if data.site_clinic.reserve_url_plus_edited == false %}inactive{% endif %}">
+				<input type="text" name="reserve_url_plus" value="{{data.site_clinic.reserve_url_plus}}" class="wflex mr15" />
+			</div>
+			<div id="basic_reserve_url_plus" class="input-set wflex {% if data.site_clinic.reserve_url_plus_edited == true %}inactive{% endif %}">
+				<p class="basic-text wflex" id="reserve_url_plus">{{data.clinic.reserve_url_plus}}</p>
+			</div>
+			<div><input class="reserve_url_check_group" type="checkbox" name="is_reserve_url_plus_visible" value="1" {% if data.site_clinic.is_reserve_url_plus_visible %}checked{% endif %}><span class="black-color">予約ボタン遷移先</span></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-set w100">
+			<input type="hidden" name="tel_ttl" value="電話（医院番号）" />
+			<p class="input-title" >電話（医院番号）<br>
+				<input type="checkbox" name="is_tel_edited" value="1" {% if data.site_clinic.tel_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			<div id="tel" class="input-set wflex {% if data.site_clinic.tel_edited == false %}inactive{% endif %}">
+				<input type="text" name="tel" value="{{data.site_clinic.tel}}" class="mr15" />
+			</div>
+			<div id="basic_tel" class="input-set wflex {% if data.site_clinic.tel_edited == true %}inactive{% endif %}">
+				<p class="basic-text wflex" id="tel">{{data.clinic.tel}}</p>
+			</div>
+			<div><input class="tel_check_group" type="checkbox" name="is_tel_visible" value="1" {% if data.site_clinic.is_tel_visible %}checked{% endif %}><span class="black-color">電話ボタンに使用する</span></div>
+		</div>
+	</div>
+	<div class="row">
+		<input type="hidden" name="reserve_tel_ttl" value="電話（予約番号）" />
+		<div class="input-set w100">
+			<p class="input-title">電話（予約番号）<br>
+				<input type="checkbox" name="is_reserve_tel_edited" value="1" {% if data.site_clinic.reserve_tel_edited %}checked{% endif %}><span class="black-color">修正する</span>
+			</p>
+			<div id="reserve_tel" class="input-set wflex {% if data.site_clinic.reserve_tel_edited == false %}inactive{% endif %}">
+				<input type="text" name="reserve_tel" value="{{data.site_clinic.reserve_tel}}" class="mr15" />
+			</div>
+			<div id="basic_reserve_tel" class="input-set wflex {% if data.site_clinic.reserve_tel_edited == true %}inactive{% endif %}">
+				<p class="basic-text wflex" id="reserve_tel">{{data.clinic.reserve_tel}}</p>
+			</div>
+			<div><input class="tel_check_group" type="checkbox" name="is_reserve_tel_visible" value="1" {% if data.site_clinic.is_reserve_tel_visible %}checked{% endif %}><span class="black-color">電話ボタンに使用する</span></div>
+		</div>
+	</div>
+	<div class="row">
+		<input type="hidden" name="pr_reserve_tel_ttl" value="★有料プラン（PR）専用 予約ボタン表示" />
+		<div class="input-set w100">
+			<p class="input-title">★有料プラン（PR）専用<br>予約ボタン表示</p>
+			<div class="mr15"><input type="checkbox" name="is_pr_reserve_tel_visible" value="1" {% if data.site_clinic.is_pr_reserve_tel_visible %}checked{% endif %}><span class="black-color">電話予約ボタン</span></div>
+			<div><input type="checkbox" name="is_pr_reserve_url_visible" value="1" {% if data.site_clinic.is_pr_reserve_url_visible %}checked{% endif %}><span class="black-color">Web予約ボタン</span></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-set w100">
+			<p class="input-title">インビザライン<br>記事情報</p>
+			<div class="wflex input-set">
+				{% if data.invisalign is not empty %}
+				<a class="btn form-btn white" href="/{{value.site_pathname}}_cms/invisalign/{{data.clinic.clinic_id}}" target="_blank">
+					データ確認（{% if data.invisalign.is_draft %}編集中{% else %}送信済み{% endif %}）
+				</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-set w100">
+			<p class="input-title">プロフィール管理</p>
+			<div class="wflex input-set profile">
+				{% if data.profile.profile_id is not empty %}
+    			<p class="basic-text">{{data.profile.doctor_name}}</p>
+    			<a class="btn unrelate-profile" data-profile_id="{{data.profile.profile_id}}">紐付けを解除</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</form>
+
+<div id="searchModal" class="modal">
+	{% include 'city/search_form.html' %}
+</div>
+
+<div id="searchStationModal" class="modal">
+	<input type="hidden" name="station_order" value="">
+	{% include 'station/search_form.html' %}
+</div>
+
+<div id="featureModal" class="modal">
+	{% include 'clinic/feature.html' %}
+</div>
+
+<div id="type2FeatureModal" class="modal">
+	{% include 'clinic/type2_feature.html' %}
+</div>
+
+<div id="otherClinicModal" class="modal">
+</div>
+
+<div id="caseModal" class="modal">
+	{% include 'case/case_info.html' %}
+</div>
+

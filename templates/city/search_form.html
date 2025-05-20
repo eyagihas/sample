@@ -1,0 +1,25 @@
+<h1>地域コード検索</h1>
+<div class="separator grey"></div>
+<form id="searchCity" onsubmit="return false;">
+	<div class="row row-center item-box">
+		<div class="select-wrapper">
+			<select id="condition" name="condition">
+				<option value="perfect">完全一致</option>
+				<option value="prefix">前方一致</option>
+				<option value="postfix">後方一致</option>
+				<option value="partial">部分一致</option>
+			</select>
+		</div>
+		<div class="search-box">
+			<input id="searchText" class="btn" type="text" name="search_text" value="{{data.search_text}}" placeholder="市区町村名検索">
+			<span id="searchIcon" class="material-icons">search</span>
+		</div>
+	</div>
+	<div class="row row-center">
+		<table class="city-table">
+			<tr><th>地域コード</th><th>都道府県名</th><th>市区町村名</th><th></th></tr>
+		</table>
+	</div>
+</form>
+	
+<a href="#" rel="modal:close" class="btn form-btn">閉じる</a>

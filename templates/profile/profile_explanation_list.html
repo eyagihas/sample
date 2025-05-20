@@ -1,0 +1,12 @@
+<ul class="cms-list-style">
+	{% for key, explanation in list.explanations %}
+	<li class="item-box lightgrey-bgcolor explanation-item">
+		<div class="name-box">
+			{{explanation.title}}
+		</div>
+		<div class="btn-box">
+			<button class="btn edit-explanation" data-id="{{explanation.explanation_id}}">記事データを見る</button>
+		</div>
+	</li>
+	{% endfor %}
+</ul>

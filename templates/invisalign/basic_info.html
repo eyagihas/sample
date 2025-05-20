@@ -1,0 +1,342 @@
+<input type="text" name="clinic_id" value="{{value.info.clinic_id}}" style="display:none;" />
+<input type="text" name="type" value="{{value.headline.type}}" style="display:none;" />
+<div class="h2-box"><span class="vertical-line kyousei-vl"></span><h2>基本情報</h2></div>
+<div class="row">
+	<div class="input-set w100">
+		<p class="input-title">担当者名</p>
+		<textarea name="pic_name" placeholder="例）平川　裕司（フルネームを漢字にてご記入ください）" class="validate[required]">{{value.info.pic_name}}</textarea>
+	</div>
+</div>
+<div class="row">
+	<div class="input-set w100">
+		<p class="input-title">医院正式名称</p>
+		<div class="w100">
+			<textarea name="clinic_name" placeholder="例）株式会社メディカルネット（医院正式名称をご記入ください）" class="validate[required]">{{value.info.clinic_name}}</textarea>
+			<p class="caution">※医療広告ガイドラインに則り、正式名称での掲載となる場合がございます。</p>
+		</div>
+		
+	</div>
+</div>
+<div class="row">
+	<div class="input-set w100">
+		<p class="input-title">院長名</p>
+		<textarea name="director_name" placeholder="例）平川　裕司（フルネームを漢字にてご記入ください）" class="validate[required]">{{value.info.director_name}}</textarea>
+	</div>
+</div>
+<div class="row">
+	<div class="input-set w100">
+		<p class="input-title">院長名<br class="u-only_sp">フリガナ</p>
+		<textarea name="director_name_kana" placeholder="例）ヒラカワ　ユウジ（フルネームをカタカナにてご記入ください）" class="validate[required]">{{value.info.director_name_kana}}</textarea>
+	</div>
+</div>
+<div class="row">
+	<div class="input-set w100">
+		<p class="input-title">医院<br class="u-only_sp">郵便番号</p>
+		<textarea name="post_code" placeholder="例）151-0072" class="validate[required]">{{value.info.post_code}}</textarea>
+	</div>
+</div>
+<div class="row">
+	<div class="input-set w100">
+		<p class="input-title">医院住所</p>
+		<div class="w100">
+			<textarea name="address" placeholder="例）東京都渋谷区幡ヶ谷1-34-14 宝ビル3階（住所をご記入ください）" class="validate[required]">{{value.info.address}}</textarea>
+			<p class="caution">※番地、必要に応じて部屋番号もご記入ください。</p>
+		</div>
+		
+	</div>
+</div>
+<div class="row">
+	<div class="input-set w100">
+		<p class="input-title">最寄り駅</p>
+		<div class="w100">
+			<textarea name="nearest_station" placeholder="例）幡ヶ谷駅（医院からの最寄り駅をご記入ください）" class="validate[required]">{{value.info.nearest_station}}</textarea>
+			<p class="caution">※複数記載可</p>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="input-set w100">
+		<p class="input-title">アクセス</p>
+		<div class="w100">
+			<textarea name="access" placeholder="例）幡ヶ谷駅より徒歩2分（医院へのアクセスをご記入ください）" class="validate[required]">{{value.info.access}}</textarea>
+			<p class="caution">※複数記載可。参考文をご参照ください。駅、バス停、高速ICなど。</p>
+		</div>
+	</div>
+</div>
+<div class="row tel">
+	<div class="input-set w100">
+		<p class="input-title">電話番号</p>
+		<div class="input-set w100">
+			<input type="text" name="tel_1" value="{{value.info.tel_1}}" placeholder="例）03-5790-5261" class="validate[required]" />
+			<input type="text" name="tel_2" value="{{value.info.tel_2}}" placeholder="例）03-5790-5261" />
+			<input type="text" name="tel_3" value="{{value.info.tel_3}}" placeholder="例）03-5790-5261" />
+			<p class="caution w100">※半角数字。患者さんからの入電が可能な電話番号をご記入ください。</p>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="input-set w100">
+		<p class="input-title">医院公式HP</p>
+		<div class="w100">
+			<textarea name="url" placeholder="例）https://www.medical-net.com/（ない場合は「ナシ」とご記入ください）" class="validate[required]">{{value.info.url}}</textarea>
+			<p class="caution">※複数記載可。参考文をご参照ください。駅、バス停、高速ICなど。</p>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="input-set w100">
+		<p class="input-title">医院公式HP<br>スマホ用</p>
+		<div class="w100">
+			<textarea name="url_sp" placeholder="例）https://www.medical-net.com/（ない場合は「ナシ」とご記入ください）">{{value.info.url_sp}}</textarea>
+			<p class="caution">※PCと異なるURLがある場合にご記入ください。</p>
+		</div>
+	</div>
+</div>
+<div class="row time-table">
+	<div class="input-set w100">
+		<p class="input-title">診療時間</p>
+		<div id="operation_times" class="wflex">
+			<table class="w100">
+				<tr>
+					<th>診療時間</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th><th></th>
+				</tr>
+				{% if value.operation_times is not empty %}
+				{% for row in value.operation_times %}
+				<tr>
+					<td class="start-end">
+						<input type="text" name="start_at[]" value="{{row.start_at}}" class="validate[custom[requiredInFunction],custom[time]]">
+						〜
+						<input type="text" name="end_at[]" value="{{row.end_at}}" class="validate[custom[requiredInFunction],custom[time]]">
+					</td>
+					<td>
+						<select name="is_mon_open[]">
+							<option value="0" {% if row.is_mon_open is same as (0) %}selected{% endif %}>ー</option>
+							<option value="1" {% if row.is_mon_open is same as (1) %}selected{% endif %}>△</option>
+							<option value="2" {% if row.is_mon_open is same as (2) %}selected{% endif %}>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_tue_open[]">
+							<option value="0" {% if row.is_tue_open is same as (0) %}selected{% endif %}>ー</option>
+							<option value="1" {% if row.is_tue_open is same as (1) %}selected{% endif %}>△</option>
+							<option value="2" {% if row.is_tue_open is same as (2) %}selected{% endif %}>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_wed_open[]">
+							<option value="0" {% if row.is_wed_open is same as (0) %}selected{% endif %}>ー</option>
+							<option value="1" {% if row.is_wed_open is same as (1) %}selected{% endif %}>△</option>
+							<option value="2" {% if row.is_wed_open is same as (2) %}selected{% endif %}>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_thu_open[]">
+							<option value="0" {% if row.is_thu_open is same as (0) %}selected{% endif %}>ー</option>
+							<option value="1" {% if row.is_thu_open is same as (1) %}selected{% endif %}>△</option>
+							<option value="2" {% if row.is_thu_open is same as (2) %}selected{% endif %}>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_fri_open[]">
+							<option value="0" {% if row.is_fri_open is same as (0) %}selected{% endif %}>ー</option>
+							<option value="1" {% if row.is_fri_open is same as (1) %}selected{% endif %}>△</option>
+							<option value="2" {% if row.is_fri_open is same as (2) %}selected{% endif %}>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_sat_open[]">
+							<option value="0" {% if row.is_sat_open is same as (0) %}selected{% endif %}>ー</option>
+							<option value="1" {% if row.is_sat_open is same as (1) %}selected{% endif %}>△</option>
+							<option value="2" {% if row.is_sat_open is same as (2) %}selected{% endif %}>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_sun_open[]">
+							<option value="0" {% if row.is_sun_open is same as (0) %}selected{% endif %}>ー</option>
+							<option value="1" {% if row.is_sun_open is same as (1) %}selected{% endif %}>△</option>
+							<option value="2" {% if row.is_sun_open is same as (2) %}selected{% endif %}>●</option>
+						</select>
+					</td>
+					<td>
+						{% if value.headline.type == 'portal' %}
+						<a class="btn circle orange remove {{value.site_pathname}}-color"><span class="material-icons">remove</span></a>
+						{% endif %}
+					</td>
+				</tr>
+				{% endfor %}
+				{% else %}
+				{% if value.headline.type == 'portal' %}
+				<tr>
+					<td class="start-end">
+						<input type="text" name="start_at[]" value="00:00" placeholder="09:30" class="validate[custom[requiredInFunction],custom[time]]"><br class="u-only_sp">
+						〜<br class="u-only_sp">
+						<input type="text" name="end_at[]" value="00:00" placeholder="13:30" class="validate[custom[requiredInFunction],custom[time]]">
+					</td>
+					<td>
+						<select name="is_mon_open[]">
+							<option value="0">ー</option>
+							<option value="1">△</option>
+							<option value="2" selected>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_tue_open[]">
+							<option value="0">ー</option>
+							<option value="1">△</option>
+							<option value="2" selected>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_wed_open[]">
+							<option value="0">ー</option>
+							<option value="1">△</option>
+							<option value="2" selected>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_thu_open[]">
+							<option value="0">ー</option>
+							<option value="1">△</option>
+							<option value="2" selected>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_fri_open[]">
+							<option value="0">ー</option>
+							<option value="1">△</option>
+							<option value="2" selected>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_sat_open[]">
+							<option value="0">ー</option>
+							<option value="1">△</option>
+							<option value="2" selected>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_sun_open[]">
+							<option value="0">ー</option>
+							<option value="1">△</option>
+							<option value="2" selected>●</option>
+						</select>
+					</td>					
+					<td><a class="btn circle orange remove kyousei-color"><span class="material-icons">remove</span></a></td>
+				</tr>
+				<tr>
+					<td class="start-end">
+						<input type="text" name="start_at[]" value="00:00" placeholder="15:00" class="validate[custom[requiredInFunction],custom[time]]"><br class="u-only_sp">
+						〜<br class="u-only_sp">
+						<input type="text" name="end_at[]" value="00:00" placeholder="19:00" class="validate[custom[requiredInFunction],custom[time]]">
+					</td>
+					<td>
+						<select name="is_mon_open[]">
+							<option value="0">ー</option>
+							<option value="1">△</option>
+							<option value="2" selected>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_tue_open[]">
+							<option value="0">ー</option>
+							<option value="1">△</option>
+							<option value="2" selected>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_wed_open[]">
+							<option value="0">ー</option>
+							<option value="1">△</option>
+							<option value="2" selected>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_thu_open[]">
+							<option value="0">ー</option>
+							<option value="1">△</option>
+							<option value="2" selected>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_fri_open[]">
+							<option value="0">ー</option>
+							<option value="1">△</option>
+							<option value="2" selected>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_sat_open[]">
+							<option value="0">ー</option>
+							<option value="1">△</option>
+							<option value="2" selected>●</option>
+						</select>
+					</td>
+					<td>
+						<select name="is_sun_open[]">
+							<option value="0">ー</option>
+							<option value="1">△</option>
+							<option value="2" selected>●</option>
+						</select>
+					</td>				
+					<td><a class="btn circle orange remove kyousei-color"><span class="material-icons">remove</span></a></td>
+				</tr>
+				{% endif %}
+				{% endif %}
+			</table>
+			{% if value.headline.type == 'portal' %}
+			<div class="w100">
+				<a class="btn circle bluegray add" href=""><span class="material-icons">add</span></a>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="input-set w100">
+		<p class="input-title">休診日</p>
+		<textarea name="holiday" placeholder="例）土・日・祝（休診日を詳しくご記入ください）" class="validate[required]">{{value.info.holiday}}</textarea>
+	</div>
+</div>
+<div class="row">
+	<div class="input-set w100">
+		<p class="input-title">休診日の備考欄</p>
+		<div class="w100">
+			<textarea name="holiday_note" placeholder="例）第１、第３日曜は休診です&#10;例）講演会により休診する場合がございます">{{value.info.holiday_note}}</textarea>
+			<p class="caution">※不規則な休診や予約時間の制限等、診療時間以外に患者さんに伝えたい診療日時案内があればご記入ください。</p>
+		</div>
+	</div>
+</div>
+
+{% include 'invisalign/payment_row.html' %}
+
+<div class="row reserve-row">
+	<div class="input-set w100">
+		<p class="input-title">予約ボタンの仕様<br><span class="small-title">どちらか1つを選択ください</span></p>
+		<div class="w100">
+			<div class="input-set w100 u-mb_20">
+				<div class="radio-set">
+					<input type="radio" name="is_pr_reserve_url_visible" value="1" id="reserve_url" class="reserve_visible" {% if value.info.is_pr_reserve_url_visible == 1  or (value.info.is_pr_reserve_url_visible == 0 and value.info.is_pr_reserve_tel_visible == 0) %}checked{% endif %}/>
+					<label for="reserve_url">Web予約を希望</label>
+				</div>
+				<textarea name="reserve_url" placeholder="例）https://www.kyousei-shika.net/kyousei_html/entry.html" {% if value.info.is_pr_reserve_url_visible == 1  or (value.info.is_pr_reserve_url_visible == 0 and value.info.is_pr_reserve_tel_visible == 0) %}class="validate[required]"{% endif %}>{{value.info.reserve_url}}</textarea>
+			</div>
+			<div class="input-set w100">
+				<div class="radio-set">
+					<input type="radio" name="is_pr_reserve_tel_visible" value="1" id="reserve_tel" class="reserve_visible" {% if value.info.is_pr_reserve_tel_visible == 1 %}checked{% endif %} />
+					<label for="reserve_tel">電話予約を希望</label>
+				</div>
+				<input type="text" name="reserve_tel" value="{{value.info.reserve_tel}}" placeholder="例）03-5790-5261" {% if value.info.is_pr_reserve_tel_visible == 1 %}class="validate[required]"{% endif %} />
+				<p class="caution">※予約が可能な電話番号をご記入ください。<br>医院電話番号のほかに、予約専用番号がある場合はそちらをご記入ください。</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% if value.isPrev == true %}
+<input type="text" name="clinic_id" value="{{value.info.clinic_id}}" style="display:none;" />
+{% endif %}
+
+<div class="basic-info form-btn-wrapper center-style">
+	<!--<button id="close" class="btn form-btn white">閉じる</button>-->
+	<button id="next" class="btn form-btn dark">次へ</button>
+</div>

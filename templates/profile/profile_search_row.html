@@ -1,0 +1,16 @@
+{% if data.profiles|length > 0 %}
+{% for key, profile in data.profiles %}
+<li id="resultProfile{{profile.profile_id}}" class="item-box lightgrey-bgcolor profile-item">
+	<div class="name-box">
+		（{{profile.profile_id}}）{{profile.doctor_name}}
+	</div>
+	<div class="btn-box">
+		<button class="btn red-color add-profile" data-id="{{profile.profile_id}}" data-name="{{profile.doctor_name}}">追加</button>
+	</div>
+</li>
+{% endfor %}
+{% else %}
+<li>
+	<p class="caution">該当プロフィールはありません</p>
+</li>
+{% endif %}

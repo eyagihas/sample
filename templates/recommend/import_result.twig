@@ -1,0 +1,33 @@
+{% extends "common/cms/base.twig" %}
+{% block title %}{{header.value.title}}{% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block body %}
+<div class="content edit-form">
+	<h1>{{value.title}}</h1>
+	<div class="separator {{value.site_pathname}}-separator"></div>
+	<form id="editForm" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="site_pathname" value="{{value.site_pathname}}" />
+		<div class="h2-box"><span class="vertical-line {{value.site_pathname}}-vl"></span><h2>インポートした医院</h2></div>
+		<div class="clinic-list-box">
+			<ul class="cms-list-style">
+				{% for key, clinic in data.clinics %}
+				<li id="clinic{{clinic.clinic_id}}" class="item-box lightgrey-bgcolor clinic-item">
+					<div class="name-box">
+						{% if clinic.exists == false %}<span class="new-mark red-bgcolor">NEW</span>{% endif %}
+						（{{clinic.clinic_id}}）{{clinic.clinic_name}}【フラグ数:{{clinic.specifiedFlgNums}}】
+					</div>
+					<div class="btn-box">
+						{% if clinic.is_edited == true %}
+						<button class="btn red-color update-clinic" data-id="{{clinic.clinic_id}}">更新</button>
+						{% endif %}
+						<button class="btn red-color delete-clinic" data-id="{{clinic.clinic_id}}">削除</button>
+						<button class="btn edit-clinic" data-id="{{clinic.clinic_id}}">修正</button>
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+    </form>
+</div>
+{% endblock %}

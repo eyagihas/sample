@@ -1,0 +1,14 @@
+vendor
+composer.phar
+templates/cache
+logs
+/public/image/*
+!/public/image/no-image.png
+src/config/Initializers/Local/.env
+src/config/Initializers/Office/.env
+src/config/Initializers/Production/.env
+src/config/Initializers/Test/.env
+.editorconfig
+/public/temp/sitemap.xml
+/public/temp/sitemap-index.xml
+.DS_store

@@ -1,0 +1,14 @@
+{% if value.recommends|length > 0 %}
+{% for key, row in value.recommends %}
+<li class="recommendRailway__list-wrapper">
+	<a href="{{row.url}}">
+		<div class="recommendRailway__list-item">
+			<img src="{{row.image_url}}" alt="{{row.image_attr}}">
+			<h2 class="recommendRailway__list-text">
+				<span class="title__year">【{{row.updated_in}}】</span>{{row.title}}
+			</h2>
+		</div>
+	</a>
+</li>
+{% endfor %}
+{% endif %}

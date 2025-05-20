@@ -1,0 +1,69 @@
+{% extends "common/#{value.headline.type}/base.twig" %}
+{% block robots %}
+<meta name="robots" content="noindex,nofollow">
+{% endblock %}
+
+{% block title %}
+{% if value.headline.type == 'portal' %}
+{{value.headline.title}} - 矯正歯科ネットプラス - 
+{% endif %}
+{% endblock %}
+
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+
+{% block external_css %}
+{% if value.headline.type == 'portal' %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/validationEngine.jquery.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+{% endif %}
+{% endblock %}
+
+{% block external_js %}
+{% if value.headline.type == 'portal' %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src='https://test-plus.implant.ac/js/cms/jquery-ui-1.12.1.min.js'></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/posabsolute/jQuery-Validation-Engine@3.1.0/js/jquery.validationEngine.min.js"></script>
+{% endif %}
+{% endblock %}
+
+{% block body %}
+
+<!-- contents -->
+<div class="contents edit-form">
+	<h1>{{value.headline.h1_title|raw}}</h1>
+
+	<form id="invisalignForm" method="POST" data-mode="show_form">
+		{% if value.headline.type == 'portal' %}
+		<div id="telInfo" class="u-mb_30">
+			<div class="h2-box"><span class="vertical-line kyousei-vl"></span><h2>登録情報の確認</h2></div>
+			<div class="row">
+				<div class="input-set w100">
+					<p class="input-title">医院TEL<br><span class="required-mark">必須</span></p>
+					<div class="tel-confirm">
+						<div id="tel" class="input-set wflex">
+							<input type="text" name="tel1" value="{{value.info.tel1}}" class="validate[required]" /> ー 
+							<input type="text" name="tel2" value="{{value.info.tel2}}" class="validate[required]" /> ー 
+							<input type="text" name="tel3" value="{{value.info.tel3}}" class="validate[required]" />
+						</div>
+						<div class="radio-set u-mb_30">
+							<input type="checkbox" name="confirm_check" value="1" id="confirm_check" class="validate[required]" {% if value.isPrev == true %}checked{% endif %}/>
+							<label for="confirm_check">私は歯科医院の責任者、またはその代理人であることに間違いありません</label>
+						</div>
+					</div>
+					<button id="checkTel" class="btn form-btn white" disabled>登録を確認する</button>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+		<div id="basicInfo">
+			{% if value.info|length > 0 %}
+			{% include 'invisalign/basic_info.html' %}
+			{% endif %}
+		</div>
+	</form>
+</div>
+<!-- /contents -->
+
+{% endblock %}

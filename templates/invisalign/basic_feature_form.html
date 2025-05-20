@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="input-set w100">
+		<p class="input-title">{{value.feature.feature_type_name}}{{value.feature.feature_id_circle}}<br>画像</p>
+		<div class="image-box lightgrey-bgcolor">
+			<div id="feature_{{value.feature.feature_id}}">
+				{% if value.feature_image != '' %}
+				<img src="{{value.feature_image}}?{{meta.unixtime}}" />
+				{% endif %}
+			</div>
+			{% if value.headline.type == 'portal' %}
+			<div class="row">
+				<label class="file-label"><input type="file" name="image_file" data-type="feature_{{value.feature.feature_id}}"></label>
+				<button class="select-image btn form-btn white">画像を登録する</button>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+<div class="row info-text">
+	<div class="input-set w100">
+		<p class="input-title">{{value.feature.feature_type_name}}{{value.feature.feature_id_circle}}<br>記事内容</p>
+		<div class="w100">
+			<textarea name="feature_text" class="validate[required]" placeholder="例）&#10;女性歯科医師が在籍&#10;女性歯科医師が○名在籍（○年○月時点）しており、治療の際に指名してもらえば常に女性歯科医師が担当する。&#10;矯正治療後の見た目に関しての相談や女性ならではの観点の治療を行うことができる。">{{value.feature.feature_text}}</textarea>
+			<p class="caution">※サイト記載を希望する医院のこだわりをご記入ください。（弊社にて編集して掲載いたします）</p>
+		</div>
+	</div>
+</div>

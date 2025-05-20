@@ -1,0 +1,19 @@
+<ul class="cms-list-style">
+	{% for key, recommend in list.recommends %}
+	<li class="item-box lightgrey-bgcolor recommend-item">
+		<div class="name-box">
+			{% if recommend.price_plan > 0 %}<span class="new-mark red-bgcolor">PR</span>{% endif %}
+			【{{recommend.publish_in}}】{{recommend.title}}
+		</div>
+		<div class="btn-box">
+			<a class="edit-{% if recommend.type_str is not same as ('') %}{{recommend.type_str}}-{% endif %}feature btn" href="#{% if recommend.type_str is not same as ('') %}{{recommend.type_str}}FeatureModal{% else %}featureModal{% endif %}" rel="modal:open" data-id="{{recommend.recommend_id}}">
+				{% if recommend.attribute_type is same as (2) %}紹介・特長・症例修正{% else %}紹介文・特長修正{% endif %}
+			</a>
+			<a class="edit-other-clinic btn" href="#otherClinicModal" rel="modal:open" data-id="{{recommend.recommend_id}}">他院修正</a>
+			<button class="edit-recommend btn" data-id="{{recommend.recommend_id}}">記事に戻る</button>
+		</div>
+	</li>
+	{% endfor %}
+</ul>
+
+

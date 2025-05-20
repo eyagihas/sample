@@ -1,0 +1,32 @@
+{% for key, row in value.explanations %}
+<div class="explanation__list-wrapper">
+	<a href="{{row.url}}" class="explanation__list-a">
+		<div class="explanation__list-item">
+			<div class="explanation__list-outer">
+				<img src="{{row.image_url}}" alt="{{row.image_attr}}" class="explanation__list-img">
+
+				<div class="explanation__text-wrapper">
+					<h3 class="explanation__list-text">{{row.title}}</h3>
+                </div>
+            </div>
+
+            <div class="explanation__author">
+            	<div class="explanation__author-text">
+            		<ul class="explanation__author-type">
+            			{% if row.is_supervised %}
+                        <li class="explanation__author-supervision">監修</li>
+                        {% endif %}
+                        {% if row.is_written %}
+                        <li class="explanation__author-writing">執筆</li>
+                        {% endif %}
+                    </ul>
+                    <h4 class="explanation__author-name">
+                        {{row.doctor_name}}<span class="explanation__author-doctor">歯科医師</span>
+                    </h4>
+                </div>
+                <img src="{{row.profile_image_url}}" alt="{{row.profile_image_attr}}">
+            </div>
+        </div>
+    </a>
+</div>
+{% endfor %}

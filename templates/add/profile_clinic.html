@@ -1,0 +1,16 @@
+<div class="clinic-item" id="order{{value.order}}" data-order="{{value.order}}">
+	<div class="row">
+		<input type="hidden" name="clinic_id_ttl" value="医院ID" />
+		<div class="input-set w100">
+			<p class="input-title">医院ID</p>
+			<div id="clinic_id" class="input-set wflex">
+				<input type="text" name="clinic_id[{{value.order}}]" value="" class="w60" />
+				<a class="btn code-search" href="#searchModal" rel="modal:open" data-order="{{value.order}}">
+					<span>医院ID検索</span><span class="material-icons">search</span></a>
+				<a class="btn circle orange remove {{value.site_pathname}}-color"><span class="material-icons">remove</span></a>
+			</div>
+		</div>
+	</div>
+	<div class="recommend-list-box mb30">
+	</div>
+</div>

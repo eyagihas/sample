@@ -1,0 +1,16 @@
+<form id="search Profile" onsubmit="return false;">
+	<h1>プロフィール検索</h1>
+	<div class="separator {{value.site_pathname}}-separator"></div>
+	<div class="row row-center cms-list">
+		<input id="searchText" class="btn" type="text" name="search_text" value="{{data.search_text}}" placeholder="プロフィールID、院長名検索">
+		<button id="searchIcon" class="btn form-btn dark">検索する</button>
+	</div>
+</form>
+
+<h1>プロフィール一覧</h1>
+<div class="separator {{value.site_pathname}}-separator"></div>
+<div class="modal-clinic-list-box">
+	<ul id="profileList" class="cms-list-style"></ul>
+</div>
+	
+<a href="#" rel="modal:close" class="btn form-btn">閉じる</a>

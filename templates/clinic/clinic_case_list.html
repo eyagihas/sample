@@ -1,0 +1,23 @@
+{% if list.cases|length > 0 %}
+<ul class="cms-list-style">
+	{% for key, case in list.cases %}
+	<li class="item-box lightgrey-bgcolor case-item">
+		<div class="name-box">
+			{{case.attribute_name}}：{{case.case_title}}
+		</div>
+		<div class="btn-box">
+			<a class="edit-case btn" href="#caseModal" rel="modal:open" data-id="{{case.case_id}}" data-clinic-id="{{case.clinic_id}}">修正</a>
+			<a class="preview-case btn" data-clinic-id="{{case.clinic_id}}" data-attribute-pathname="{{case.attribute_pathname}}">プレビュー</a>
+			{% if case.is_edited %}
+			<a class="update-case btn" data-id="{{case.case_id}}">更新</a>
+			{% endif %}
+			<a class="unpublish btn" data-id="{{case.case_id}}" {% if case.is_published is same as (0) %}disabled{% endif %}>非表示</a>
+			<a class="publish btn" data-id="{{case.case_id}}" {% if case.is_published is same as  (1) %}disabled{% endif %}>表示</a>
+		</div>
+	</li>
+	{% endfor %}
+</ul>
+{% include 'common/cms/pagenation.html' %}
+{% endif %}
+
+

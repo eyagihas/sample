@@ -1,0 +1,12 @@
+{% for key, row in value.search_attributes %}
+<tr class="accordion__table-tr">
+	<th class="accordion__table-title">{{row.attribute_name}}</th>
+	<td class="accordion__list">
+		<ul class="accordion__list-wrapper">
+			{% for a_key, a_row in row.recommends %}
+			<li class="accordion__item"><a href="{{a_row.url}}" class="accordion__a">{{a_row.title}}</a></li>
+			{% endfor %}
+		</ul>
+	</td>
+</tr>
+{% endfor %}

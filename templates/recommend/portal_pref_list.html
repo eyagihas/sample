@@ -1,0 +1,10 @@
+			<div class="search__list">
+				<h2 class="search__list-title">エリア一覧</h2>
+				<ul class="search__list-wrapper">
+					{% if value.prefectures|length > 0 %}
+					{% for key, row in value.prefectures %}
+					<li class="search__list-item"><a href="/recommend/{{row.pref_pathname}}/" class="search__list-a">{{row.pref_name}}</a></li>
+					{% endfor %}
+					{% endif %}
+				</ul>
+			</div>

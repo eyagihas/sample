@@ -1,0 +1,164 @@
+{% extends "common/#{value.headline.type}/base.twig" %}
+{% block robots %}
+<meta name="robots" content="noindex,nofollow">
+{% endblock %}
+
+{% block title %}
+{% if value.headline.type == 'portal' %}
+{{value.headline.title}} - 矯正歯科ネットプラス - 
+{% endif %}
+{% endblock %}
+
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+
+{% block external_css %}
+{% if value.headline.type == 'portal' %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/validationEngine.jquery.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+{% endif %}
+{% endblock %}
+
+{% block external_js %}
+{% if value.headline.type == 'portal' %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src='https://test-plus.implant.ac/js/cms/jquery-ui-1.12.1.min.js'></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/posabsolute/jQuery-Validation-Engine@3.1.0/js/jquery.validationEngine.min.js"></script>
+{% endif %}
+{% endblock %}
+
+{% block body %}
+
+<!-- contents -->
+<div class="contents edit-form">
+	<h1>{{value.headline.h1_title|raw}}</h1>
+
+	<form id="invisalignForm" method="POST" data-mode="show_guideline_form">
+		<input type="text" name="clinic_id" value="{{value.clinic_id}}" style="display:none;" />
+		<input type="text" name="type" value="{{value.headline.type}}" style="display:none;" />
+
+		<div class="h2-box"><span class="vertical-line kyousei-vl"></span><h2>限定解除用入力項目</h2></div>
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title">インビザラインの<br>一般的な費用</p>
+				<div class="fee-table w100">
+					<table>
+						{% if value.invisalign_fees is not empty %}
+						{% for key, row in value.invisalign_fees %}
+						<tr>
+							<td>
+								<textarea name="fee_name[]" placeholder="例）インビザライン&#10;モデレートパッケージ" class="validate[required]">{{row.fee_name}}</textarea>
+								<textarea name="fee[]" placeholder="例）XXX,XXX円〜XXX,XXX円" class="validate[required]">{{row.fee}}</textarea>
+							</td>
+							<td>
+								{% if value.headline.type == 'portal' %}
+								<a class="btn circle orange remove kyousei-color"><span class="material-icons">remove</span></a>
+								{% endif %}
+							</td>
+						</tr>
+						{% endfor %}
+						{% else %}
+						<tr>
+							<td class="w90">
+								<textarea name="fee_name[]" placeholder="例）インビザライン&#10;コンプリヘンシブパッケージ" class="validate[required]"></textarea>
+								<textarea name="fee[]" placeholder="例）XXX,XXX円〜XXX,XXX円" class="validate[required]"></textarea>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>
+								<textarea name="fee_name[]" placeholder="例）インビザライン&#10;モデレートパッケージ" class="validate[required]"></textarea>
+								<textarea name="fee[]" placeholder="例）XXX,XXX円〜XXX,XXX円" class="validate[required]"></textarea>
+							</td>
+							<td>
+								{% if value.headline.type == 'portal' %}
+								<a class="btn circle orange remove kyousei-color"><span class="material-icons">remove</span></a>
+								{% endif %}
+							</td>
+						</tr>
+						{% endif %}
+					</table>
+					{% if value.headline.type == 'portal' %}
+					<div class="w100">
+						<a class="btn circle bluegray add" href=""><span class="material-icons">add</span></a>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title">インビザラインの<br>一般的な治療回数</p>
+				<div class="w100">
+					<textarea name="invisalign_treatment_times" placeholder="例）1ヶ月に1回（15〜20回）" class="validate[required]">{{value.guideline.invisalign_treatment_times}}</textarea>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title">インビザラインの<br>一般的な治療期間</p>
+				<div class="w100">
+					<textarea name="invisalign_duration" placeholder="例）1年〜2年半" class="validate[required]">{{value.guideline.invisalign_duration}}</textarea>
+				</div>
+			</div>
+		</div>
+
+		<div class="h2-box"><span class="vertical-line kyousei-vl"></span><h2>医院紹介</h2></div>
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title">医院外観写真</p>
+				<div class="image-box lightgrey-bgcolor">
+					<div id="exterior">
+						{% if value.exterior_image != '' %}
+						<img src="{{value.exterior_image}}?{{meta.unixtime}}" />
+						{% endif %}
+					</div>
+					{% if value.headline.type == 'portal' %}
+					<div class="row">
+						<label class="file-label"><input type="file" name="image_file" data-type="exterior"></label>
+						<button class="select-image btn form-btn white">画像を登録する</button>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+
+		<div class="row info-text">
+			<div class="input-set w100">
+				<p class="input-title">医院紹介</p>
+				<div class="w100">
+					<textarea name="info_text" placeholder="例）&#10;〇〇駅徒歩1分&#10;矯正治療のみを専門として行なっている歯科医院である&#10;総合的な治療を行っている歯科医院である" class="validate[required]">{{value.guideline.info_text}}</textarea>
+					<p class="caution">※本ページにて貴医院を紹介するにあたり、サイトに記載を希望する言葉やこだわりなどがありましたらご記入ください。（弊社にて編集して掲載いたします）</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-set w100">
+				<p class="input-title">医院内観写真</p>
+				<div class="image-box lightgrey-bgcolor">
+					<div id="interior">
+						{% if value.interior_image != '' %}
+						<img src="{{value.interior_image}}?{{meta.unixtime}}" />
+						{% endif %}
+					</div>
+					{% if value.headline.type == 'portal' %}
+					<div class="row">
+						<label class="file-label"><input type="file" name="image_file" data-type="interior"></label>
+						<button class="select-image btn form-btn white">画像を登録する</button>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+
+		<div class="guideline-form form-btn-wrapper center-style">
+			<button id="prev" class="btn form-btn white">戻る</button>
+			<button id="next" class="btn form-btn dark">次へ</button>
+		</div>
+	</form>
+</div>
+<!-- /contents -->
+
+{% endblock %}

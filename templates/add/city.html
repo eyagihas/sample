@@ -1,0 +1,4 @@
+<option value="pref">すべて</option>
+{% for key, val in cities %}
+<option value="{{val.city_id}}">{{val.city_name}}</option>
+{% endfor %}

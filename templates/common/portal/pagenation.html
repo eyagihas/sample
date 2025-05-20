@@ -1,0 +1,21 @@
+<nav class="pagination">
+	<ul class="pagination__wrapper">
+		<li class="pagination__item">
+			<a class="pagination__a{% if value.headline.page == 1 %}--inactive{% endif %}"
+			{% if value.headline.page != 1 %} href="?{% if 'station' in value.type %}station&{% endif %}page={{value.headline.page-1}}"{% endif %}>
+				<img src="/image/common/prev_arrow.svg" alt="戻る" /></a>
+		</li>
+		{% for key, val in value.pages %}
+		<li class="pagination__item">
+			{% if val.anchor_class is not same as ('') %}
+			<a class="{{val.anchor_class}}" {% if val.href is not same as ('') %}href="{{val.href}}"{% endif %}>
+			{% endif %}
+			{{val.text|raw}}
+			{% if val.anchor_class is not same as ('') %}</a>{% endif %}
+		</li>
+		{% endfor %}
+		<li class="pagination__item">
+			<a class="pagination__a{% if value.headline.page  == value.headline.last_page %}--inactive{% endif %}"{% if value.headline.page != value.headline.last_page %} href="?{% if 'station' in value.type %}station&{% endif %}page={{value.headline.page+1}}"{% endif %}>
+				<img src="/image/common/next_arrow.svg" alt="次へ" /></a></li>
+	</ul>
+</nav>

@@ -1,0 +1,10 @@
+{% if list.links|length > 0 %}
+<h4 class="red-color">（{{list.total}}件表示）</h4>
+<ul class="cms-list-style">
+{% for row in list.links %}
+    {% include "list/cms_link_row.html" with {'row':row} %}
+{% endfor %}
+</ul>
+{% endif %}
+
+{% include 'common/cms/pagenation.html' %}

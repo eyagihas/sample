@@ -1,0 +1,34 @@
+{% extends "common/portal/base.twig" %}
+{% block robots %}
+<meta name="robots" content="noindex,nofollow">
+{% endblock %}
+{% block title %}{{value.headline.title}} - 矯正歯科ネットプラス - {% endblock %}
+{% block last_update_css %}?{{meta.unixtime}}{% endblock %}
+{% block last_update_js %}?{{meta.unixtime}}{% endblock %}
+{% block external_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/validationEngine.jquery.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+{% endblock %}
+{% block external_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src='/js/cms/jquery-ui-1.12.1.min.js'></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/posabsolute/jQuery-Validation-Engine@3.1.0/js/jquery.validationEngine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/posabsolute/jQuery-Validation-Engine@3.1.0/js/languages/jquery.validationEngine-ja.js"></script>
+{% endblock %}
+{% block body %}
+
+<!-- contents -->
+<div class="contents edit-form">
+	<h1>{{value.headline.h1_title|raw}}</h1>
+
+	<p class="thanks-message">
+		入力内容の送信が完了いたしました。<br>
+		ご記入いただきありがとうございました。<br><br>
+		修正、ご不明な点等ございましたら、<br class="u-only_sp">担当営業までご連絡ください。
+	</p>
+
+</div>
+<!-- /contents -->
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% if data.clinics|length > 0 %}
+{% for key, clinic in data.clinics %}
+<li id="resultClinic{{clinic.clinic_id}}" class="item-box lightgrey-bgcolor clinic-item">
+	<div class="name-box">
+		（{{clinic.clinic_id}}）{{clinic.clinic_name}}【フラグ数:{{clinic.attribute_num}}】
+	</div>
+	<div class="btn-box">
+		<button class="btn red-color add-clinic" data-id="{{clinic.clinic_id}}" data-name="{{clinic.clinic_name}}">追加</button>
+	</div>
+</li>
+{% endfor %}
+{% else %}
+<li>
+	<p class="search-result">該当医院はありません</p>
+</li>
+{% endif %}

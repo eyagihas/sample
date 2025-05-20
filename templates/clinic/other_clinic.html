@@ -1,0 +1,36 @@
+<div id="otherClinicContent">
+	<h1>他院修正</h1>
+	<div class="separator {{value.site_pathname}}-separator"></div>
+
+	<div class="clinic-list-box">
+		<ul class="cms-list-style">
+			{% for key, clinic in value.clinics %}
+			<li id="clinic{{clinic.clinic_id}}" class="item-box lightgrey-bgcolor clinic-item{% if clinic.is_deleted %} is-deleted{% endif %}">
+				<div class="sort-box">
+					{% if clinic.price_plan > 0 %}
+					<span class="sort-num" data-id="{{clinic.clinic_id}}" data-recommend-id="{{data.recommend_id}}">{{clinic.sort_order}}</span>
+					<span>番目</span>
+					{% endif %}
+				</div>
+				<div class="name-box">
+					{% if clinic.exists == false %}<span class="new-mark red-bgcolor">NEW</span>{% endif %}
+					（{{clinic.clinic_id}}）{{clinic.clinic_name}}【フラグ数:{{clinic.specifiedFlgNums}}】
+				</div>
+				<div class="btn-box">
+					{% if clinic.is_edited == true %}
+					<!--<button class="btn red-color update-clinic" data-id="{{clinic.clinic_id}}">更新</button>-->
+					{% endif %}
+					<!--<button class="btn red-color delete-clinic" data-id="{{clinic.clinic_id}}">削除</button>-->
+					<button class="btn edit-clinic" data-id="{{clinic.clinic_id}}" data-recommend-id="{{value.recommend_id}}">修正する</button>
+				</div>
+				<div id="order{{clinic.clinic_id}}" class="order-select" data-id="{{clinic.clinic_id}}"></div>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	
+	<div class="form-btn-wrapper center-style">
+		<a href="#" rel="modal:close" class="btn form-btn">閉じる</a>
+	</div>
+	
+</div>
